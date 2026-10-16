@@ -1,27 +1,20 @@
 const express = require('express');
-const { 
-  getProducts, 
-  getNewArrivals, // Yeni fonksiyonu buraya ekleyeceğiz
-  getProductById, 
-  createProduct,
-  updateProduct,
-  deleteProduct
+
+const {
+  getProducts,
+  getNewArrivals,
+  getProductById
 } = require('../controllers/productController');
-const { protect } = require('../middlewares/authMiddleware');
-const { admin } = require('../middlewares/adminMiddleware');
 
 const router = express.Router();
 
-// 1. ÖZEL VE SABİT ROTALAR (DİNAMİK :id'den ÖNCE YAZILMALIDIR)
-router.get('/new-arrivals', getNewArrivals); // GET /api/products/new-arrivals
+// Yeni gelen ürünler
+router.get('/new-arrivals', getNewArrivals);
 
-// 2. GENEL VE DİNAMİK ROTALAR
-router.get('/', getProducts);         
-router.get('/:id', getProductById);    
+// Tüm ürünleri listele, ara ve filtrele
+router.get('/', getProducts);
 
-// 3. KORUMALI VE YETKİLİ ROTALAR
-router.post('/', protect, admin, createProduct);       
-router.put('/:id', protect, admin, updateProduct);    
-router.delete('/:id', protect, admin, deleteProduct); 
+// Ürün detayını getir
+router.get('/:id', getProductById);
 
 module.exports = router;

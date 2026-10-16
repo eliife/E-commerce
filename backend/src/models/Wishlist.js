@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const wishlistSchema = new mongoose.Schema({
@@ -5,12 +6,11 @@ const wishlistSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
-    unique: true // Her kullanıcının 1 tane favori listesi olur
+    unique: true
   },
   products: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product'
+      type: String
     }
   ]
 }, {

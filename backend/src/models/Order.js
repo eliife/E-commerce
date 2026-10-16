@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
@@ -9,17 +10,18 @@ const orderSchema = new mongoose.Schema({
   orderItems: [
     {
       product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
+        type: String,
         required: true
       },
       quantity: {
         type: Number,
-        required: true
+        required: true,
+        min: 1
       },
       price: {
         type: Number,
-        required: true
+        required: true,
+        min: 0
       }
     }
   ],
@@ -31,12 +33,19 @@ const orderSchema = new mongoose.Schema({
   totalPrice: {
     type: Number,
     required: true,
-    default: 0
+    default: 0,
+    min: 0
   },
   status: {
     type: String,
     required: true,
-    enum: ['Beklemede', 'Hazırlanıyor', 'Kargoda', 'Teslim Edildi', 'İptal Edildi'],
+    enum: [
+      'Beklemede',
+      'Hazırlanıyor',
+      'Kargoda',
+      'Teslim Edildi',
+      'İptal Edildi'
+    ],
     default: 'Beklemede'
   }
 }, {

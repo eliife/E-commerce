@@ -1,18 +1,31 @@
+
 const express = require('express');
-const { 
-  getCart, 
-  addToCart, 
-  removeFromCart, 
-  clearCart 
+
+const {
+  getCart,
+  addToCart,
+  removeFromCart,
+  clearCart,
+  updateCartItemQuantity,
 } = require('../controllers/cartController');
+
 const { protect } = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-// Tüm sepet rotaları korumalıdır (Giriş yapılmış olmalı)
-router.get('/', protect, getCart);                     // Sepeti görüntüle: GET /api/cart
-router.post('/add', protect, addToCart);               // Sepete ürün ekle: POST /api/cart/add
-router.delete('/item/:productId', protect, removeFromCart); // Sepetten ürün sil: DELETE /api/cart/item/:id
-router.delete('/', protect, clearCart);                // Sepeti komple boşalt: DELETE /api/cart
+// Kullanıcının sepetini getir
+router.get('/', protect, getCart);
+
+// Sepete ürün ekle veya miktarını artır
+router.post('/add', protect, addToCart);
+
+// Sepetteki ürün miktarını güncelle
+router.patch('/item/:productId', protect, updateCartItemQuantity);
+
+// Ürünü sepetten tamamen kaldır
+router.delete('/item/:productId', protect, removeFromCart);
+
+// Sepeti tamamen temizle
+router.delete('/', protect, clearCart);
 
 module.exports = router;

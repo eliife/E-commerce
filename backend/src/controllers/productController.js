@@ -1,139 +1,158 @@
-const Product = require('../models/Product');
 
-// Türkçe karakter ve ek toleranslı arama yardımıcısı
+const fs = require('fs');
+const path = require('path');
+
+const productsPath = path.join(__dirname, '../../products.json');
+
+const readProducts = () => {
+  return JSON.parse(fs.readFileSync(productsPath, 'utf8'));
+};
+
+// Türkçe karakter ve ek toleranslı arama yardımcısı
 const createTurkishRegex = (keyword) => {
   if (!keyword) return null;
-  
-  let clean = keyword.trim().toLowerCase();
-  
-  // Türkçe yaygın ekleri ve yumuşamaları köke indirgemek için temizlik
-  // Örnek: kulaklık -> kulak, kulaklığı -> kulak
+
+  let clean = keyword.trim().toLocaleLowerCase('tr-TR');
+
   clean = clean.replace(/(lık|lik|luk|lük|lar|ler|i|ı|ü|u)$/i, '');
-  
-  // Eğer kelimenin sonu k ile bitiyorsa, veritabanındaki ğ ihtimalini de kapsasın
+
   if (clean.endsWith('k')) {
     clean = clean.slice(0, -1) + '[kğ]';
   }
 
   const words = clean.split(/\s+/).filter(Boolean);
-  if (words.length === 0) return new RegExp(keyword, 'i');
+
+  if (words.length === 0) {
+    return new RegExp(keyword, 'i');
+  }
 
   return new RegExp(words.join('|'), 'i');
 };
 
-// 1. TÜM ÜRÜNLERİ GETİR (Arama, Kategori, Marka, Fiyat, Sıralama ve Sayfalama ile)
+// Ortak filtreleme işlemi
+const filterProducts = (products, query) => {
+  const { keyword, category, brand, color, maxPrice } = query;
+
+  if (keyword) {
+    const searchRegex = createTurkishRegex(keyword);
+
+    products = products.filter((product) =>
+      [product.name, product.description, product.category, product.brand]
+        .some((value) => searchRegex.test(value || ''))
+    );
+  }
+
+  if (category && category !== 'Tümü') {
+    products = products.filter(
+      (product) => product.category === category
+    );
+  }
+
+  if (brand) {
+    const brandsArray = brand.split(',');
+
+    products = products.filter(
+      (product) => brandsArray.includes(product.brand)
+    );
+  }
+
+  if (color && color !== 'Tümü') {
+    products = products.filter(
+      (product) => product.color === color
+    );
+  }
+
+  if (maxPrice !== undefined && maxPrice !== '') {
+    const priceLimit = Number(maxPrice);
+
+    if (Number.isFinite(priceLimit)) {
+      products = products.filter(
+        (product) => product.price <= priceLimit
+      );
+    }
+  }
+
+  return products;
+};
+
+// Ürün sıralama işlemi
+const sortProducts = (products, sort) => {
+  if (sort === 'price-asc') {
+    products.sort((a, b) => a.price - b.price);
+  } else if (sort === 'price-desc') {
+    products.sort((a, b) => b.price - a.price);
+  } else if (sort === 'bestseller') {
+    products.sort(
+      (a, b) => (b.salesCount || 0) - (a.salesCount || 0)
+    );
+  }
+
+  return products;
+};
+
+// 1. Tüm ürünleri getir
 exports.getProducts = async (req, res) => {
   try {
-    const { keyword, category, brand, color, maxPrice, sort, page = 1, limit = 10 } = req.query;
+    const {
+      sort,
+      page = 1,
+      limit = 10
+    } = req.query;
 
-    const query = {};
+    let products = readProducts();
 
-    if (keyword) {
-      const searchRegex = createTurkishRegex(keyword);
-      
-      query.$or = [
-        { name: searchRegex },
-        { description: searchRegex },
-        { category: searchRegex },
-        { brand: searchRegex }
-      ];
-    }
+    products = filterProducts(products, req.query);
+    products = sortProducts(products, sort);
 
-    if (category && category !== 'Tümü') {
-      query.category = category;
-    }
+    const pageNumber = Math.max(1, Number(page) || 1);
+    const pageSize = Math.max(1, Number(limit) || 10);
+    const totalProducts = products.length;
+    const startIndex = (pageNumber - 1) * pageSize;
 
-    if (brand) {
-      const brandsArray = brand.split(',');
-      query.brand = { $in: brandsArray };
-    }
-
-    if (color && color !== 'Tümü') {
-      query.color = color;
-    }
-
-    if (maxPrice) {
-      query.price = { $lte: Number(maxPrice) };
-    }
-
-    const skip = (Number(page) - 1) * Number(limit);
-    let productsQuery = Product.find(query).skip(skip).limit(Number(limit));
-
-    if (sort) {
-      if (sort === 'price-asc') {
-        productsQuery = productsQuery.sort({ price: 1 });
-      } else if (sort === 'price-desc') {
-        productsQuery = productsQuery.sort({ price: -1 });
-      } else if (sort === 'newest') {
-        productsQuery = productsQuery.sort({ createdAt: -1 });
-      } else if (sort === 'bestseller') {
-        productsQuery = productsQuery.sort({ salesCount: -1 });
-      }
-    } else {
-      productsQuery = productsQuery.sort({ createdAt: -1 });
-    }
-
-    const products = await productsQuery;
-    const totalProducts = await Product.countDocuments(query);
+    const paginatedProducts = products.slice(
+      startIndex,
+      startIndex + pageSize
+    );
 
     res.status(200).json({
       success: true,
-      page: Number(page),
-      pages: Math.ceil(totalProducts / Number(limit)),
+      page: pageNumber,
+      pages: Math.ceil(totalProducts / pageSize),
       totalProducts,
-      count: products.length,
-      products
+      count: paginatedProducts.length,
+      products: paginatedProducts
     });
   } catch (error) {
-    console.error("Hata Detayı:", error);
-    res.status(500).json({ message: 'Sunucu hatası', error: error.message });
+    console.error('Ürün listeleme hatası:', error);
+
+    res.status(500).json({
+      success: false,
+      message: 'Ürünler alınırken sunucu hatası oluştu.',
+      error: error.message
+    });
   }
 };
 
-// 2. YENİ GELEN ÜRÜNLERİ GETİR
+// 2. Yeni gelen ürünleri getir
 exports.getNewArrivals = async (req, res) => {
   try {
-    const { keyword, category, brand, color, maxPrice, sort, limit = 20 } = req.query;
-    
-    const query = {};
+    const { sort, limit = 20 } = req.query;
 
-    if (keyword) {
-      const searchRegex = createTurkishRegex(keyword);
-      
-      query.$or = [
-        { name: searchRegex },
-        { description: searchRegex },
-        { category: searchRegex },
-        { brand: searchRegex }
-      ];
+    let products = readProducts();
+
+    products = filterProducts(products, req.query);
+
+    if (sort === 'price-asc' || sort === 'price-desc') {
+      products = sortProducts(products, sort);
+    } else {
+      // JSON kayıtlarında tarih bulunmadığı için dosya sırasını koru.
+      // Gerçek eklenme tarihi sıralaması için tarih alanı gerekir.
     }
 
-    if (category && category !== 'Tümü') {
-      query.category = category;
-    }
+    const pageSize = Math.max(1, Number(limit) || 20);
+    const totalProducts = products.length;
 
-    if (brand) {
-      const brandsArray = brand.split(',');
-      query.brand = { $in: brandsArray };
-    }
-
-    if (color && color !== 'Tümü') {
-      query.color = color;
-    }
-
-    if (maxPrice) {
-      query.price = { $lte: Number(maxPrice) };
-    }
-
-    let sortCriteria = { createdAt: -1 };
-    if (sort === 'price-asc') {
-      sortCriteria = { price: 1 };
-    } else if (sort === 'price-desc') {
-      sortCriteria = { price: -1 };
-    }
-
-    const products = await Product.find(query).sort(sortCriteria).limit(Number(limit));
-    const totalProducts = await Product.countDocuments(query);
+    products = products.slice(0, pageSize);
 
     res.status(200).json({
       success: true,
@@ -142,17 +161,30 @@ exports.getNewArrivals = async (req, res) => {
       products
     });
   } catch (error) {
-    res.status(500).json({ message: 'Sunucu hatası', error: error.message });
+    console.error('Yeni ürünleri getirme hatası:', error);
+
+    res.status(500).json({
+      success: false,
+      message: 'Yeni ürünler alınırken sunucu hatası oluştu.',
+      error: error.message
+    });
   }
 };
 
-// 3. TEK BİR ÜRÜNÜ DETAYLI GETİR
+// 3. Tek bir ürünün detayını getir
 exports.getProductById = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const products = readProducts();
+
+    const product = products.find(
+      (item) => item.id === req.params.id
+    );
 
     if (!product) {
-      return res.status(404).json({ message: 'Ürün bulunamadı.' });
+      return res.status(404).json({
+        success: false,
+        message: 'Ürün bulunamadı.'
+      });
     }
 
     res.status(200).json({
@@ -160,80 +192,12 @@ exports.getProductById = async (req, res) => {
       product
     });
   } catch (error) {
-    res.status(500).json({ message: 'Sunucu hatası', error: error.message });
-  }
-};
+    console.error('Ürün detay hatası:', error);
 
-// 4. YENİ ÜRÜN EKLE (Sadece Admin)
-exports.createProduct = async (req, res) => {
-  try {
-    const { name, description, price, stock, category, brand, color, image, rating, numReviews, salesCount } = req.body;
-
-    const newProduct = new Product({
-      name,
-      description,
-      price,
-      stock,
-      category,
-      brand,
-      color,
-      image,
-      rating: rating || 0,
-      numReviews: numReviews || 0,
-      salesCount: salesCount || 0
+    res.status(500).json({
+      success: false,
+      message: 'Ürün detayı alınırken sunucu hatası oluştu.',
+      error: error.message
     });
-
-    await newProduct.save();
-
-    res.status(201).json({
-      success: true,
-      message: 'Ürün başarıyla eklendi.',
-      product: newProduct
-    });
-  } catch (error) {
-    res.status(500).json({ message: 'Sunucu hatası', error: error.message });
-  }
-};
-
-// 5. ÜRÜNÜ GÜNCELLE (Sadece Admin)
-exports.updateProduct = async (req, res) => {
-  try {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      return res.status(404).json({ message: 'Ürün bulunamadı.' });
-    }
-
-    const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
-
-    res.status(200).json({
-      success: true,
-      message: 'Ürün başarıyla güncellendi.',
-      product: updatedProduct
-    });
-  } catch (error) {
-    res.status(500).json({ message: 'Sunucu hatası', error: error.message });
-  }
-};
-
-// 6. ÜRÜNÜ SİL (Sadece Admin)
-exports.deleteProduct = async (req, res) => {
-  try {
-    const product = await Product.findById(req.params.id);
-    if (!product) {
-      return res.status(404).json({ message: 'Ürün bulunamadı.' });
-    }
-
-    await product.deleteOne();
-
-    res.status(200).json({
-      success: true,
-      message: 'Ürün başarıyla silindi.'
-    });
-  } catch (error) {
-    res.status(500).json({ message: 'Sunucu hatası', error: error.message });
   }
 };

@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema({
@@ -7,8 +8,7 @@ const reviewSchema = new mongoose.Schema({
     required: true
   },
   product: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product',
+    type: String,
     required: true
   },
   rating: {
@@ -25,7 +25,7 @@ const reviewSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Bir kullanıcının aynı ürüne sadece 1 kez yorum yapabilmesini sağlıyoruz
+// Bir kullanıcı aynı ürüne yalnızca bir yorum yapabilir
 reviewSchema.index({ product: 1, user: 1 }, { unique: true });
 
 module.exports = mongoose.model('Review', reviewSchema);

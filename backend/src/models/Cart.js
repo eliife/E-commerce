@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const cartSchema = new mongoose.Schema({
@@ -5,13 +6,12 @@ const cartSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
-    unique: true // Her kullanıcının sadece 1 tane aktif sepeti olur
+    unique: true
   },
   items: [
     {
       product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
+        type: String,
         required: true
       },
       quantity: {

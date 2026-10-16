@@ -1,0 +1,87 @@
+
+[
+  {
+    "id": "luna",
+    "name": "LUNA",
+    "description": "Bordo deri omuz çantası. Zamansız tasarımı ve zarif detaylarıyla günlük stile güçlü bir dokunuş katar.",
+    "price": 2890,
+    "stock": 15,
+    "category": "Bags",
+    "brand": "VELORA",
+    "color": "Bordo",
+    "image": "/uploads/velaro-bordo.webp",
+    "salesCount": 0
+  },
+  {
+    "id": "siena",
+    "name": "SIENA",
+    "description": "Siyah deri tote çanta. Geniş iç hacmi ve sade tasarımıyla günlük kullanıma uygundur.",
+    "price": 3490,
+    "stock": 12,
+    "category": "Bags",
+    "brand": "VELORA",
+    "color": "Siyah",
+    "image": "/uploads/velaro-siyah.webp",
+    "salesCount": 0
+  },
+  {
+    "id": "nora",
+    "name": "NORA",
+    "description": "Espresso kahve tonlarında deri çapraz askılı çanta. Fonksiyonelliği minimal tasarımla buluşturur.",
+    "price": 2490,
+    "stock": 18,
+    "category": "Bags",
+    "brand": "VELORA",
+    "color": "Kahverengi",
+    "image": "/uploads/velaro-kahve.webp",
+    "salesCount": 0
+  },
+  {
+    "id": "elle",
+    "name": "ELLE",
+    "description": "Bordo deri el çantası. Belirgin formu ve zarif detaylarıyla klasik şıklığı yansıtır.",
+    "price": 3190,
+    "stock": 10,
+    "category": "Bags",
+    "brand": "VELORA",
+    "color": "Yeşil",
+    "image": "/uploads/velaro-yesil.webp",
+    "salesCount": 0
+  },
+  {
+    "id": "mira",
+    "name": "MIRA",
+    "description": "Kum beji mini çanta. Kompakt boyutu ve yalın tasarımıyla stilin tamamlayıcı parçasıdır.",
+    "price": 1990,
+    "stock": 20,
+    "category": "Bags",
+    "brand": "VELORA",
+    "color": "Krem",
+    "image": "/uploads/velaro-krem.webp",
+    "salesCount": 0
+  },
+  {
+    "id": "alba",
+    "name": "ALBA",
+    "description": "Espresso kahve klasik deri cüzdan. İşlevsel ve zamansız tasarımıyla günlük kullanım için tasarlanmıştır.",
+    "price": 1190,
+    "stock": 25,
+    "category": "Wallets",
+    "brand": "VELORA",
+    "color": "Espresso Kahve",
+    "image": "/uploads/velaro-cüzdan-kahve.webp",
+    "salesCount": 0
+  },
+  {
+    "id": "noir",
+    "name": "NOIR",
+    "description": "Siyah kompakt deri cüzdan. Minimal boyutlarıyla temel eşyaları düzenli taşımayı kolaylaştırır.",
+    "price": 990,
+    "stock": 25,
+    "category": "Wallets",
+    "brand": "VELORA",
+    "color": "Krem",
+    "image": "/uploads/velaro-cüzdan-krem.webp",
+    "salesCount": 0
+  }
+]
