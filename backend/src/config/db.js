@@ -10,4 +10,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB; // exports.connectDB yerine doğrudan modülü dışa aktarıyoruz
+module.exports = connectDB; 

@@ -9,14 +9,14 @@ const readProducts = () => {
   return JSON.parse(fs.readFileSync(productsPath, 'utf8'));
 };
 
-// Ürün bilgilerini JSON dosyasından getir
+
 const getProductDetails = (productId) => {
   const products = readProducts();
 
   return products.find((product) => product.id === productId);
 };
 
-// Sepetteki ürünlere JSON dosyasındaki ürün bilgilerini ekle
+
 const populateCartItems = (cart) => {
   const products = readProducts();
 
@@ -33,7 +33,7 @@ const populateCartItems = (cart) => {
   });
 };
 
-// 1. Kullanıcının sepetini getir
+
 exports.getCart = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -67,7 +67,7 @@ exports.getCart = async (req, res) => {
   }
 };
 
-// 2. Sepete ürün ekle veya miktarını artır
+
 exports.addToCart = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -143,7 +143,7 @@ exports.addToCart = async (req, res) => {
   }
 };
 
-// 3. Sepetten tek bir ürünü çıkar
+
 exports.removeFromCart = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -184,7 +184,7 @@ exports.removeFromCart = async (req, res) => {
   }
 };
 
-// 4. Sepeti tamamen boşalt
+
 exports.clearCart = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -218,7 +218,7 @@ exports.clearCart = async (req, res) => {
   }
 };
 
- // 5. Sepetteki ürün miktarını güncelle
+
 exports.updateCartItemQuantity = async (req, res) => {
   try {
     const userId = req.user.userId;

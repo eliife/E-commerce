@@ -9,7 +9,7 @@ const readProducts = () => {
   return JSON.parse(fs.readFileSync(productsPath, 'utf8'));
 };
 
-// 1. Kullanıcının favorilerini getir
+
 exports.getWishlist = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -49,7 +49,7 @@ exports.getWishlist = async (req, res) => {
   }
 };
 
-// 2. Favoriye ürün ekle veya favoriden çıkar
+
 exports.toggleWishlist = async (req, res) => {
   try {
     const userId = req.user.userId;

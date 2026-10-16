@@ -2,7 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// 1. KAYIT OL (REGISTER)
+
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// 2. GİRİŞ YAP (LOGIN)
+
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -62,7 +62,7 @@ exports.login = async (req, res) => {
   }
 };
 
-// 3. KULLANICI PROFİLİNİ GETİR (Get Profile) - Yeni Eklenen
+
 exports.getProfile = async (req, res) => {
   try {
     // req.user, protect middleware'inden geliyor
@@ -76,7 +76,7 @@ exports.getProfile = async (req, res) => {
   }
 };
 
-// 4. PROFİL VE ŞİFRE GÜNCELLEME (Update Profile) - Yeni Eklenen
+
 exports.updateProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.userId);
@@ -84,11 +84,11 @@ exports.updateProfile = async (req, res) => {
       return res.status(404).json({ message: 'Kullanıcı bulunamadı.' });
     }
 
-    // İsim ve e-posta güncelleme (Eğer gönderildiyse)
+   
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
 
-    // Eğer kullanıcı şifresini de değiştirmek istiyorsa
+   
     if (req.body.password) {
       user.password = await bcrypt.hash(req.body.password, 10);
     }

@@ -1,6 +1,6 @@
 const Address = require('../models/Address');
 
-// 1. KULLANICININ ADRESLERİNİ GETİR
+
 exports.getUserAddresses = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -16,7 +16,7 @@ exports.getUserAddresses = async (req, res) => {
   }
 };
 
-// 2. YENİ ADRES EKLE
+
 exports.addAddress = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -48,25 +48,25 @@ exports.addAddress = async (req, res) => {
   }
 };
 
-// 3. ADRESİ GÜNCELLE (YENİ EKLENDİ)
+
 exports.updateAddress = async (req, res) => {
   try {
     const userId = req.user.userId;
     const addressId = req.params.id;
     const { title, fullName, phone, city, district, addressLine, isDefault } = req.body;
 
-    // Adresin kullanıcıya ait olup olmadığını kontrol et
+   
     const address = await Address.findOne({ _id: addressId, user: userId });
     if (!address) {
       return res.status(404).json({ message: 'Adres bulunamadı ya da bu işlem için yetkiniz yok.' });
     }
 
-    // Eğer güncellenen adres varsayılan yapılacaksa, diğerlerini false yap
+    
     if (isDefault) {
       await Address.updateMany({ user: userId }, { isDefault: false });
     }
 
-    // Adresi güncelle
+    
     const updatedAddress = await Address.findByIdAndUpdate(
       addressId,
       { title, fullName, phone, city, district, addressLine, isDefault: isDefault || false },
@@ -82,7 +82,7 @@ exports.updateAddress = async (req, res) => {
   }
 };
 
-// 4. ADRESİ SİL
+
 exports.deleteAddress = async (req, res) => {
   try {
     const userId = req.user.userId;

@@ -9,7 +9,7 @@ const readProducts = () => {
   return JSON.parse(fs.readFileSync(productsPath, 'utf8'));
 };
 
-// 1. Ürüne yorum ekle veya mevcut yorumu güncelle
+
 exports.createProductReview = async (req, res) => {
   try {
     const { rating, comment } = req.body;
@@ -86,7 +86,7 @@ exports.createProductReview = async (req, res) => {
   }
 };
 
-// 2. Bir ürünün tüm yorumlarını getir
+
 exports.getProductReviews = async (req, res) => {
   try {
     const productId = String(req.params.productId);

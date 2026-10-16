@@ -6,7 +6,7 @@ const admin = async (req, res, next) => {
     const user = await User.findById(req.user.userId);
 
     if (user && user.role === 'admin') {
-      next(); // Kullanıcı admin ise devam et
+      next(); 
     } else {
       res.status(403).json({ message: 'Erişim reddedildi. Bu işlem için Admin yetkisi gerekiyor.' });
     }

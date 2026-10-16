@@ -8,7 +8,7 @@ const addressSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true, // Örn: "Ev", "İş"
+    required: true, 
     trim: true
   },
   fullName: {
@@ -33,12 +33,12 @@ const addressSchema = new mongoose.Schema({
   },
   addressLine: {
     type: String,
-    required: true, // Açık adres (Cadde, sokak, kapı no)
+    required: true, 
     trim: true
   },
   isDefault: {
     type: Boolean,
-    default: false // Varsayılan adres mi?
+    default: false 
   }
 }, {
   timestamps: true

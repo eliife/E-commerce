@@ -4,10 +4,10 @@ const { protect } = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-// Tüm adres işlemleri giriş (token) gerektirir, bu yüzden 'protect' middleware kullanıyoruz
-router.get('/', protect, getUserAddresses);       // Kullanıcının adreslerini listele
-router.post('/', protect, addAddress);            // Yeni adres ekle
-router.delete('/:id', protect, deleteAddress);    // Adresi sil
+
+router.get('/', protect, getUserAddresses);       
+router.post('/', protect, addAddress);            
+router.delete('/:id', protect, deleteAddress);    
 router.put('/:id', protect, updateAddress);
 
 module.exports = router;

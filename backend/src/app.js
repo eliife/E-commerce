@@ -50,10 +50,10 @@ app.use(
 
 app.use(express.json());
 
-// Yüklenen görseller
+
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// API rotaları
+
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
@@ -63,7 +63,7 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/addresses', addressRoutes);
 app.use('/api/upload', uploadRoutes);
 
-// Test rotası
+
 app.get('/', (req, res) => {
   res.json({ message: 'E-Ticaret Backend API çalışıyor! 🚀' });
 });

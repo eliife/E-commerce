@@ -12,7 +12,7 @@ const router = express.Router();
 router.post('/register', register);
 router.post('/login', login);
 
-// Korumalı Profil Rotaları (Giriş yapılmış olmalı)
+
 router.get('/profile', protect, getProfile);
 router.put('/profile', protect, updateProfile);
 

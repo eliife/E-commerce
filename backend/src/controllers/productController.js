@@ -8,7 +8,7 @@ const readProducts = () => {
   return JSON.parse(fs.readFileSync(productsPath, 'utf8'));
 };
 
-// Türkçe karakter ve ek toleranslı arama yardımcısı
+
 const createTurkishRegex = (keyword) => {
   if (!keyword) return null;
 
@@ -29,7 +29,7 @@ const createTurkishRegex = (keyword) => {
   return new RegExp(words.join('|'), 'i');
 };
 
-// Ortak filtreleme işlemi
+
 const filterProducts = (products, query) => {
   const { keyword, category, brand, color, maxPrice } = query;
 
@@ -75,7 +75,7 @@ const filterProducts = (products, query) => {
   return products;
 };
 
-// Ürün sıralama işlemi
+
 const sortProducts = (products, sort) => {
   if (sort === 'price-asc') {
     products.sort((a, b) => a.price - b.price);
@@ -90,7 +90,6 @@ const sortProducts = (products, sort) => {
   return products;
 };
 
-// 1. Tüm ürünleri getir
 exports.getProducts = async (req, res) => {
   try {
     const {
@@ -133,7 +132,7 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-// 2. Yeni gelen ürünleri getir
+
 exports.getNewArrivals = async (req, res) => {
   try {
     const { sort, limit = 20 } = req.query;
@@ -145,8 +144,7 @@ exports.getNewArrivals = async (req, res) => {
     if (sort === 'price-asc' || sort === 'price-desc') {
       products = sortProducts(products, sort);
     } else {
-      // JSON kayıtlarında tarih bulunmadığı için dosya sırasını koru.
-      // Gerçek eklenme tarihi sıralaması için tarih alanı gerekir.
+      
     }
 
     const pageSize = Math.max(1, Number(limit) || 20);
@@ -171,7 +169,7 @@ exports.getNewArrivals = async (req, res) => {
   }
 };
 
-// 3. Tek bir ürünün detayını getir
+
 exports.getProductById = async (req, res) => {
   try {
     const products = readProducts();

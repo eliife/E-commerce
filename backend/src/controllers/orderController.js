@@ -10,7 +10,7 @@ const readProducts = () => {
   return JSON.parse(fs.readFileSync(productsPath, 'utf8'));
 };
 
-// 1. Sipariş oluştur
+
 exports.createOrder = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -81,7 +81,7 @@ exports.createOrder = async (req, res) => {
 
     await order.save();
 
-    // Sipariş oluşturulduktan sonra sepeti boşalt
+   
     cart.items = [];
     await cart.save();
 
@@ -98,7 +98,7 @@ exports.createOrder = async (req, res) => {
   }
 };
 
-// 2. Giriş yapan kullanıcının siparişlerini getir
+
 exports.getMyOrders = async (req, res) => {
   try {
     const userId = req.user.userId;

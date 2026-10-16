@@ -14,7 +14,7 @@ const productSchema = new mongoose.Schema({
   salesCount: { type: Number, default: 0 }
 }, { timestamps: true });
 
-// 🔎 İŞTE BURASI: Arama performansını ve esnekliğini artıran Text Index
+
 productSchema.index({ name: 'text', description: 'text', category: 'text', brand: 'text' });
 
 module.exports = mongoose.model('Product', productSchema);
