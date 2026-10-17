@@ -4,65 +4,88 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-zinc-400 text-xs py-16 px-6 border-t border-zinc-800/80 mt-20">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <footer className="bg-stone-50 text-stone-600 pt-20 pb-14 border-t border-stone-200">
+      <div className="mx-auto max-w-7xl px-6 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
         
-        {/* Üst Kısım: Ürünler ve Keşif Linkleri (Yatay / Minimalist Düzende) */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-zinc-800/80 pb-10">
-          
-          {/* Marka İsmi / Logo Alanı */}
-          <div>
-            <span className="text-white text-base font-semibold tracking-tight">e-compare</span>
-            <p className="text-zinc-500 text-xs mt-1">Geleceğin teknolojisi ve en iyi fiyatlar.</p>
-          </div>
-
-          {/* Hızlı Erişim Linkleri */}
-          <ul className="flex flex-wrap gap-x-8 gap-y-3 text-sm font-normal text-zinc-300">
-            <li><Link href="/products" className="hover:text-white transition">Tüm Ürünler</Link></li>
-            <li><Link href="/bestsellers" className="hover:text-white transition">Çok Satanlar</Link></li>
-            <li><Link href="/new-arrivals" className="hover:text-white transition">Yeni Gelenler</Link></li>
-            <li><Link href="/campaigns" className="hover:text-white transition">Kampanyalar</Link></li>
-            <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
-          </ul>
-
-        </div>
-
-        {/* Alt Kısım: Telif Hakkı ve Sosyal Medya İkonları */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-2">
-          
-          {/* Telif Metni */}
-          <p className="text-zinc-500 text-xs">
-            Copyright © 2026 e-compare. Tüm hakları saklıdır.
+        {/* Sol Sütun: Logo, Açıklama ve E-bülten */}
+        <div className="space-y-6 md:col-span-1">
+          <Link
+            href="/"
+            className="text-2xl sm:text-3xl font-serif tracking-[0.3em] text-stone-900 font-semibold block"
+          >
+            VELORA
+          </Link>
+          <p className="text-xs text-stone-500 leading-relaxed font-light">
+            Velora deri çanta, cüzdan ve aksesuar koleksiyonunu keşfedin. Zamansız tasarımı ve zarif detaylarıyla günlük stile güçlü bir dokunuş.
+          </p>
+          <p className="text-xs text-stone-400 tracking-wider">
+            hello@velora.com
           </p>
 
-          {/* Sosyal Medya İkonları (SVG) */}
-          <div className="flex items-center space-x-5 text-zinc-400">
-            {/* Instagram */}
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition" aria-label="Instagram">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-              </svg>
-            </a>
-
-            {/* Facebook */}
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition" aria-label="Facebook">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-              </svg>
-            </a>
-
-            {/* Twitter / X */}
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition" aria-label="Twitter">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-              </svg>
-            </a>
+          <div className="space-y-3 pt-2">
+            <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">İletişimde kal.</h4>
+            <form onSubmit={(e) => e.preventDefault()} className="flex items-center border border-stone-300 bg-white rounded-sm overflow-hidden focus-within:border-stone-500 transition">
+              <input
+                type="email"
+                placeholder="E-posta adresiniz"
+                className="w-full bg-transparent px-3.5 py-2.5 text-xs text-stone-800 placeholder-stone-400 focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="bg-stone-900 text-white px-4.5 py-2.5 text-xs font-medium tracking-widest uppercase hover:bg-stone-800 transition cursor-pointer"
+              >
+                Abone Ol
+              </button>
+            </form>
           </div>
-
         </div>
 
+        {/* 1. Kolon: Koleksiyonlar */}
+        <div className="space-y-5">
+          <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">Koleksiyonlar</h4>
+          <ul className="space-y-3 text-xs uppercase tracking-wider text-stone-500">
+            <li><Link href="/products?category=Bags" className="hover:text-stone-900 transition">Çanta</Link></li>
+            <li><Link href="/products?category=Wallets" className="hover:text-stone-900 transition">Cüzdan / Kartlık</Link></li>
+            <li><Link href="/products?category=Accessories" className="hover:text-stone-900 transition">Aksesuar</Link></li>
+            <li><Link href="/products" className="hover:text-stone-900 transition">Tüm Ürünler</Link></li>
+            <li><Link href="/bestsellers" className="hover:text-stone-900 transition">Çok Satanlar</Link></li>
+            <li><Link href="/new-arrivals" className="hover:text-stone-900 transition">Yeni Gelenler</Link></li>
+          </ul>
+        </div>
+
+        {/* 2. Kolon: Yasal */}
+        <div className="space-y-5">
+          <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">Yasal</h4>
+          <ul className="space-y-3 text-xs uppercase tracking-wider text-stone-500">
+            <li><Link href="/terms" className="hover:text-stone-900 transition">Kullanım Koşulları</Link></li>
+            <li><Link href="/privacy" className="hover:text-stone-900 transition">Gizlilik Politikası</Link></li>
+            <li><Link href="/distance-selling" className="hover:text-stone-900 transition">Mesafeli Satış Sözleşmesi</Link></li>
+            <li><Link href="/returns-policy" className="hover:text-stone-900 transition">İade Politikası</Link></li>
+          </ul>
+        </div>
+
+        {/* 3. Kolon: Yardım */}
+        <div className="space-y-5">
+          <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">Yardım</h4>
+          <ul className="space-y-3 text-xs uppercase tracking-wider text-stone-500">
+            <li><Link href="/returns" className="hover:text-stone-900 transition">İade ve Değişim</Link></li>
+            <li><Link href="/about" className="hover:text-stone-900 transition">Hikâyemiz</Link></li>
+            <li><Link href="/blog" className="hover:text-stone-900 transition">Blog</Link></li>
+            <li><Link href="/contact" className="hover:text-stone-900 transition">İletişim</Link></li>
+          </ul>
+        </div>
+
+      </div>
+
+      {/* Alt Telif ve Sosyal İkonlar */}
+      <div className="mx-auto max-w-7xl px-6 mt-16 pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between text-xs uppercase tracking-widest text-stone-400">
+        <p>© 2026 Velora. Tüm hakları saklıdır.</p>
+        <div className="flex items-center space-x-6 mt-4 sm:mt-0">
+          <a href="#" className="hover:text-stone-900 transition">Pinterest</a>
+          <a href="#" className="hover:text-stone-900 transition">X</a>
+          <a href="#" className="hover:text-stone-900 transition">TikTok</a>
+          <a href="#" className="hover:text-stone-900 transition">Instagram</a>
+        </div>
       </div>
     </footer>
   );

@@ -73,7 +73,7 @@ export default function FavoritesPage() {
   if (!isMounted || !user) return null;
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 selection:bg-slate-900 selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-white text-stone-800 selection:bg-slate-900 selection:text-white flex flex-col justify-between">
       <div>
         {/* Ortak Header Bileşeni */}
         <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -82,7 +82,7 @@ export default function FavoritesPage() {
         <main className="mx-auto max-w-7xl px-6 py-16">
           <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-8">
             <div>
-              <h1 className="text-xl font-semibold tracking-wide text-slate-900 uppercase">Favori Ürünlerim</h1>
+              <h1 className="text-xl font-semibold tracking-wide text-stone-900 uppercase">Favori Ürünlerim</h1>
               <p className="text-xs text-slate-400 mt-1">Beğendiğiniz ürünleri burada saklayabilir ve sepetinize ekleyebilirsiniz.</p>
             </div>
             <span className="text-xs text-slate-400 font-medium">{filteredFavorites.length} ürün listeleniyor</span>
@@ -140,12 +140,12 @@ export default function FavoritesPage() {
                         </Link>
                         <p className="mt-1 text-xs text-slate-500 line-clamp-1">{product.description}</p>
                       </div>
-                      <p className="text-sm font-semibold text-slate-900">{product.price} ₺</p>
+                      <p className="text-sm font-semibold text-stone-900">{product.price} ₺</p>
                     </div>
 
                     <button
                       onClick={() => dispatch(addToCart(product))}
-                      className="mt-3 w-full rounded border border-slate-200 bg-white py-2 text-xs font-medium text-slate-800 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition shadow-sm"
+                      className="mt-3 w-full rounded border border-slate-200 bg-white py-2 text-xs font-medium text-stone-800 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition shadow-sm"
                     >
                       Sepete Ekle
                     </button>

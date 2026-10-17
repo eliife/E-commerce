@@ -95,7 +95,7 @@ exports.getProducts = async (req, res) => {
     const {
       sort,
       page = 1,
-      limit = 10
+      limit = 100
     } = req.query;
 
     let products = readProducts();

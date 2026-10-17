@@ -10,7 +10,8 @@
     "brand": "VELORA",
     "color": "Bordo",
     "image": "/uploads/velaro-bordo.webp",
-    "salesCount": 0
+    "salesCount": 42,
+    "createdAt": "2026-10-08T10:00:00.000Z"
   },
   {
     "id": "siena",
@@ -22,7 +23,8 @@
     "brand": "VELORA",
     "color": "Siyah",
     "image": "/uploads/velaro-siyah.webp",
-    "salesCount": 0
+    "salesCount": 47,
+    "createdAt": "2026-10-16T10:00:00.000Z"
   },
   {
     "id": "nora",
@@ -34,7 +36,8 @@
     "brand": "VELORA",
     "color": "Kahverengi",
     "image": "/uploads/velaro-kahve.webp",
-    "salesCount": 0
+    "salesCount": 28,
+    "createdAt": "2026-10-12T10:00:00.000Z"
   },
   {
     "id": "elle",
@@ -46,7 +49,8 @@
     "brand": "VELORA",
     "color": "Yeşil",
     "image": "/uploads/velaro-yesil.webp",
-    "salesCount": 0
+    "salesCount": 21,
+    "createdAt": "2026-10-10T10:00:00.000Z"
   },
   {
     "id": "mira",
@@ -58,7 +62,8 @@
     "brand": "VELORA",
     "color": "Krem",
     "image": "/uploads/velaro-krem.webp",
-    "salesCount": 0
+    "salesCount": 16,
+    "createdAt": "2026-10-15T10:00:00.000Z"
   },
   {
     "id": "alba",
@@ -70,7 +75,8 @@
     "brand": "VELORA",
     "color": "Espresso Kahve",
     "image": "/uploads/velaro-cüzdan-kahve.webp",
-    "salesCount": 0
+    "salesCount": 45,
+    "createdAt": "2026-10-05T10:00:00.000Z"
   },
   {
     "id": "noir",
@@ -82,6 +88,72 @@
     "brand": "VELORA",
     "color": "Krem",
     "image": "/uploads/velaro-cüzdan-krem.webp",
-    "salesCount": 0
+    "salesCount": 8,
+    "createdAt": "2026-10-13T10:00:00.000Z"
+  },
+  {
+    "id": "aria",
+    "name": "ARIA",
+    "description": "Minimal tasarımı ve zarif formuyla günlük kullanıma uygun siyah deri omuz çantası.",
+    "price": 2790,
+    "stock": 14,
+    "category": "Bags",
+    "brand": "VELORA",
+    "color": "vizon",
+    "image": "/uploads/velaro-vizon.jpg",
+    "salesCount": 32,
+    "createdAt": "2026-10-09T10:00:00.000Z"
+  },
+  {
+    "id": "flora",
+    "name": "FLORA",
+    "description": "Yumuşak bej tonları ve geniş iç hacmiyle günlük kombinlere eşlik eden zarif deri çanta.",
+    "price": 3290,
+    "stock": 11,
+    "category": "Bags",
+    "brand": "VELORA",
+    "color": "Bej",
+    "image": "/uploads/velaro-zeytin-yeşili.jpg",
+    "salesCount": 24,
+    "createdAt": "2026-10-17T10:00:00.000Z"
+  },
+  {
+    "id": "vera",
+    "name": "VERA",
+    "description": "Koyu kahverengi deri el çantası. Zamansız çizgileri ve kullanışlı yapısıyla günlük stil için tasarlanmıştır.",
+    "price": 2990,
+    "stock": 9,
+    "category": "Bags",
+    "brand": "VELORA",
+    "color": "Acı Kahve",
+    "image": "/uploads/velaro-acı-kahve.jpg",
+    "salesCount": 19,
+    "createdAt": "2026-10-06T10:00:00.000Z"
+  },
+  {
+    "id": "nova-laptop",
+    "name": "NOVA LAPTOP",
+    "description": "Laptop ve günlük eşyaları düzenli taşımak için tasarlanmış, sade görünümlü siyah laptop çantası.",
+    "price": 3890,
+    "stock": 8,
+    "category": "Laptop Bags",
+    "brand": "VELORA",
+    "color": "Acı Kahve",
+    "image": "/uploads/velaro-laptop-acı-kahve.jpg",
+    "salesCount": 15,
+    "createdAt": "2026-10-17T12:00:00.000Z"
+  },
+  {
+    "id": "mila",
+    "name": "MILA",
+    "description": "Kompakt tasarımı ve düzenli bölmeleriyle günlük ihtiyaçlar için kullanışlı krem deri cüzdan.",
+    "price": 1290,
+    "stock": 22,
+    "category": "Wallets",
+    "brand": "VELORA",
+    "color": "Acı Kahve",
+    "image": "/uploads/velaro-cüzdan-acı-kahve.webp",
+    "salesCount": 38,
+    "createdAt": "2026-10-07T10:00:00.000Z"
   }
 ]

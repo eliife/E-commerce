@@ -17,6 +17,16 @@ const uploadRoutes = require('./routes/uploadRoutes');
 
 const app = express();
 
+// CORS ayarları
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
+
 // Güvenlik başlıkları
 app.use(
   helmet({
@@ -38,22 +48,12 @@ const limiter = rateLimit({
 
 app.use('/api/', limiter);
 
-// CORS ayarları
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
-
 app.use(express.json());
 
-
+// Statik dosyalar
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-
+// API rotaları
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
@@ -63,7 +63,7 @@ app.use('/api/reviews', reviewRoutes);
 app.use('/api/addresses', addressRoutes);
 app.use('/api/upload', uploadRoutes);
 
-
+// Ana endpoint
 app.get('/', (req, res) => {
   res.json({ message: 'E-Ticaret Backend API çalışıyor! 🚀' });
 });
