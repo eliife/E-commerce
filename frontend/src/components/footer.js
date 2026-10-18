@@ -44,9 +44,6 @@ export default function Footer() {
         <div className="space-y-5">
           <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">Koleksiyonlar</h4>
           <ul className="space-y-3 text-xs uppercase tracking-wider text-stone-500">
-            <li><Link href="/products?category=Bags" className="hover:text-stone-900 transition">Çanta</Link></li>
-            <li><Link href="/products?category=Wallets" className="hover:text-stone-900 transition">Cüzdan / Kartlık</Link></li>
-            <li><Link href="/products?category=Accessories" className="hover:text-stone-900 transition">Aksesuar</Link></li>
             <li><Link href="/products" className="hover:text-stone-900 transition">Tüm Ürünler</Link></li>
             <li><Link href="/bestsellers" className="hover:text-stone-900 transition">Çok Satanlar</Link></li>
             <li><Link href="/new-arrivals" className="hover:text-stone-900 transition">Yeni Gelenler</Link></li>
@@ -57,10 +54,10 @@ export default function Footer() {
         <div className="space-y-5">
           <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">Yasal</h4>
           <ul className="space-y-3 text-xs uppercase tracking-wider text-stone-500">
-            <li><Link href="/terms" className="hover:text-stone-900 transition">Kullanım Koşulları</Link></li>
-            <li><Link href="/privacy" className="hover:text-stone-900 transition">Gizlilik Politikası</Link></li>
-            <li><Link href="/distance-selling" className="hover:text-stone-900 transition">Mesafeli Satış Sözleşmesi</Link></li>
-            <li><Link href="/returns-policy" className="hover:text-stone-900 transition">İade Politikası</Link></li>
+            <li><Link href="/yasal/terms-of-use" className="hover:text-stone-900 transition">Kullanım Koşulları</Link></li>
+            <li><Link href="/yasal/privacy-policy" className="hover:text-stone-900 transition">Gizlilik Politikası</Link></li>
+            <li><Link href="/yasal/distance-sales-agreement" className="hover:text-stone-900 transition">Mesafeli Satış Sözleşmesi</Link></li>
+            <li><Link href="/yasal/return-policy" className="hover:text-stone-900 transition">İade Politikası</Link></li>
           </ul>
         </div>
 
@@ -68,7 +65,7 @@ export default function Footer() {
         <div className="space-y-5">
           <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">Yardım</h4>
           <ul className="space-y-3 text-xs uppercase tracking-wider text-stone-500">
-            <li><Link href="/returns" className="hover:text-stone-900 transition">İade ve Değişim</Link></li>
+            <li><Link href="/yasal/return-policy" className="hover:text-stone-900 transition">İade ve Değişim</Link></li>
             <li><Link href="/about" className="hover:text-stone-900 transition">Hikâyemiz</Link></li>
             <li><Link href="/blog" className="hover:text-stone-900 transition">Blog</Link></li>
             <li><Link href="/contact" className="hover:text-stone-900 transition">İletişim</Link></li>

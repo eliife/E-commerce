@@ -25,43 +25,51 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white px-6">
-      <div className="w-full max-w-md space-y-8 rounded-2xl border border-slate-100 p-8 shadow-sm">
-        <div className="text-center">
-          <Link href="/" className="text-2xl font-bold tracking-tight text-slate-900 lowercase">
-            e-<span className="text-slate-600 font-normal">compare</span>
+    <div className="flex min-h-screen items-center justify-center bg-stone-50/50 px-6 text-stone-800 selection:bg-stone-900 selection:text-white">
+      <div className="w-full max-w-md space-y-8 rounded-sm border border-stone-200 bg-white p-8 shadow-sm">
+        <div className="text-center space-y-2">
+          <Link href="/" className="text-2xl font-serif tracking-widest text-stone-900 uppercase font-bold">
+            VELORA
           </Link>
-          <h2 className="mt-4 text-xl font-semibold text-slate-900">Hesabınıza Giriş Yapın</h2>
-          <p className="mt-1 text-xs text-slate-500">Kaldığınız yerden alışverişe devam edin.</p>
+          <h2 className="text-base font-serif tracking-[0.2em] text-stone-900 uppercase font-bold pt-2">
+            Hesabınıza Giriş Yapın
+          </h2>
+          <p className="text-xs text-stone-500 font-light">
+            Kaldığınız yerden alışverişe devam edin.
+          </p>
         </div>
 
         {error && (
-          <div className="rounded-lg bg-red-50 p-3 text-center text-xs font-medium text-red-600">
+          <div className="rounded-sm bg-red-50 border border-red-100 p-3 text-center text-xs font-medium text-red-600">
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600">E-posta Adresi</label>
+            <label className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600 mb-1">
+              E-posta Adresi
+            </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="mt-1 w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 focus:border-slate-900 focus:bg-white focus:outline-none transition"
+              className="w-full rounded-sm border border-stone-200 bg-stone-50/50 px-3.5 py-2.5 text-xs text-stone-800 placeholder-stone-400 focus:border-stone-900 focus:bg-white focus:outline-none transition"
               placeholder="ornek@email.com"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600">Şifre</label>
+            <label className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600 mb-1">
+              Şifre
+            </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-1 w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 focus:border-slate-900 focus:bg-white focus:outline-none transition"
+              className="w-full rounded-sm border border-stone-200 bg-stone-50/50 px-3.5 py-2.5 text-xs text-stone-800 placeholder-stone-400 focus:border-stone-900 focus:bg-white focus:outline-none transition"
               placeholder="••••••••"
             />
           </div>
@@ -69,15 +77,15 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full rounded-md bg-slate-900 py-2.5 text-xs font-semibold text-white hover:bg-slate-800 transition shadow-sm disabled:bg-slate-400"
+            className="w-full rounded-sm bg-stone-900 py-3 text-xs font-medium tracking-widest uppercase text-white hover:bg-stone-800 transition shadow-sm disabled:opacity-50 cursor-pointer pt-3"
           >
             {isLoading ? 'Giriş Yapılıyor...' : 'Giriş Yap'}
           </button>
         </form>
 
-        <p className="text-center text-xs text-slate-500">
+        <p className="text-center text-xs text-stone-500 font-light">
           Hesabınız yok mu?{' '}
-          <Link href="/register" className="font-semibold text-slate-900 hover:underline">
+          <Link href="/register" className="font-medium text-stone-900 uppercase tracking-widest hover:underline text-[11px]">
             Kayıt Ol
           </Link>
         </p>

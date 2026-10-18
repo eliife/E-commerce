@@ -27,7 +27,6 @@ export default function ProductCatalogTemplate({
   const [selectedCategory, setSelectedCategory] = useState('Tümü');
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedColor, setSelectedColor] = useState('Tümü');
-  const [maxPrice, setMaxPrice] = useState(100000);
   const [sortBy, setSortBy] = useState(defaultSort);
 
   useEffect(() => {
@@ -42,7 +41,6 @@ export default function ProductCatalogTemplate({
     category: true,
     brand: true,
     color: true,
-    price: true,
   });
 
   const toggleSection = (section) => {
@@ -74,19 +72,17 @@ export default function ProductCatalogTemplate({
     fetchProducts();
   }, []);
 
-  // 🔍 Gelişmiş ve Kesin Filtreleme & Arama Mantığı
+  // 🔍 Filtreleme & Arama Mantığı (Fiyat Aralığı Kaldırıldı)
   useEffect(() => {
     if (!allProducts.length) return;
 
     let result = [...allProducts];
 
-    // Arama Filtresi (Ürünün bütün alanlarını tarar)
+    // Arama Filtresi
     if (searchTerm && searchTerm.trim() !== '') {
-      // Türkçe karakter duyarlılığını düzgün yapmak için lowercase
       const query = searchTerm.trim().toLocaleLowerCase('tr-TR');
       
       result = result.filter((product) => {
-        // Ürüne ait tüm metin verilerini tek bir stringte birleştiriyoruz
         const fullText = Object.values(product)
           .filter(val => typeof val === 'string')
           .join(' ')
@@ -111,11 +107,6 @@ export default function ProductCatalogTemplate({
       result = result.filter((p) => (p.color || '').toLowerCase() === selectedColor.toLowerCase());
     }
 
-    // Fiyat Filtresi
-    if (maxPrice) {
-      result = result.filter((p) => Number(p.price) <= maxPrice);
-    }
-
     // Sıralama
     if (sortBy === 'bestseller') {
       result.sort((a, b) => (b.salesCount || 0) - (a.salesCount || 0));
@@ -128,7 +119,7 @@ export default function ProductCatalogTemplate({
     }
 
     setProducts(result);
-  }, [allProducts, searchTerm, selectedCategory, selectedBrands, selectedColor, maxPrice, sortBy]);
+  }, [allProducts, searchTerm, selectedCategory, selectedBrands, selectedColor, sortBy]);
 
   // Favorileri Çekme
   useEffect(() => {
@@ -161,7 +152,7 @@ export default function ProductCatalogTemplate({
     }
   };
 
-  const categories = ['Bags', 'Wallets', 'Laptop Bags'];
+  const categories = ['Bags', 'Wallets'];
   const brands = ['VELORA'];
   const colors = [
     { name: 'Siyah', hex: 'bg-slate-900' },
@@ -183,7 +174,6 @@ export default function ProductCatalogTemplate({
     setSelectedCategory('Tümü');
     setSelectedBrands([]);
     setSelectedColor('Tümü');
-    setMaxPrice(100000);
     setSearchTerm('');
     setSortBy(defaultSort);
   };
@@ -290,7 +280,7 @@ export default function ProductCatalogTemplate({
           <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col justify-between z-10">
             <div className="flex items-center justify-between p-6 border-b border-stone-200">
               <h2 className="text-lg font-serif text-stone-900">Filtreler</h2>
-              <button onClick={() => setIsFilterDrawerOpen(false)} className="text-stone-400 hover:text-stone-900 text-xl font-light p-1">✕</button>
+              <button onClick={() => setIsFilterDrawerOpen(false)} className="text-stone-400 hover:text-stone-900 text-xl font-light p-1 cursor-pointer">✕</button>
             </div>
 
             <div className="p-6 overflow-y-auto flex-1 space-y-8">
@@ -315,7 +305,7 @@ export default function ProductCatalogTemplate({
 
               {/* Kategoriler */}
               <div className="border-b border-stone-200 pb-6">
-                <button onClick={() => toggleSection('category')} className="w-full flex justify-between items-center text-xs font-semibold tracking-wider text-stone-900 uppercase py-1">
+                <button onClick={() => toggleSection('category')} className="w-full flex justify-between items-center text-xs font-semibold tracking-wider text-stone-900 uppercase py-1 cursor-pointer">
                   <span>Kategoriler</span>
                   <span className="text-stone-400 font-light text-base">{openSections.category ? '−' : '+'}</span>
                 </button>
@@ -334,30 +324,13 @@ export default function ProductCatalogTemplate({
                   </div>
                 )}
               </div>
-
-              {/* Fiyat Aralığı */}
-              <div>
-                <button onClick={() => toggleSection('price')} className="w-full flex justify-between items-center text-xs font-semibold tracking-wider text-stone-900 uppercase py-1">
-                  <span>Fiyat Aralığı</span>
-                  <span className="text-stone-400 font-light text-base">{openSections.price ? '−' : '+'}</span>
-                </button>
-                {openSections.price && (
-                  <div className="mt-4 space-y-3">
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="text-stone-400 uppercase tracking-wider">Maksimum</span>
-                      <span className="font-medium text-stone-900">{maxPrice.toLocaleString()} ₺</span>
-                    </div>
-                    <input type="range" min="1000" max="100000" step="1000" value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} className="w-full accent-stone-900 cursor-pointer" />
-                  </div>
-                )}
-              </div>
             </div>
 
             <div className="p-4 border-t border-stone-200 grid grid-cols-2 gap-3 bg-white">
-              <button onClick={handleResetFilters} className="py-3 text-xs font-semibold tracking-widest text-stone-900 border border-stone-900 uppercase hover:bg-stone-50 transition text-center">
+              <button onClick={handleResetFilters} className="py-3 text-xs font-semibold tracking-widest text-stone-900 border border-stone-900 uppercase hover:bg-stone-50 transition text-center cursor-pointer">
                 TEMİZLE
               </button>
-              <button onClick={() => setIsFilterDrawerOpen(false)} className="py-3 text-xs font-semibold tracking-widest text-white bg-stone-900 uppercase hover:bg-stone-800 transition text-center">
+              <button onClick={() => setIsFilterDrawerOpen(false)} className="py-3 text-xs font-semibold tracking-widest text-white bg-stone-900 uppercase hover:bg-stone-800 transition text-center cursor-pointer">
                 ÜRÜNLERİ GÖSTER • {products.length}
               </button>
             </div>

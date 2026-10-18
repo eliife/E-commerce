@@ -35,7 +35,6 @@ export default function ProductDetailPage() {
         const prodData = response.data.product || response.data;
         setProduct(prodData);
 
-        // Benzer ürünleri / önerileri çekme
         try {
           const allProductsRes = await API.get('/products');
           const list = allProductsRes.data.products || allProductsRes.data || [];
@@ -44,7 +43,6 @@ export default function ProductDetailPage() {
           console.warn('Benzer ürünler alınamadı');
         }
 
-        // Eğer kullanıcı giriş yapmışsa favori durumunu kontrol et
         if (user) {
           try {
             const wishResponse = await API.get('/wishlist');
@@ -95,7 +93,7 @@ export default function ProductDetailPage() {
     : null;
 
   return (
-    <div className="min-h-screen bg-white text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-stone-50/50 text-stone-800 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
       <div>
         <Header />
 
@@ -107,19 +105,19 @@ export default function ProductDetailPage() {
           )}
 
           {error && (
-            <div className="rounded-lg bg-red-50 border border-red-100 p-6 text-center text-xs text-red-600 font-medium max-w-md mx-auto">
+            <div className="rounded-sm bg-red-50 border border-red-100 p-6 text-center text-xs text-red-600 font-medium max-w-md mx-auto">
               {error}
             </div>
           )}
 
           {!loading && !error && product && (
             <div>
-              {/* 🌟 ÜST BÖLÜM: 2 Sütunlu Ferah Yerleşim (Sol: Görseller, Sağ: Bilgiler) */}
+              {/* ÜST BÖLÜM: 2 Sütunlu Yerleşim */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-20">
                 
-                {/* SOL SÜTUN: Büyük Görsel ve Altında Thumbnail Galerisi (7 Kolon) */}
+                {/* SOL SÜTUN: Görsel ve Thumbnail Alanı */}
                 <div className="lg:col-span-7 flex flex-col gap-4">
-                  <div className="w-full aspect-[4/5] bg-[#F7F6F4] overflow-hidden flex items-center justify-center relative">
+                  <div className="w-full aspect-[4/5] bg-stone-100/70 overflow-hidden flex items-center justify-center relative rounded-sm">
                     {imageUrl ? (
                       <img 
                         src={imageUrl} 
@@ -131,7 +129,6 @@ export default function ProductDetailPage() {
                     )}
                   </div>
 
-                  {/* Küçük Thumbnail Resim Galerisi */}
                   {imagesList.length > 1 && (
                     <div className="flex items-center gap-3 overflow-x-auto pb-2">
                       {imagesList.map((img, idx) => {
@@ -140,7 +137,7 @@ export default function ProductDetailPage() {
                           <button
                             key={idx}
                             onClick={() => setSelectedImageIndex(idx)}
-                            className={`w-16 h-20 bg-[#F7F6F4] overflow-hidden border transition shrink-0 ${selectedImageIndex === idx ? 'border-stone-900' : 'border-transparent opacity-70 hover:opacity-100'}`}
+                            className={`w-16 h-20 bg-stone-100/70 overflow-hidden border transition shrink-0 rounded-sm ${selectedImageIndex === idx ? 'border-stone-900' : 'border-stone-200 opacity-70 hover:opacity-100'}`}
                           >
                             <img src={thumbUrl} alt="" className="w-full h-full object-cover" />
                           </button>
@@ -150,23 +147,21 @@ export default function ProductDetailPage() {
                   )}
                 </div>
 
-                {/* SAĞ SÜTUN: Ürün Bilgileri, Fiyat, Kalp ve Sepete Ekle (5 Kolon - Sticky) */}
+                {/* SAĞ SÜTUN: Ürün Bilgileri ve Aksiyonlar */}
                 <div className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col space-y-6 pt-2">
                   
-                  {/* Başlık ve Kategori */}
                   <div className="space-y-2 border-b border-stone-200 pb-6">
-                    <p className="text-xs tracking-widest text-stone-500 uppercase">
-                      {product.brand || product.category || 'EDITION TEXTURED COLLECTION'}
+                    <p className="text-xs uppercase tracking-widest text-stone-500 font-light">
+                      {product.brand || product.category || 'VELORA'}
                     </p>
-                    <h1 className="text-2xl sm:text-3xl font-serif tracking-normal text-stone-900 uppercase">
+                    <h1 className="text-base font-serif tracking-[0.2em] text-stone-900 uppercase font-bold">
                       {product.name}
                     </h1>
                     <div className="flex items-center justify-between pt-2">
-                      <p className="text-lg font-semibold tracking-wide text-stone-900">
+                      <span className="text-xs font-semibold tracking-wider text-stone-900">
                         {product.price} ₺
-                      </p>
+                      </span>
 
-                      {/* Kalp Favori Butonu */}
                       <button
                         onClick={handleToggleWishlist}
                         className="text-stone-400 hover:text-stone-900 transition p-2 cursor-pointer flex items-center gap-1.5 text-xs uppercase tracking-widest"
@@ -182,23 +177,20 @@ export default function ProductDetailPage() {
                     </div>
                   </div>
 
-                  {/* Kısa Bilgi veya Özet Açıklama */}
-                  <div className="text-xs text-stone-600 leading-relaxed">
+                  <div className="text-xs text-stone-600 leading-relaxed font-light">
                     <p>{product.description ? product.description.substring(0, 160) + '...' : 'Lüks standartlara ve zarif detaylara sahip özel tasarım.'}</p>
                   </div>
 
-                  {/* Sepete Ekle Butonu */}
                   <div className="pt-4">
                     <button
                       onClick={() => dispatch(addToCart(product))}
-                      className="w-full bg-stone-900 py-4 text-xs font-semibold tracking-widest text-white uppercase hover:bg-stone-800 transition shadow-none cursor-pointer"
+                      className="w-full rounded-sm bg-stone-900 py-3 text-xs font-medium tracking-widest uppercase text-white hover:bg-stone-800 transition shadow-sm cursor-pointer"
                     >
                       Sepete Ekle
                     </button>
                   </div>
 
-                  {/* Güvence/Ek Bilgi Notları */}
-                  <div className="border-t border-stone-200 pt-6 space-y-2 text-[11px] text-stone-500 tracking-wider">
+                  <div className="border-t border-stone-200 pt-6 space-y-2 text-[11px] text-stone-500 tracking-wider font-light">
                     <p>✓ Ücretsiz kargo ve 14 gün içinde kolay iade</p>
                     <p>✓ Güvenli ödeme ve orijinal ürün garantisi</p>
                   </div>
@@ -206,55 +198,55 @@ export default function ProductDetailPage() {
                 </div>
               </div>
 
-              {/* 🌟 ORTA BÖLÜM: AŞAĞI KAYDIRDIKÇA DETAY SEKMELERİ (Description, Size & Fit, Materials vb.) */}
+              {/* ORTA BÖLÜM: Detay Sekmeleri */}
               <div className="w-full border-t border-stone-200 pt-12 mb-20">
-                <div className="flex justify-center gap-8 sm:gap-16 text-xs uppercase tracking-widest font-semibold border-b border-stone-200 pb-4 overflow-x-auto">
+                <div className="flex justify-center gap-8 sm:gap-16 text-xs uppercase tracking-widest font-medium border-b border-stone-200 pb-4 overflow-x-auto">
                   <button 
                     onClick={() => setActiveTab('description')} 
-                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'description' ? 'border-b-2 border-stone-900 text-stone-900' : 'text-stone-400 hover:text-stone-700'}`}
+                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'description' ? 'border-b-2 border-stone-900 text-stone-900 font-semibold' : 'text-stone-400 hover:text-stone-700'}`}
                   >
                     Açıklama
                   </button>
                   <button 
                     onClick={() => setActiveTab('size')} 
-                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'size' ? 'border-b-2 border-stone-900 text-stone-900' : 'text-stone-400 hover:text-stone-700'}`}
+                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'size' ? 'border-b-2 border-stone-900 text-stone-900 font-semibold' : 'text-stone-400 hover:text-stone-700'}`}
                   >
                     Beden ve Kalıp
                   </button>
                   <button 
                     onClick={() => setActiveTab('materials')} 
-                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'materials' ? 'border-b-2 border-stone-900 text-stone-900' : 'text-stone-400 hover:text-stone-700'}`}
+                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'materials' ? 'border-b-2 border-stone-900 text-stone-900 font-semibold' : 'text-stone-400 hover:text-stone-700'}`}
                   >
                     Materiyal
                   </button>
                   <button 
                     onClick={() => setActiveTab('shipping')} 
-                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'shipping' ? 'border-b-2 border-stone-900 text-stone-900' : 'text-stone-400 hover:text-stone-700'}`}
+                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'shipping' ? 'border-b-2 border-stone-900 text-stone-900 font-semibold' : 'text-stone-400 hover:text-stone-700'}`}
                   >
                     Kargo ve İade
                   </button>
                 </div>
 
-                <div className="mt-8 text-center max-w-2xl mx-auto text-xs text-stone-600 leading-relaxed px-4">
+                <div className="mt-8 text-center max-w-2xl mx-auto text-xs text-stone-600 leading-relaxed px-4 font-light">
                   {activeTab === 'description' && (
-                    <p className="text-sm leading-relaxed">{product.description || 'Bu ürün için henüz detaylı açıklama girilmemiştir. Lüks standartlara uygun olarak tasarlanmıştır.'}</p>
+                    <p>{product.description || 'Bu ürün için henüz detaylı açıklama girilmemiştir. Lüks standartlara uygun olarak tasarlanmıştır.'}</p>
                   )}
                   {activeTab === 'size' && (
-                    <p className="text-sm leading-relaxed">Ölçüler ve kullanım alanları bu modelin zarif yapısına tam uyum sağlayacak şekilde optimize edilmiştir. Detaylı ölçü rehberi için müşteri hizmetlerimizle iletişime geçebilirsiniz.</p>
+                    <p>Ölçüler ve kullanım alanları bu modelin zarif yapısına tam uyum sağlayacak şekilde optimize edilmiştir. Detaylı ölçü rehberi için müşteri hizmetlerimizle iletişime geçebilirsiniz.</p>
                   )}
                   {activeTab === 'materials' && (
-                    <p className="text-sm leading-relaxed">Birinci sınıf malzemeler kullanılarak el işçiliği detaylarıyla özenle üretilmiştir. Uzun ömürlü kullanım için doğrudan güneş ışığından ve nemden koruyunuz.</p>
+                    <p>Birinci sınıf malzemeler kullanılarak el işçiliği detaylarıyla özenle üretilmiştir. Uzun ömürlü kullanım için doğrudan güneş ışığından ve nemden koruyunuz.</p>
                   )}
                   {activeTab === 'shipping' && (
-                    <p className="text-sm leading-relaxed">Tüm siparişlerinizde güvenli kargo imkanı sunulmaktadır. Ürünü teslim aldıktan sonra 14 gün içerisinde iade veya değişim yapabilirsiniz.</p>
+                    <p>Tüm siparişlerinizde güvenli kargo imkanı sunulmaktadır. Ürünü teslim aldıktan sonra 14 gün içerisinde iade veya değişim yapabilirsiniz.</p>
                   )}
                 </div>
               </div>
 
-              {/* 🌟 EN ALT BÖLÜM: ÜRÜN ÖNERİLERİ ALANI (YOU MAY ALSO LIKE) */}
+              {/* EN ALT BÖLÜM: Ürün Önerileri */}
               {relatedProducts.length > 0 && (
                 <div className="w-full border-t border-stone-200 pt-16">
-                  <h2 className="text-center text-sm uppercase tracking-widest font-serif text-stone-900 mb-10">
+                  <h2 className="text-center text-sm uppercase tracking-[0.2em] font-serif text-stone-900 font-bold mb-10">
                     Bunları Da Beğenebilirsiniz
                   </h2>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -265,15 +257,16 @@ export default function ProductDetailPage() {
 
                       return (
                         <Link key={relId} href={`/products/${relId}`} className="group flex flex-col">
-                          <div className="aspect-[4/5] bg-[#F7F6F4] overflow-hidden flex items-center justify-center mb-3">
+                          <div className="aspect-[4/5] bg-stone-100/70 overflow-hidden flex items-center justify-center mb-3 rounded-sm">
                             {relImgUrl ? (
                               <img src={relImgUrl} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                             ) : (
-                              <span className="text-[10px] text-stone-400 uppercase">Görsel Yok</span>
+                              <span className="text-[10px] text-stone-400 uppercase tracking-widest">Görsel Yok</span>
                             )}
                           </div>
-                          <h3 className="text-[11px] font-semibold text-stone-900 uppercase tracking-wider line-clamp-1">{item.name}</h3>
-                          <p className="text-[11px] text-stone-500 uppercase tracking-wider mt-1">{item.price} ₺</p>
+                          <h3 className="text-xs uppercase tracking-wider font-medium text-stone-900 group-hover:text-stone-600 transition line-clamp-1">{item.name}</h3>
+                          <p className="text-[11px] text-stone-400 uppercase tracking-widest font-light mt-0.5">VELORA</p>
+                          <p className="text-xs font-semibold tracking-wider text-stone-900 mt-1">{item.price} ₺</p>
                         </Link>
                       );
                     })}
