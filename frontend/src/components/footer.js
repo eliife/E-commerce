@@ -66,7 +66,7 @@ export default function Footer() {
           <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">Yardım</h4>
           <ul className="space-y-3 text-xs uppercase tracking-wider text-stone-500">
             <li><Link href="/yasal/return-policy" className="hover:text-stone-900 transition">İade ve Değişim</Link></li>
-            <li><Link href="/about" className="hover:text-stone-900 transition">Hikâyemiz</Link></li>
+            <li><Link href="/about" className="hover:text-stone-900 transition">Hakkımızda</Link></li>
             <li><Link href="/blog" className="hover:text-stone-900 transition">Blog</Link></li>
             <li><Link href="/contact" className="hover:text-stone-900 transition">İletişim</Link></li>
           </ul>
@@ -77,12 +77,6 @@ export default function Footer() {
       {/* Alt Telif ve Sosyal İkonlar */}
       <div className="mx-auto max-w-7xl px-6 mt-16 pt-8 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between text-xs uppercase tracking-widest text-stone-400">
         <p>© 2026 Velora. Tüm hakları saklıdır.</p>
-        <div className="flex items-center space-x-6 mt-4 sm:mt-0">
-          <a href="#" className="hover:text-stone-900 transition">Pinterest</a>
-          <a href="#" className="hover:text-stone-900 transition">X</a>
-          <a href="#" className="hover:text-stone-900 transition">TikTok</a>
-          <a href="#" className="hover:text-stone-900 transition">Instagram</a>
-        </div>
       </div>
     </footer>
   );
