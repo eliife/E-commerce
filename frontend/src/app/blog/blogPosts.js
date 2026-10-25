@@ -5,7 +5,7 @@ export const blogPosts = [
     category: 'Bakım & Rehber',
     date: 'Ekim 14, 2026',
     readTime: '4 dk okuma',
-    author: 'Velora Studio',
+    author: 'Velora ',
     excerpt: 'Gerçek derinin doğasını korumak ve çantanızın ilk günkü zarafetini yıllarca sürdürmesini sağlamak için bilmeniz gerekenler.',
     content: `Gerçek deri, yaşayan ve zamanla karakter kazanan eşsiz bir materyaldir. Doğru bakımla birlikte yıllara meydan okuyan deri çantanız, her kullanımda hikayenizin bir parçası haline gelir.
 
@@ -23,7 +23,7 @@ Derinin esnekliğini koruması için düzenli olarak beslenmesi gerekir. Hafif n
     category: 'Stil & Yaşam',
     date: 'Ekim 08, 2026',
     readTime: '3 dk okuma',
-    author: 'Velora Studio',
+    author: 'Velora ',
     excerpt: 'Şıklığı ve pratikliği bir araya getiren minimalist aksesuar seçimleriyle gardırobunuzda sadeliğin gücünü keşfedin.',
     content: `Modern şehir yaşamının koşuşturmacası içerisinde stil sahibi olmak, bazen karmaşadan arınmayı gerektirir. Minimalizm, yalnızca az eşyaya sahip olmak değil; en doğru parçalarla maksimum şıklık ve işlevsellik yakalamaktır.
 
@@ -37,7 +37,7 @@ Günlük kombinlerde tercih edilen el çantaları ve cüzdanlar, estetik olduğu
     category: 'Koleksiyon',
     date: 'Eylül 25, 2026',
     readTime: '5 dk okuma',
-    author: 'Velora Studio',
+    author: 'Velora',
     excerpt: 'Toprak tonlarının hakim olduğu, el işçiliği detaylarıyla öne çıkan yeni sezon deri çanta ve cüzdan tasarımlarımız yayında.',
     content: `Toprak tonlarının derinliği ve zanaatkarlığın en saf haliyle buluştuğu 2026 Sonbahar / Kış koleksiyonumuz şimdi yayında. Bu sezonda kahvenin en sıcak tonları, acı kahve ve bordo detaylar ön planda.
 
@@ -51,7 +51,7 @@ Koleksiyondaki her bir parça, usta ellerde titizlikle işlenerek hazırlandı. 
     category: 'Rehber',
     date: 'Eylül 12, 2026',
     readTime: '4 dk okuma',
-    author: 'Velora Studio',
+    author: 'Velora ',
     excerpt: 'Hakiki deriyi suni deriden ayırmanın püf noktaları ve uzun ömürlü bir deri ürün seçerken dikkat edilmesi gerekenler.',
     content: `Hakiki deriyi anlamanın en temel yolları dokusu, kokusu ve esnekliğidir. Kaliteli bir deri ürüne dokunduğunuzda doğal sıcaklığını hissedersiniz.
 
@@ -65,7 +65,7 @@ Suni deriler genellikle kimyasal ve plastik kokarken, hakiki deri kendine has a�
     category: 'Yaşam Tarzı',
     date: 'Ağustos 30, 2026',
     readTime: '6 dk okuma',
-    author: 'Velora Studio',
+    author: 'Velora ',
     excerpt: 'Hafta sonu kaçamaklarından iş seyahatlerine kadar yanınızdan ayırmak istemeyeceğiniz fonksiyonel çanta modelleri.',
     content: `Hafta sonu kaçamakları veya kısa süreli iş seyahatleri, doğru seyahat çantasını seçmeyi kritik hale getirir. Seyahatlerinizde hem şık görünmek hem de eşyalarınızı düzenli taşımak büyük avantaj sağlar.
 
@@ -79,7 +79,7 @@ Seyahatlerinizde yanınızdan ayırmayacağınız deri çantaların fermuar kali
     category: 'Aksesuar',
     date: 'Ağustos 15, 2026',
     readTime: '3 dk okuma',
-    author: 'Velora Studio',
+    author: 'Velora ',
     excerpt: 'Ceplerdeki kabarıklığa son veren, kart odaklı ince ve zarif cüzdan tasarımlarının yükselişi.',
     content: `Dijitalleşen dünyada cüzdan alışkanlıklarımız da değişiyor. Artık nakit paralardan ziyade kartların ön planda olduğu, cepte şişkinlik yaratmayan minimalist tasarımlar tercih ediliyor.
 

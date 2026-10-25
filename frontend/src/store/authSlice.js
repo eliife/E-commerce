@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import API from '@/services/api';
 import { resetCart, fetchCart } from '@/store/cartSlice';
 
-// localStorage verilerini güvenli şekilde al.
+
 const getLocalUser = () => {
   if (typeof window === 'undefined') return null;
 

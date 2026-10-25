@@ -39,7 +39,7 @@ app.use(
 // Rate Limiter
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: process.env.RATE_LIMIT_MAX || 100,
   message: {
     success: false,
     message: 'Çok fazla istek gönderildi, lütfen bir süre sonra tekrar deneyin.',

@@ -44,6 +44,8 @@ export default function Footer() {
         <div className="space-y-5">
           <h4 className="text-xs font-medium tracking-widest uppercase text-stone-900">Koleksiyonlar</h4>
           <ul className="space-y-3 text-xs uppercase tracking-wider text-stone-500">
+            <li><Link href="/bags" className="hover:text-stone-900 transition">Çantalar</Link></li>
+            <li><Link href="/wallets" className="hover:text-stone-900 transition">Cüzdanlar</Link></li>
             <li><Link href="/products" className="hover:text-stone-900 transition">Tüm Ürünler</Link></li>
             <li><Link href="/bestsellers" className="hover:text-stone-900 transition">Çok Satanlar</Link></li>
             <li><Link href="/new-arrivals" className="hover:text-stone-900 transition">Yeni Gelenler</Link></li>

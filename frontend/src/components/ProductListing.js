@@ -237,7 +237,7 @@ export default function ProductCatalogTemplate({
                       >
                         <svg 
                           className={`w-4 h-4 transition-colors duration-200 ${
-                            isFavorited ? 'text-red-500 fill-red-500' : 'text-stone-400 hover:text-red-500'
+                            isFavorited ? 'text-gray-900 fill-gray-900' : 'text-stone-400 hover:text-gray-900'
                           }`} 
                           fill={isFavorited ? 'currentColor' : 'none'} 
                           stroke="currentColor" 

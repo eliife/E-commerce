@@ -1,39 +1,46 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
-import API from '@/services/api';
 import Link from 'next/link';
-import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '@/store/cartSlice';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Hero from '@/components/hero';
+import API from '@/services/api';
+import { useSelector } from 'react-redux';
 
 export default function HomePage() {
-  const [products, setProducts] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
+  const [wallets, setWallets] = useState([]);
   const [wishlistIds, setWishlistIds] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
 
-  const dispatch = useDispatch();
+  const backendURL = 'http://localhost:5000';
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    let cancelled = false;
+    setIsMounted(true);
+  }, []);
 
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
+  // 429 hatasını önlemek için istekleri güvenli sıraya koyduk
+  useEffect(() => {
+    let isMounted = true;
 
+    const loadData = async () => {
       try {
+        // Önce ürünleri çekelim
         const productRes = await API.get('/products');
+        const data = Array.isArray(productRes.data)
+          ? productRes.data
+          : (productRes.data.products || productRes.data.data || []);
 
-        if (cancelled) return;
+        const walletProducts = data.filter(
+          (product) => product.category === 'Wallets'
+        );
 
-        setProducts(productRes.data.products || productRes.data);
+        if (isMounted) {
+          setWallets(walletProducts.slice(0, 3));
+        }
 
+        // Kullanıcı giriş yapmışsa favorileri biraz gecikmeli veya güvenli çekelim
         if (user) {
           try {
             const wishlistRes = await API.get('/wishlist');
@@ -42,210 +49,205 @@ export default function HomePage() {
               wishlistRes.data.products ||
               [];
 
-            if (!cancelled) {
+            if (isMounted) {
               setWishlistIds(
-                items.map((item) =>
-                  String(item._id || item.id || item)
-                )
+                items.map((item) => item._id || item.id || item)
               );
             }
-          } catch (err) {
-            console.warn('Favoriler getirilemedi:', err.message);
+          } catch (wishlistErr) {
+            console.warn('Favoriler alınamadı:', wishlistErr);
           }
         } else {
-          setWishlistIds([]);
+          if (isMounted) {
+            setWishlistIds([]);
+          }
         }
       } catch (err) {
-        if (!cancelled) {
-          setError('Veriler yüklenirken bir sorun oluştu.');
-        }
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
+        console.error('Veriler yüklenemedi:', err);
       }
     };
 
-    fetchData();
+    loadData();
 
     return () => {
-      cancelled = true;
+      isMounted = false;
     };
   }, [user]);
 
-  const handleToggleWishlist = async (productId) => {
+  // Favoriye ekle veya favorilerden çıkar
+  const handleToggleWishlist = async (productId, e) => {
+    e.preventDefault();
+
     if (!user) {
-      alert('Favorilere ürün eklemek için giriş yapmalısınız.');
+      alert('Favorilere eklemek için giriş yapmalısınız.');
       return;
     }
 
-    const id = String(productId);
-    const wasFavorited = wishlistIds.includes(id);
-
-    // Kalbi hemen güncelle
-    setWishlistIds((prev) =>
-      wasFavorited
-        ? prev.filter((itemId) => itemId !== id)
-        : [...prev, id]
-    );
-
     try {
-      const response = await API.post('/wishlist/toggle', {
-        productId,
-      });
+      const res = await API.post('/wishlist/toggle', { productId });
 
-      // Backend güncel favori listesini döndürüyorsa onu esas al.
-      const updatedProducts =
-        response.data.wishlist?.products ||
-        response.data.products;
+      const updated = res.data.wishlist?.products || [];
 
-      if (Array.isArray(updatedProducts)) {
-        setWishlistIds(
-          updatedProducts.map((item) =>
-            String(item._id || item.id || item)
-          )
-        );
-      }
-    } catch (err) {
-      // İşlem başarısızsa önceki duruma geri dön
-      setWishlistIds((prev) =>
-        wasFavorited
-          ? [...new Set([...prev, id])]
-          : prev.filter((itemId) => itemId !== id)
+      setWishlistIds(
+        updated.map((item) => item._id || item.id || item)
       );
-
-      console.error('Favori güncellenemedi:', err);
-      alert('Favori güncellenemedi. Lütfen tekrar deneyin.');
+    } catch (err) {
+      alert('Favori güncellenemedi.');
     }
   };
 
-  const filteredProducts = products.filter((product) =>
-    product.name?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  if (!isMounted) return null;
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 selection:bg-slate-900 selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
       <div>
-        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Header />
+
         <Hero />
 
-        <main id="products" className="mx-auto max-w-7xl px-6 py-12">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-8">
-            <h2 className="text-lg font-semibold tracking-wide text-slate-900 uppercase">
-              Tüm Ürünler
-            </h2>
-            <span className="text-xs text-slate-400 font-medium">
-              {filteredProducts.length} öğe listeleniyor
-            </span>
+        {/* Genişletilmiş Kampanya Banner Alanı */}
+        <section className="relative w-full min-h-[85vh] sm:min-h-screen overflow-hidden bg-[#F4F1EA] py-12 flex items-center justify-center">
+          <img
+            src={`${backendURL}/uploads/ana-banner-1.webp`}
+            alt="Kampanya Görseli"
+            className="w-full h-full object-cover absolute inset-0"
+          />
+
+          <div className="absolute inset-x-0 bottom-10 sm:bottom-16 flex justify-center items-center z-10">
+            <Link
+              href="/products"
+              className="group flex flex-col items-center space-y-2 transition duration-300"
+            >
+              <span className="text-xs sm:text-sm uppercase tracking-[0.3em] font-medium sm:font-light px-4 py-2 sm:px-0 sm:py-0 rounded-full sm:rounded-none bg-stone-900/40 sm:bg-transparent text-white sm:text-stone-900 sm:border-b sm:border-stone-900 sm:pb-1 group-hover:opacity-80 transition duration-300 backdrop-blur-[2px] sm:backdrop-blur-none">
+                TÜM ÜRÜNLERİ KEŞFET
+              </span>
+            </Link>
           </div>
+        </section>
 
-          {loading && (
-            <div className="flex justify-center items-center py-24">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-900"></div>
-            </div>
-          )}
+        {/* Cüzdan Ürün Kartları (Mobilde Yatay Slider, Masaüstünde Orijinal Grid) */}
+        <section className="max-w-[1200px] mx-auto px-5 sm:px-8 py-10">
+          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none snap-x snap-mandatory sm:grid sm:grid-cols-3 sm:gap-x-6 sm:overflow-visible sm:pb-0">
+            {wallets.map((product) => {
+              const productId = product.id || product._id;
 
-          {error && (
-            <div className="rounded-md bg-red-50 p-4 text-center text-xs text-red-600 font-medium">
-              {error}
-            </div>
-          )}
+              const isFavorited = wishlistIds.some(
+                (id) => String(id) === String(productId)
+              );
 
-          {!loading && !error && filteredProducts.length === 0 && (
-            <div className="text-center py-24 text-slate-400 text-sm">
-              Aradığınız kriterlere uygun ürün bulunamadı.
-            </div>
-          )}
+              const rawImg = product.image || product.images?.[0];
 
-          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {filteredProducts.map((product) => {
-              const productId = String(product._id || product.id);
-              const isFavorited = wishlistIds.includes(productId);
-
-              const backendURL = 'http://localhost:5000';
-              const imageUrl = product.image
-                ? product.image.startsWith('http')
-                  ? product.image
-                  : `${backendURL}${product.image}`
+              const imageUrl = rawImg
+                ? rawImg.startsWith('http')
+                  ? rawImg
+                  : `${backendURL}${rawImg}`
                 : null;
 
               return (
-                <div key={productId} className="group relative flex flex-col">
-                  <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-slate-100 flex items-center justify-center border border-slate-100">
+                <div
+                  key={productId}
+                  className="group relative flex flex-col min-w-[170px] max-w-[190px] sm:min-w-0 sm:max-w-none snap-start flex-shrink-0"
+                >
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#F4F1EA]">
                     <Link
                       href={`/products/${productId}`}
-                      className="w-full h-full flex items-center justify-center"
+                      className="flex h-full w-full items-center justify-center"
                     >
                       {imageUrl ? (
                         <img
                           src={imageUrl}
                           alt={product.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                          loading="lazy"
+                          className={`h-full w-full object-contain transition duration-500 ${
+                            product.name === 'MILA'
+                              ? 'scale-[2] group-hover:scale-[2.05]'
+                              : 'group-hover:scale-105'
+                          }`}
                         />
                       ) : (
-                        <span className="text-xs font-medium text-slate-400">
-                          Ürün Görseli
+                        <span className="text-xs text-stone-400 uppercase tracking-widest">
+                          Görsel Yok
                         </span>
                       )}
                     </Link>
+                  </div>
+
+                  <div className="mt-3 flex items-start justify-between">
+                    <Link
+                      href={`/products/${productId}`}
+                      className="flex min-w-0 flex-1 flex-col space-y-1 group-hover:opacity-80 transition"
+                    >
+                      <h3 className="text-xs font-semibold text-stone-900 tracking-wider uppercase line-clamp-1">
+                        {product.name}
+                      </h3>
+
+                      <p className="text-[11px] text-stone-400 tracking-wider uppercase line-clamp-1">
+                        {product.brand || 'VELORA'}
+                      </p>
+
+                      <p className="pt-1 text-xs font-medium text-stone-900 tracking-wider uppercase">
+                        {product.price} ₺
+                      </p>
+                    </Link>
 
                     <button
-                      type="button"
-                      aria-label={
-                        isFavorited
-                          ? 'Favorilerden çıkar'
-                          : 'Favorilere ekle'
-                      }
-                      aria-pressed={isFavorited}
-                      onClick={() => handleToggleWishlist(productId)}
-                      className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-slate-600 hover:bg-white transition shadow-sm"
+                      onClick={(e) => handleToggleWishlist(productId, e)}
+                      aria-label="Favorilere ekle"
+                      className="ml-2 cursor-pointer p-1 text-stone-400 transition hover:text-stone-900"
                     >
                       <svg
-                        className={`w-5 h-5 ${
+                        className={`h-5 w-5 transition-colors duration-200 ${
                           isFavorited
-                            ? 'text-red-500 fill-red-500'
-                            : 'text-slate-500'
+                            ? 'fill-stone-900 text-stone-900'
+                            : ''
                         }`}
                         fill={isFavorited ? 'currentColor' : 'none'}
                         stroke="currentColor"
-                        strokeWidth="1.8"
+                        strokeWidth="1.5"
                         viewBox="0 0 24 24"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                          d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                         />
                       </svg>
                     </button>
                   </div>
-
-                  <div className="mt-4 flex justify-between items-start">
-                    <div>
-                      <Link href={`/products/${productId}`}>
-                        <h3 className="text-sm font-medium text-slate-900 hover:underline">
-                          {product.name}
-                        </h3>
-                      </Link>
-                      <p className="mt-1 text-xs text-slate-500 line-clamp-1">
-                        {product.description}
-                      </p>
-                    </div>
-                    <p className="text-sm font-semibold text-slate-900">
-                      {product.price} ₺
-                    </p>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => dispatch(addToCart(product))}
-                    className="mt-3 w-full rounded border border-slate-200 bg-white py-2 text-xs font-medium text-slate-800 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition shadow-sm"
-                  >
-                    Sepete Ekle
-                  </button>
                 </div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Velora Tanıtım Alanı */}
+        <main className="mx-auto max-w-4xl px-6 sm:px-12 py-16 lg:py-20 text-center space-y-8 flex flex-col items-center justify-center">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-stone-400 font-light">
+            Velora
+          </span>
+
+          <h1 className="text-4xl sm:text-6xl font-serif tracking-tight text-stone-900 leading-tight">
+            Sadeliğin ve Zanaatın Estetiği
+          </h1>
+
+          <p className="text-sm sm:text-base text-stone-600 font-light max-w-lg mx-auto leading-relaxed">
+            Geçici trendlerden uzak, zamanın ötesinde tasarlanmış koleksiyonlarımızı ve hikâyemizi keşfedin.
+          </p>
+
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/about"
+              className="bg-stone-900 text-white px-8 py-4 text-[11px] uppercase tracking-[0.2em] rounded-sm hover:bg-stone-800 transition duration-300"
+            >
+              Hikâyemiz
+            </Link>
+
+            <Link
+              href="/blog"
+              className="border border-stone-300 text-stone-900 px-8 py-4 text-[11px] uppercase tracking-[0.2em] rounded-sm hover:border-stone-900 transition duration-300"
+            >
+              Journal
+            </Link>
           </div>
         </main>
       </div>

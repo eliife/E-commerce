@@ -8,4 +8,5 @@ const router = express.Router();
 router.post('/', protect, createOrder);          
 router.get('/myorders', protect, getMyOrders);   
 
+router.get('/', protect, getMyOrders);
 module.exports = router;
