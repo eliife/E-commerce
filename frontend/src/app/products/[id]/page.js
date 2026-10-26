@@ -19,8 +19,10 @@ export default function ProductDetailPage() {
   const [error, setError] = useState(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [activeTab, setActiveTab] = useState('description');
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  // Alt kısımdaki akordeon bölümleri için state
+  const [openAccordion, setOpenAccordion] = useState('description');
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -81,6 +83,10 @@ export default function ProductDetailPage() {
     }
   };
 
+  const toggleAccordion = (tabKey) => {
+    setOpenAccordion(openAccordion === tabKey ? null : tabKey);
+  };
+
   if (!isMounted) {
     return null;
   }
@@ -92,12 +98,85 @@ export default function ProductDetailPage() {
     ? (rawImg.startsWith('http') ? rawImg : `${backendURL}${rawImg}`)
     : null;
 
+  // Ürün rengini ve tonunu isme/veriye göre akıllı ve dinamik eşleme
+  const getProductColorInfo = (prod) => {
+    const name = prod?.name?.toLowerCase() || '';
+    const colorField = prod?.color?.toLowerCase() || '';
+
+    if (colorField.includes('yeşil') || name.includes('yeşil') || name.includes('zeytin')) {
+      return { name: 'ZEYTİN YEŞİLİ', code: '#8A9A86' };
+    }
+    if (colorField.includes('bordo') || name.includes('bordo')) {
+      return { name: 'BORDO', code: '#6B2D3C' };
+    }
+    if (colorField.includes('siyah') || name.includes('siyah')) {
+      return { name: 'SİYAH', code: '#1C1C1C' };
+    }
+    if (colorField.includes('bej') || name.includes('bej')) {
+      return { name: 'BEJ', code: '#D5C3A5' };
+    }
+    return { name: prod?.color || 'KAHVE', code: prod?.colorCode || '#4B3621' };
+  };
+
+  const colorInfo = getProductColorInfo(product);
+
+  // Kombin metnini tire işaretlerine göre bölüp alt alta paragraflar oluşturan yardımcı fonksiyon
+  const renderFormattedCombination = (text) => {
+    if (!text) return 'Zarif duruşunu öne çıkarmak için benzer tonlardaki aksesuarlarla tamamlayabilirsiniz.';
+    
+    const parts = text.split(/(?=\s*-\s*\*\*|\s*-\s*[A-ZÇĞİÖŞÜa-zçğıöşü]+\s*:)/);
+    
+    if (parts.length <= 1) {
+      return <p>{text}</p>;
+    }
+
+    return (
+      <div className="space-y-3">
+        {parts.map((part, index) => {
+          const cleaned = part.replace(/^[\s-]+/, '').trim();
+          if (!cleaned) return null;
+          return (
+            <p key={index} className="leading-relaxed">
+              {cleaned}
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Materyal metnini tire ve \n işaretlerine göre alt alta bölen yardımcı fonksiyon
+  const renderFormattedMaterials = (text) => {
+    const defaultText = 'Birinci sınıf hakiki deriden el işçiliği detaylarıyla özenle üretilmiştir. Derinin doğal yapısını ve esnekliğini koruması için aşağıdaki bakım önerilerine dikkat edilmesi tavsiye edilir: \n- **Saklama Koşulları:** Doğrudan güneş ışığından, aşırı sıcaktan ve nemli ortamlardan uzak tutunuz. Kullanılmadığı durumlarda formunu koruması için içini kağıt dolgu ile doldurarak kumaş toz torbasında saklayınız. \n- **Temizlik:** Deri yüzeyin temizliği için asla çamaşır suyu, alkol veya sert kimyasallar içeren ıslak mendiller kullanmayınız. Hafif nemli, yumuşak bir bezle nazikçe silebilirsiniz. \n- **Bakım:** Derinin kurumasını önlemek ve ilk günkü parlaklığını muhafaza etmek için belirli aralıklarla doğal deri bakım kremleri veya renk koruyucu bakım spreyleri uygulayabilirsiniz.';
+    
+    const content = text || defaultText;
+    const parts = content.split(/(?=\s*-\s*\*\*|\s*-\\s*|\s*\\n\s*-\s*)/);
+
+    if (parts.length <= 1) {
+      return <p>{content}</p>;
+    }
+
+    return (
+      <div className="space-y-3">
+        {parts.map((part, index) => {
+          const cleaned = part.replace(/^[\s-\\n]+/, '').trim();
+          if (!cleaned) return null;
+          return (
+            <p key={index} className="leading-relaxed">
+              {cleaned}
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-stone-50/50 text-stone-800 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
+    <div className="min-h-screen bg-[#FAFAF9] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
       <div>
         <Header />
 
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
           {loading && (
             <div className="flex justify-center items-center py-32">
               <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-stone-900"></div>
@@ -112,17 +191,17 @@ export default function ProductDetailPage() {
 
           {!loading && !error && product && (
             <div>
-              {/* ÜST BÖLÜM: 2 Sütunlu Yerleşim */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-20">
+              {/* ÜST BÖLÜM: Görsel ve Sağ Sütun */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
                 
-                {/* SOL SÜTUN: Görsel ve Thumbnail Alanı */}
+                {/* SOL SÜTUN: Görsel Galerisi */}
                 <div className="lg:col-span-7 flex flex-col gap-4">
-                  <div className="w-full aspect-[4/5] bg-stone-100/70 overflow-hidden flex items-center justify-center relative rounded-sm">
+                  <div className="w-full aspect-[4/5] bg-stone-100 overflow-hidden flex items-center justify-center relative rounded-md shadow-sm">
                     {imageUrl ? (
                       <img 
                         src={imageUrl} 
                         alt={product.name} 
-                        className="w-full h-full object-cover object-center transition duration-500"
+                        className="w-full h-full object-cover object-center transition duration-700 hover:scale-105"
                       />
                     ) : (
                       <span className="text-xs uppercase tracking-widest text-stone-400">Görsel Yok</span>
@@ -130,14 +209,14 @@ export default function ProductDetailPage() {
                   </div>
 
                   {imagesList.length > 1 && (
-                    <div className="flex items-center gap-3 overflow-x-auto pb-2">
+                    <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
                       {imagesList.map((img, idx) => {
                         const thumbUrl = img.startsWith('http') ? img : `${backendURL}${img}`;
                         return (
                           <button
                             key={idx}
                             onClick={() => setSelectedImageIndex(idx)}
-                            className={`w-16 h-20 bg-stone-100/70 overflow-hidden border transition shrink-0 rounded-sm ${selectedImageIndex === idx ? 'border-stone-900' : 'border-stone-200 opacity-70 hover:opacity-100'}`}
+                            className={`w-20 h-24 bg-stone-100 overflow-hidden border transition-all shrink-0 rounded ${selectedImageIndex === idx ? 'border-stone-900 ring-1 ring-stone-900' : 'border-stone-200 opacity-60 hover:opacity-100'}`}
                           >
                             <img src={thumbUrl} alt="" className="w-full h-full object-cover" />
                           </button>
@@ -147,24 +226,18 @@ export default function ProductDetailPage() {
                   )}
                 </div>
 
-                {/* SAĞ SÜTUN: Ürün Bilgileri ve Aksiyonlar */}
-                <div className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col space-y-6 pt-2">
+                {/* SAĞ SÜTUN: Ürün Bilgileri, Kısa Açıklama, Renk ve Sepete Ekle */}
+                <div className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col space-y-6">
                   
-                  <div className="space-y-2 border-b border-stone-200 pb-6">
-                    <p className="text-xs uppercase tracking-widest text-stone-500 font-light">
-                      {product.brand || product.category || 'VELORA'}
-                    </p>
-                    <h1 className="text-base font-serif tracking-[0.2em] text-stone-900 uppercase font-bold">
-                      {product.name}
-                    </h1>
-                    <div className="flex items-center justify-between pt-2">
-                      <span className="text-xs font-semibold tracking-wider text-stone-900">
-                        {product.price} ₺
+                  {/* Başlık ve Fiyat */}
+                  <div className="space-y-3 border-b border-stone-200/80 pb-6">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] uppercase tracking-[0.25em] text-stone-500 font-medium">
+                        {product.brand || product.category || 'VELORA'}
                       </span>
-
                       <button
                         onClick={handleToggleWishlist}
-                        className="text-stone-400 hover:text-stone-900 transition p-2 cursor-pointer flex items-center gap-1.5 text-xs uppercase tracking-widest"
+                        className="text-stone-400 hover:text-stone-900 transition p-1.5 cursor-pointer flex items-center gap-1.5 text-xs uppercase tracking-widest"
                         title={isFavorite ? 'Favorilerden Çıkar' : 'Favorilere Ekle'}
                       >
                         <svg
@@ -175,75 +248,106 @@ export default function ProductDetailPage() {
                         </svg>
                       </button>
                     </div>
+
+                    <h1 className="text-lg font-serif tracking-[0.15em] text-stone-900 uppercase font-semibold">
+                      {product.name}
+                    </h1>
+
+                    <div className="pt-1">
+                      <span className="text-sm font-semibold tracking-wider text-stone-900">
+                        {product.price} ₺
+                      </span>
+                    </div>
                   </div>
 
+                  {/* SAĞ ÜST KISIM: 1. Kısa Açıklama */}
                   <div className="text-xs text-stone-600 leading-relaxed font-light">
-                    <p>{product.description ? product.description.substring(0, 160) + '...' : 'Lüks standartlara ve zarif detaylara sahip özel tasarım.'}</p>
+                    <p>{product.description || 'Lüks standartlara ve zarif detaylara sahip özel tasarım.'}</p>
                   </div>
 
-                  <div className="pt-4">
+                  {/* YAN YANA YERLEŞTİRİLMİŞ RENK GÖSTERGE ALANI */}
+                  <div className="space-y-2 pt-2 border-t border-stone-200/60 pb-2">
+                    <span className="text-[11px] uppercase tracking-[0.2em] text-stone-500 font-medium block">
+                      R E N K
+                    </span>
+                    <div className="flex items-center gap-3 pt-1">
+                      <div className="p-0.5 rounded-full border border-stone-900 cursor-pointer">
+                        <div 
+                          className="w-5 h-5 rounded-full shadow-inner" 
+                          style={{ backgroundColor: colorInfo.code }}
+                        ></div>
+                      </div>
+                      <span className="text-xs uppercase tracking-wider font-semibold text-stone-900">
+                        {colorInfo.name}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Sepete Ekle Butonu ve Avantajlar */}
+                  <div className="space-y-3 pt-6">
                     <button
                       onClick={() => dispatch(addToCart(product))}
-                      className="w-full rounded-sm bg-stone-900 py-3 text-xs font-medium tracking-widest uppercase text-white hover:bg-stone-800 transition shadow-sm cursor-pointer"
+                      className="w-full rounded bg-stone-900 py-4 text-xs font-medium tracking-[0.2em] uppercase text-white hover:bg-stone-800 transition-all shadow-sm cursor-pointer active:scale-[0.99]"
                     >
                       Sepete Ekle
                     </button>
-                  </div>
 
-                  <div className="border-t border-stone-200 pt-6 space-y-2 text-[11px] text-stone-500 tracking-wider font-light">
-                    <p>✓ Ücretsiz kargo ve 14 gün içinde kolay iade</p>
-                    <p>✓ Güvenli ödeme ve orijinal ürün garantisi</p>
+                    <div className="bg-stone-100/60 p-4 rounded text-[11px] text-stone-600 space-y-1.5 font-light">
+                      <p className="flex items-center gap-2">✓ Ücretsiz kargo ve 14 gün içinde kolay iade</p>
+                      <p className="flex items-center gap-2">✓ Güvenli ödeme ve orijinal ürün garantisi</p>
+                    </div>
                   </div>
 
                 </div>
               </div>
 
-              {/* ORTA BÖLÜM: Detay Sekmeleri */}
-              <div className="w-full border-t border-stone-200 pt-12 mb-20">
-                <div className="flex justify-center gap-8 sm:gap-16 text-xs uppercase tracking-widest font-medium border-b border-stone-200 pb-4 overflow-x-auto">
-                  <button 
-                    onClick={() => setActiveTab('description')} 
-                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'description' ? 'border-b-2 border-stone-900 text-stone-900 font-semibold' : 'text-stone-400 hover:text-stone-700'}`}
-                  >
-                    Açıklama
-                  </button>
-                  <button 
-                    onClick={() => setActiveTab('size')} 
-                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'size' ? 'border-b-2 border-stone-900 text-stone-900 font-semibold' : 'text-stone-400 hover:text-stone-700'}`}
-                  >
-                    Beden ve Kalıp
-                  </button>
-                  <button 
-                    onClick={() => setActiveTab('materials')} 
-                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'materials' ? 'border-b-2 border-stone-900 text-stone-900 font-semibold' : 'text-stone-400 hover:text-stone-700'}`}
-                  >
-                    Materiyal
-                  </button>
-                  <button 
-                    onClick={() => setActiveTab('shipping')} 
-                    className={`pb-1 transition cursor-pointer whitespace-nowrap ${activeTab === 'shipping' ? 'border-b-2 border-stone-900 text-stone-900 font-semibold' : 'text-stone-400 hover:text-stone-700'}`}
-                  >
-                    Kargo ve İade
-                  </button>
-                </div>
+              {/* ORTA BÖLÜM: Geniş Açıklama ve Materyal Akordeon Alanı */}
+              <div className="w-full max-w-3xl mx-auto border-t border-stone-200/80 pt-10 mb-16">
+                <div className="divide-y divide-stone-200/80 border-y border-stone-200/80">
+                  
+                  {/* Açıklama (Ürün Açıklaması ve Alt Alta Düzenlenmiş Nasıl Kombinlenir) */}
+                  <div>
+                    <button
+                      onClick={() => toggleAccordion('description')}
+                      className="w-full py-5 flex items-center justify-between text-xs uppercase tracking-[0.2em] font-medium text-stone-900 cursor-pointer group"
+                    >
+                      <span className="group-hover:text-stone-600 transition">Ürün Açıklaması</span>
+                      <span className="text-sm font-light text-stone-400">{openAccordion === 'description' ? '−' : '+'}</span>
+                    </button>
+                    {openAccordion === 'description' && (
+                      <div className="pb-6 text-xs text-stone-600 leading-relaxed font-light space-y-5">
+                        <p>{product.description2 || product.description || 'Bu ürün için henüz detaylı açıklama girilmemiştir. Lüks standartlara uygun olarak özenle tasarlanmıştır.'}</p>
+                        
+                        <div className="pt-4 border-t border-stone-200/60">
+                          <h4 className="text-[11px] uppercase tracking-[0.15em] font-semibold text-stone-900 mb-3">Nasıl Kombinlenir</h4>
+                          <div className="space-y-3">
+                            {renderFormattedCombination(product.combination)}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
-                <div className="mt-8 text-center max-w-2xl mx-auto text-xs text-stone-600 leading-relaxed px-4 font-light">
-                  {activeTab === 'description' && (
-                    <p>{product.description || 'Bu ürün için henüz detaylı açıklama girilmemiştir. Lüks standartlara uygun olarak tasarlanmıştır.'}</p>
-                  )}
-                  {activeTab === 'size' && (
-                    <p>Ölçüler ve kullanım alanları bu modelin zarif yapısına tam uyum sağlayacak şekilde optimize edilmiştir. Detaylı ölçü rehberi için müşteri hizmetlerimizle iletişime geçebilirsiniz.</p>
-                  )}
-                  {activeTab === 'materials' && (
-                    <p>Birinci sınıf malzemeler kullanılarak el işçiliği detaylarıyla özenle üretilmiştir. Uzun ömürlü kullanım için doğrudan güneş ışığından ve nemden koruyunuz.</p>
-                  )}
-                  {activeTab === 'shipping' && (
-                    <p>Tüm siparişlerinizde güvenli kargo imkanı sunulmaktadır. Ürünü teslim aldıktan sonra 14 gün içerisinde iade veya değişim yapabilirsiniz.</p>
-                  )}
+                  {/* Materyal & Bakım (Formatlanmış Alt Alta Yapı) */}
+                  <div>
+                    <button
+                      onClick={() => toggleAccordion('materials')}
+                      className="w-full py-5 flex items-center justify-between text-xs uppercase tracking-[0.2em] font-medium text-stone-900 cursor-pointer group"
+                    >
+                      <span className="group-hover:text-stone-600 transition">Materyal ve Bakım</span>
+                      <span className="text-sm font-light text-stone-400">{openAccordion === 'materials' ? '−' : '+'}</span>
+                    </button>
+                    {openAccordion === 'materials' && (
+                      <div className="pb-6 text-xs text-stone-600 leading-relaxed font-light space-y-3">
+                        {renderFormattedMaterials(product.materials || product.material)}
+                      </div>
+                    )}
+                  </div>
+
                 </div>
               </div>
 
-              {/* EN ALT BÖLÜM: Ürün Önerileri */}
+              {/* EN ALT BÖLÜM: Benzer Ürünler / Öneriler */}
               {relatedProducts.length > 0 && (
                 <div className="w-full border-t border-stone-200 pt-16">
                   <h2 className="text-center text-sm uppercase tracking-[0.2em] font-serif text-stone-900 font-bold mb-10">
@@ -257,7 +361,7 @@ export default function ProductDetailPage() {
 
                       return (
                         <Link key={relId} href={`/products/${relId}`} className="group flex flex-col">
-                          <div className="aspect-[4/5] bg-stone-100/70 overflow-hidden flex items-center justify-center mb-3 rounded-sm">
+                          <div className="aspect-[4/5] bg-stone-100 overflow-hidden flex items-center justify-center mb-3 rounded-sm">
                             {relImgUrl ? (
                               <img src={relImgUrl} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                             ) : (
@@ -265,7 +369,7 @@ export default function ProductDetailPage() {
                             )}
                           </div>
                           <h3 className="text-xs uppercase tracking-wider font-medium text-stone-900 group-hover:text-stone-600 transition line-clamp-1">{item.name}</h3>
-                          <p className="text-[11px] text-stone-400 uppercase tracking-widest font-light mt-0.5">VELORA</p>
+                          <p className="text-[10px] text-stone-400 uppercase tracking-widest font-light mt-0.5">VELORA</p>
                           <p className="text-xs font-semibold tracking-wider text-stone-900 mt-1">{item.price} ₺</p>
                         </Link>
                       );
