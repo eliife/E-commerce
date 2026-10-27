@@ -1,4 +1,4 @@
-import ProductDetailClient from '@/components/ProductDetailClient';
+import ProductDetailClient from './ProductDetailClient';
 
 const backendURL = 'http://localhost:5000';
 
