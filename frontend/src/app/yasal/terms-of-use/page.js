@@ -5,6 +5,9 @@ import Footer from '@/components/footer';
 export const metadata = {
   title: 'Kullanım Koşulları | Velora',
   description: 'Velora e-ticaret platformu kullanım koşulları hakkında detaylı bilgi alın.',
+    alternates: {
+    canonical: '/yasal/terms-of-use',
+  },
 };
 
 export default function TermsOfUsePage() {

@@ -5,6 +5,9 @@ import Footer from '@/components/footer';
 export const metadata = {
   title: 'Gizlilik Politikası | Velora',
   description: 'Velora e-ticaret platformu gizlilik politikası hakkında detaylı bilgi alın.',
+    alternates: {
+    canonical: '/yasal/privacy-policy',
+  },
 };
 
 

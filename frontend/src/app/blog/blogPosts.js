@@ -1,6 +1,6 @@
 export const blogPosts = [
   {
-    id: '1',
+    id: 'zamansiz-deri-canta-bakim-rehberi',
     title: 'Zamansız Deri Çanta Bakım Rehberi',
     category: 'Bakım & Rehber',
     date: 'Ekim 14, 2026',
@@ -18,7 +18,7 @@ Deri ürünlerin en büyük düşmanlarından biri aşırı nem ve direkt güne�
 Derinin esnekliğini koruması için düzenli olarak beslenmesi gerekir. Hafif nemli, yumuşak bir bezle tozunu aldıktan sonra, deri bakım kremleri veya doğal balmumları yardımıyla derinin nefes almasını sağlayabilirsiniz.`
   },
   {
-    id: '2',
+    id: 'gunluk-stilde-minimalizm-ve-islevsellik',
     title: 'Günlük Stilde Minimalizm ve İşlevsellik',
     category: 'Stil & Yaşam',
     date: 'Ekim 08, 2026',
@@ -32,7 +32,7 @@ Derinin esnekliğini koruması için düzenli olarak beslenmesi gerekir. Hafif n
 Günlük kombinlerde tercih edilen el çantaları ve cüzdanlar, estetik olduğu kadar işlevsel de olmalıdır. İç bölmeleri sayesinde eşyalarınızı düzenli tutan, kaliteli dikiş detaylarına sahip zamansız tasarımlar hayatınızı kolaylaştırır.`
   },
   {
-    id: '3',
+    id: 'velora-2026-sonbahar-kis-koleksiyonu',
     title: 'Velora 2026 Sonbahar / Kış Koleksiyonu',
     category: 'Koleksiyon',
     date: 'Eylül 25, 2026',
@@ -46,7 +46,7 @@ Günlük kombinlerde tercih edilen el çantaları ve cüzdanlar, estetik olduğu
 Koleksiyondaki her bir parça, usta ellerde titizlikle işlenerek hazırlandı. Geleneksel deri işçiliğini modern çizgilerle harmanlayan Velora yeni sezonu, gardırobunuza güçlü bir dokunuş katmaya hazırlanıyor.`
   },
   {
-    id: '4',
+    id: 'derinin-kalitesi-nasil-anlasilir',
     title: 'Derinin Kalitesi Nasıl Anlaşılır?',
     category: 'Rehber',
     date: 'Eylül 12, 2026',
@@ -57,10 +57,10 @@ Koleksiyondaki her bir parça, usta ellerde titizlikle işlenerek hazırlandı. 
 
 ## Koku ve Doku Testi
 
-Suni deriler genellikle kimyasal ve plastik kokarken, hakiki deri kendine has ağır ve doğal bir kokuya sahiptir. Ayrıca esnetildiğinde derinin renginde hafif ton değişiklikleri gözlemlenebilir.`
+Suni deriler genellikle kimyasal ve plastik kokarken, hakiki deri kendine has ağır ve doğal bir kokuye sahiptir. Ayrıca esnetildiğinde derinin renginde hafif ton değişiklikleri gözlemlenebilir.`
   },
   {
-    id: '5',
+    id: 'sehir-hayatinda-seyahat-cantasi-secimi',
     title: 'Şehir Hayatında Seyahat Çantası Seçimi',
     category: 'Yaşam Tarzı',
     date: 'Ağustos 30, 2026',
@@ -74,7 +74,7 @@ Suni deriler genellikle kimyasal ve plastik kokarken, hakiki deri kendine has a�
 Seyahatlerinizde yanınızdan ayırmayacağınız deri çantaların fermuar kalitesi, taşıma kulplarının sağlamlığı ve kabin boyu ölçülerine uygunluğu ön planda tutulmalıdır.`
   },
   {
-    id: '6',
+    id: 'minimalist-cuzdan-trendleri-ve-avantajlari',
     title: 'Minimalist Cüzdan Trendleri ve Avantajları',
     category: 'Aksesuar',
     date: 'Ağustos 15, 2026',

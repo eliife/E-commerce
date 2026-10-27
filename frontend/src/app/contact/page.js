@@ -4,6 +4,9 @@ import Footer from '@/components/footer';
 export const metadata = {
   title: ' İletişim | Velora ',
   description: 'Velora müşteri hizmetleri iletişim bilgileri, destek hatları ve mağazamızla ilgili merak ettiğiniz tüm detaylara bu sayfadan ulaşın.',
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function ContactPage() {

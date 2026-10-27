@@ -7,6 +7,10 @@ import { blogPosts } from './blogPosts';
 export const metadata = {
   title: 'Blog | Velora ',
   description: 'Velora dünyasından hikâyeler, zanaat ilhamları ve deri bakımına dair rehberler.',
+
+    alternates: {
+    canonical: '/blog',
+  },
 };
 
 export default function BlogListPage() {

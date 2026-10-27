@@ -4,6 +4,10 @@ import Footer from '@/components/footer';
 export const metadata = {
   title: 'Mesafeli Satış Sözleşmesi | Velora',
   description: 'Velora e-ticaret platformu mesafeli satış sözleşmesi ve yasal koşulları hakkında detaylı bilgi alın.',
+
+    alternates: {
+    canonical: '/yasal/distance-sales-agreement',
+  },
 };
 
 export default function DistanceSalesAgreementPage() {

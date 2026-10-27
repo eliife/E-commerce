@@ -7,6 +7,7 @@ import { blogPosts } from '../blogPosts';
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const post = blogPosts.find((p) => p.id === id);
+  
 
   if (!post) {
     return {
@@ -18,6 +19,10 @@ export async function generateMetadata({ params }) {
   return {
     title: `${post.title} | Velora `,
     description: post.excerpt || post.content.substring(0, 150),
+    
+    alternates: {
+      canonical: `/blog/${id}`,
+    },
   };
 }
 

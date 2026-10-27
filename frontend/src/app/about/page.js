@@ -5,6 +5,10 @@ import Footer from '@/components/footer';
 export const metadata = {
   title: 'Hakkımızda | Velora ',
   description: 'Velora’nın el işçiliği deri çanta ve aksesuar koleksiyonlarını, sürdürülebilir lüks anlayışımızı ve hikayemizi keşfedin.',
+
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export default function AboutPage() {

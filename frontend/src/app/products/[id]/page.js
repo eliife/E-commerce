@@ -14,6 +14,10 @@ export async function generateMetadata({ params }) {
     return {
       title: `${product.name} | Velora`,
       description: product.description || 'Velora lüks deri koleksiyonu.',
+
+      alternates: {
+        canonical: `/products/${id}`,
+  },
     };
   } catch (error) {
     return {

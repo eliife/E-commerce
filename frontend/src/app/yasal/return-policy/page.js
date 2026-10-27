@@ -5,6 +5,9 @@ import Footer from '@/components/footer';
 export const metadata = {
   title: 'İade Politikası | Velora',
   description: 'Velora e-ticaret platformu iade politikası hakkında detaylı bilgi alın.',
+    alternates: {
+    canonical: '/yasal/return-policy',
+  },
 };
 
 
