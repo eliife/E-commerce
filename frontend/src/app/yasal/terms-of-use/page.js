@@ -1,17 +1,14 @@
-'use client';
 
-import { useState, useEffect } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
+export const metadata = {
+  title: 'Kullanım Koşulları | Velora',
+  description: 'Velora e-ticaret platformu kullanım koşulları hakkında detaylı bilgi alın.',
+};
+
 export default function TermsOfUsePage() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
+  
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">

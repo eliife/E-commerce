@@ -1,18 +1,13 @@
-'use client';
 
-import { useState, useEffect } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
+export const metadata = {
+  title: 'Hakkımızda | Velora ',
+  description: 'Velora’nın el işçiliği deri çanta ve aksesuar koleksiyonlarını, sürdürülebilir lüks anlayışımızı ve hikayemizi keşfedin.',
+};
+
 export default function AboutPage() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
-
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
       <div>

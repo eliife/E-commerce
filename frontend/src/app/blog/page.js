@@ -1,19 +1,16 @@
-'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { blogPosts } from './blogPosts';
 
+export const metadata = {
+  title: 'Blog | Velora ',
+  description: 'Velora dünyasından hikâyeler, zanaat ilhamları ve deri bakımına dair rehberler.',
+};
+
 export default function BlogListPage() {
-  const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">

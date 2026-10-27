@@ -1,17 +1,15 @@
-'use client';
 
-import { useState, useEffect } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
+export const metadata = {
+  title: 'Gizlilik Politikası | Velora',
+  description: 'Velora e-ticaret platformu gizlilik politikası hakkında detaylı bilgi alın.',
+};
+
+
 export default function PrivacyPolicyPage() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
+  
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">

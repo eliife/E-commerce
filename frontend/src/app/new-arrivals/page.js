@@ -1,4 +1,8 @@
 import ProductListing from '@/components/ProductListing';
+export const metadata = {
+  title: 'Yeni Gelenler | Velora ',
+  description: "Velora\'nın en yeni tasarımlarını ve sezonun trendlerini yansıtan en taze deri çanta koleksiyonunu ilk siz keşfedin.",
+};
 
 export default function NewArrivalsPage() {
   return (

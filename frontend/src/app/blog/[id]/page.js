@@ -1,24 +1,31 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { blogPosts } from '../blogPosts';
 
-export default function BlogDetailPage() {
-  const [isMounted, setIsMounted] = useState(false);
-  const params = useParams();
-  const { id } = params;
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const post = blogPosts.find((p) => p.id === id);
 
-  if (!isMounted) return null;
+  if (!post) {
+    return {
+      title: 'Yazı Bulunamadı | Velora',
+      description: 'Aradığınız blog yazısı bulunamadı.',
+    };
+  }
 
-  // Dizeden ilgili ID'ye sahip yazıyı buluyoruz
+  return {
+    title: `${post.title} | Velora `,
+    description: post.excerpt || post.content.substring(0, 150),
+  };
+}
+
+
+export default async function BlogDetailPage({ params }) {
+  const { id } = await params;
+
+  
   const post = blogPosts.find((p) => p.id === id) || {
     title: 'Yazı Bulunamadı',
     category: 'Blog',
@@ -59,7 +66,7 @@ export default function BlogDetailPage() {
             </div>
           </div>
 
-          {/* İçerik (Paragraf ve başlıkları ayırarak düzgün gösterim) */}
+          {/* İçerik */}
           <div className="space-y-8 text-base sm:text-lg text-stone-600 font-light leading-relaxed whitespace-pre-line">
             {post.content}
           </div>

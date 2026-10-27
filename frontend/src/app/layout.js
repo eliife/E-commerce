@@ -2,8 +2,8 @@ import { ReduxProvider } from '@/store/ReduxProvider';
 import "./globals.css";
 
 export const metadata = {
-  title: "E-Ticaret Projesi",
-  description: "Next.js & Express Monorepo E-Commerce",
+  title: "Velora | Tasarım Deri Çanta Modelleri",
+  description: "El işçiliği zarif detaylara sahip deri çanta ve aksesuar koleksiyonumuzu keşfedin. Ücretsiz kargo ve 14 gün içinde kolay iade avantajıyla hemen sipariş verin!",
 };
 
 export default function RootLayout({ children }) {
