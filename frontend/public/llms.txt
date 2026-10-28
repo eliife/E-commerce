@@ -1,0 +1,26 @@
+
+# VELORA
+
+> VELORA, zamansız ve minimalist tasarım anlayışıyla çanta, cüzdan ve deri aksesuarlar sunan bir e-ticaret markasıdır.
+
+## Temel Sayfalar
+
+- [Ana Sayfa](http://localhost:3000/): Marka ve koleksiyonlar hakkında genel bilgi.
+- [Tüm Ürünler](http://localhost:3000/products): Ürün koleksiyonu.
+- [Yeni Gelenler](http://localhost:3000/new-arrivals): Yeni ürünler.
+- [Çok Satanlar](http://localhost:3000/bestsellers): Çok satan ürünler.
+- [Hakkımızda](http://localhost:3000/about): Marka hakkında bilgi.
+- [Blog](http://localhost:3000/blog): Moda, stil ve aksesuarlarla ilgili içerikler.
+- [İletişim](http://localhost:3000/contact): Velora iletişim.
+
+## Ürün Kategorileri
+
+- [Çantalar](http://localhost:3000/bags): Çanta koleksiyonu.
+- [Cüzdanlar](http://localhost:3000/wallets): Cüzdan koleksiyonu.
+
+## Yasal Sayfalar
+
+- [Kullanım Koşulları](http://localhost:3000/yasal/terms-of-use): Web sitesinin kullanım koşulları.
+- [Gizlilik Politikası](http://localhost:3000/yasal/privacy-policy): Kişisel veriler ve gizlilik hakkında bilgiler.
+- [Mesafeli Satış Sözleşmesi](http://localhost:3000/yasal/distance-sales-agreement): Mesafeli satışa ilişkin sözleşme koşulları.
+- [İade Politikası](http://localhost:3000/yasal/return-policy): İade koşulları ve süreçleri.

@@ -7,6 +7,9 @@ import ProductSlider from '@/components/ProductSlider';
 export const metadata = {
   title: "Velora | Tasarım Deri Çanta Modelleri",
   description: "El işçiliği zarif detaylara sahip deri çanta ve aksesuar koleksiyonumuzu keşfedin. Ücretsiz kargo ve 14 gün içinde kolay iade avantajıyla hemen sipariş verin!",
+  alternates: {
+    canonical: '/',
+  },
 };
 
 const backendURL = 'http://localhost:5000';
