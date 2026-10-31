@@ -27,18 +27,18 @@ export default function LoginClient() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-stone-50/50 px-6 text-stone-800 selection:bg-stone-900 selection:text-white">
-      <div className="w-full max-w-md space-y-8 rounded-sm border border-stone-200 bg-white p-8 shadow-sm">
-        <div className="text-center space-y-2">
+      <main className="w-full max-w-md space-y-8 rounded-sm border border-stone-200 bg-white p-8 shadow-sm">
+        <header className="text-center space-y-2">
           <Link href="/" className="text-2xl font-serif tracking-widest text-stone-900 uppercase font-bold">
             VELORA
           </Link>
-          <h2 className="text-base font-serif tracking-[0.2em] text-stone-900 uppercase font-bold pt-2">
+          <h1 className="text-base font-serif tracking-[0.2em] text-stone-900 uppercase font-bold pt-2">
             Hesabınıza Giriş Yapın
-          </h2>
+          </h1>
           <p className="text-xs text-stone-500 font-light">
             Kaldığınız yerden alışverişe devam edin.
           </p>
-        </div>
+        </header>
 
         {error && (
           <div className="rounded-sm bg-red-50 border border-red-100 p-3 text-center text-xs font-medium text-red-600">
@@ -48,7 +48,7 @@ export default function LoginClient() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600 mb-1">
+            <label htmlFor="email" className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600 mb-1">
               E-posta Adresi
             </label>
             <input
@@ -62,7 +62,7 @@ export default function LoginClient() {
           </div>
 
           <div>
-            <label className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600 mb-1">
+            <label htmlFor="password" className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600 mb-1">
               Şifre
             </label>
             <input
@@ -90,7 +90,7 @@ export default function LoginClient() {
             Kayıt Ol
           </Link>
         </p>
-      </div>
+      </main>
     </div>
   );
 }

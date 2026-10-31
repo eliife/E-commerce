@@ -45,7 +45,7 @@ export default function ProductSlider({ initialWallets = [], initialProducts = [
                   {imageUrl ? (
                     <img
                       src={imageUrl}
-                      alt={product.name || 'Ürün Görseli'}
+                      alt={product.name || 'Velora çanta'}
                       loading="lazy"
                       className="h-full w-full object-cover group-hover:scale-105 transition duration-500"
                     />

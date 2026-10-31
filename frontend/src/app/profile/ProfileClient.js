@@ -205,7 +205,7 @@ export default function ProfileClient() {
         <Header />
 
         <main className="mx-auto max-w-7xl px-6 py-16">
-          <div className="mb-10 border-b border-stone-200 pb-4">
+          <header className="mb-10 border-b border-stone-200 pb-4">
             <h1 className="text-base font-serif tracking-[0.2em] text-stone-900 uppercase font-bold">
               Hesabım
             </h1>
@@ -215,11 +215,11 @@ export default function ProfileClient() {
                 {user.name || user.email?.split('@')[0] || 'Kullanıcı'}
               </span>
             </p>
-          </div>
+          </header>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 items-start">
             {/* Sol Menü */}
-            <aside className="lg:col-span-1 space-y-2">
+            <nav className="lg:col-span-1 space-y-2">
               <button
                 type="button"
                 onClick={() => setActiveTab('profile')}
@@ -279,13 +279,13 @@ export default function ProfileClient() {
                   Çıkış Yap
                 </button>
               </div>
-            </aside>
+            </nav>
 
             {/* Sağ İçerik */}
             <div className="lg:col-span-3">
               {/* Profil */}
               {activeTab === 'profile' && (
-                <div className="bg-white border border-stone-200 rounded-sm p-8 shadow-sm space-y-6">
+                <section className="bg-white border border-stone-200 rounded-sm p-8 shadow-sm space-y-6">
                   <div>
                     <h2 className="text-xs uppercase tracking-widest font-semibold text-stone-900">
                       Profil Bilgileri
@@ -314,12 +314,13 @@ export default function ProfileClient() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </section>
               )}
 
               {/* Siparişlerim */}
               {activeTab === 'orders' && (
-                <div className="space-y-6">
+                <section className="space-y-6">
+                  <h2 className="sr-only">Siparişlerim</h2>
                   <div className="bg-white border border-stone-200 rounded-sm p-12 text-center shadow-sm">
                     {loadingOrders ? (
                       <div className="flex justify-center items-center py-12">
@@ -328,7 +329,7 @@ export default function ProfileClient() {
                     ) : orders.length > 0 ? (
                       <div className="space-y-4 text-left">
                         {orders.map((order) => (
-                          <div
+                          <article
                             key={order._id || order.id}
                             className="border border-stone-200 rounded-sm p-5 flex justify-between items-center bg-stone-50/50"
                           >
@@ -350,7 +351,7 @@ export default function ProfileClient() {
                             >
                               Detaylar
                             </Link>
-                          </div>
+                          </article>
                         ))}
                       </div>
                     ) : (
@@ -367,12 +368,13 @@ export default function ProfileClient() {
                       </div>
                     )}
                   </div>
-                </div>
+                </section>
               )}
 
               {/* Adreslerim */}
               {activeTab === 'addresses' && (
-                <div className="space-y-6">
+                <section className="space-y-6">
+                  <h2 className='sr-only'>Adreslerim</h2>
                   <div className="bg-white border border-stone-200 rounded-sm p-6 shadow-sm flex justify-between items-center">
                     <div>
                       <h2 className="text-xs uppercase tracking-widest font-semibold text-stone-900">
@@ -491,7 +493,7 @@ export default function ProfileClient() {
                     ) : addresses.length > 0 ? (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {addresses.map((addr) => (
-                          <div
+                          <article
                             key={addr._id || addr.id}
                             className="border border-stone-200 rounded-sm p-5 relative flex flex-col justify-between space-y-3 bg-stone-50/30"
                           >
@@ -536,7 +538,7 @@ export default function ProfileClient() {
                             <p className="text-[11px] text-stone-400 border-t border-stone-200 pt-2 font-light tracking-wide">
                               Tel: {addr.phone}
                             </p>
-                          </div>
+                          </article>
                         ))}
                       </div>
                     ) : (
@@ -547,7 +549,7 @@ export default function ProfileClient() {
                       </div>
                     )}
                   </div>
-                </div>
+                </section>
               )}
             </div>
           </div>

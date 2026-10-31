@@ -21,14 +21,14 @@ export default function ReturnPolicyPage() {
         
         <main className="mx-auto max-w-5xl px-6 sm:px-12 py-20 lg:py-28">
           {/* Başlık Bölümü */}
-          <div className="border-b border-stone-200 pb-8 mb-16 text-center sm:text-left">
+          <header className="border-b border-stone-200 pb-8 mb-16 text-center sm:text-left">
             <h1 className="text-2xl sm:text-4xl font-serif tracking-tight text-stone-900 uppercase">
               İade Politikası
             </h1>
             <p className="text-xs text-stone-400 tracking-widest uppercase mt-3 font-light">
               Son Güncelleme: Ekim 2026
             </p>
-          </div>
+          </header>
 
           {/* İçerik Bölümü */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">
@@ -42,7 +42,7 @@ export default function ReturnPolicyPage() {
             </div>
 
             {/* Sağ taraf: Ana Metinler */}
-            <div className="md:col-span-8 space-y-12 text-sm sm:text-base text-stone-600 font-light leading-relaxed">
+            <article className="md:col-span-8 space-y-12 text-sm sm:text-base text-stone-600 font-light leading-relaxed">
               <section className="space-y-4">
                 <h2 className="text-xs sm:text-sm font-semibold text-stone-900 uppercase tracking-widest">
                   01. İade Koşulları
@@ -69,7 +69,7 @@ export default function ReturnPolicyPage() {
                   İade edilen ürün depomuza ulaştıktan ve incelemeleri tamamlandıktan sonra, ödemeniz 3-7 iş günü içerisinde orijinal ödeme yönteminizle hesabınıza aktarılır.
                 </p>
               </section>
-            </div>
+            </article>
           </div>
         </main>
       </div>

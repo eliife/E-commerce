@@ -78,7 +78,7 @@ export default function FavoritesClient() {
         <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
         <main className="mx-auto max-w-7xl px-6 py-16">
-          <div className="flex items-center justify-between border-b border-stone-200 pb-4 mb-10">
+          <header className="flex items-center justify-between border-b border-stone-200 pb-4 mb-10">
             <div>
               <h1 className="text-base font-serif tracking-[0.2em] text-stone-900 uppercase font-bold">
                 Favori Ürünlerim
@@ -90,14 +90,16 @@ export default function FavoritesClient() {
             <span className="text-xs uppercase tracking-widest text-stone-500 font-medium">
               {filteredFavorites.length} çeşit ürün
             </span>
-          </div>
+          </header>
 
           {loading ? (
             <div className="flex justify-center items-center py-32">
               <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-stone-900"></div>
             </div>
           ) : filteredFavorites.length > 0 ? (
-            <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <section className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <h2 className="sr-only">Favori Ürünlerim</h2>
+              
               {filteredFavorites.map((product) => {
                 const productId = product._id || product.id;
 
@@ -108,7 +110,7 @@ export default function FavoritesClient() {
                   : null;
 
                 return (
-                  <div key={productId} className="group relative flex flex-col">
+                  <article key={productId} className="group relative flex flex-col">
                     <div className="relative aspect-square w-full overflow-hidden bg-stone-100/70 flex items-center justify-center">
                       <Link href={`/products/${productId}`} className="w-full h-full flex items-center justify-center">
                         {imageUrl ? (
@@ -155,10 +157,10 @@ export default function FavoritesClient() {
                     >
                       Sepete Ekle
                     </button>
-                  </div>
+                  </article>
                 );
               })}
-            </div>
+            </section>
           ) : (
             <div className="text-center py-24 space-y-4">
               <div className="w-16 h-16 mx-auto rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-400 shadow-sm">

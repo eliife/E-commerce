@@ -31,14 +31,14 @@ export default function RegisterClient() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-stone-50/50 px-6 text-stone-800">
-      <div className="w-full max-w-md space-y-8 rounded-sm border border-stone-200 bg-white p-8 shadow-sm">
-        <div className="text-center">
+      <main className="w-full max-w-md space-y-8 rounded-sm border border-stone-200 bg-white p-8 shadow-sm">
+        <header className="text-center">
           <Link href="/" className="text-xl font-serif tracking-[0.2em] text-stone-900 uppercase font-medium">
             VELORA
           </Link>
-          <h2 className="mt-4 text-xs font-medium uppercase tracking-widest text-stone-900">Yeni Hesap Oluştur</h2>
+          <h1 className="mt-4 text-xs font-medium uppercase tracking-widest text-stone-900">Yeni Hesap Oluştur</h1>
           <p className="mt-1 text-xs text-stone-500 font-light">El yapımı deri koleksiyonumuza katılmak için kaydolun.</p>
-        </div>
+        </header>
 
         {error && (
           <div className="rounded-sm bg-red-50 p-3 text-center text-xs font-medium text-red-600 border border-red-100">
@@ -48,7 +48,7 @@ export default function RegisterClient() {
 
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
-            <label className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600">Ad Soyad</label>
+            <label htmlFor="name" className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600">Ad Soyad</label>
             <input
               type="text"
               value={name}
@@ -60,7 +60,7 @@ export default function RegisterClient() {
           </div>
 
           <div>
-            <label className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600">E-posta Adresi</label>
+            <label htmlFor="email" className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600">E-posta Adresi</label>
             <input
               type="email"
               value={email}
@@ -72,7 +72,7 @@ export default function RegisterClient() {
           </div>
 
           <div>
-            <label className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600">Şifre</label>
+            <label htmlFor="password" className="block text-[10px] font-semibold uppercase tracking-widest text-stone-600">Şifre</label>
             <input
               type="password"
               value={password}
@@ -98,7 +98,7 @@ export default function RegisterClient() {
             Giriş Yap
           </Link>
         </p>
-      </div>
+      </main>
     </div>
   );
 }

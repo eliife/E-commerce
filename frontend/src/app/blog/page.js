@@ -23,17 +23,19 @@ export default function BlogListPage() {
         
         <main className="mx-auto max-w-6xl px-6 sm:px-12 py-24 lg:py-32">
           {/* Ferah Başlık */}
-          <div className="mb-24 text-center max-w-xl mx-auto space-y-4">
+          <header className="mb-24 text-center max-w-xl mx-auto space-y-4">
             <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-stone-900 uppercase">
               BLOG
             </h1>
             <p className="text-xs text-stone-400 tracking-[0.25em] uppercase font-light">
               Hikâyeler, ilhamlar ve deri üzerine notlar.
             </p>
-          </div>
+          </header>
 
           {/* Kart Grid Yapısı */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
+          <section 
+           aria-label="Blog yazıları"
+           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
             {blogPosts.map((post) => (
               <article 
                 key={post.id} 
@@ -70,7 +72,7 @@ export default function BlogListPage() {
                 </div>
               </article>
             ))}
-          </div>
+          </section>
         </main>
       </div>
 

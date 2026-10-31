@@ -16,8 +16,8 @@ export default function Hero() {
           className="group relative block w-full overflow-hidden bg-[#F4F1EA]"
         >
           <img
-            src={`${backendURL}/uploads/ana-banner-5.webp`}
-            alt="VELORA çantalar koleksiyonu"
+            src={`${backendURL}/uploads/ana-banner-3.webp`}
+            alt="Bej kaban giyen modelin taşıdığı koyu kahverengi deri omuz çantası"
             className="h-[78vh] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] sm:h-[82vh] md:h-auto md:object-contain"
           />
         </Link>
@@ -28,8 +28,8 @@ export default function Hero() {
           className="group relative block w-full overflow-hidden bg-[#F4F1EA]"
         >
           <img
-            src={`${backendURL}/uploads/ana-banner-4.webp`}
-            alt="VELORA cüzdanlar koleksiyonu"
+            src={`${backendURL}/uploads/ana-banner-2.webp`}
+            alt="Beyaz trençkot giyen modelin elinde tuttuğu siyah deri el çantası"
             className="h-[78vh] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] sm:h-[82vh] md:h-auto md:object-contain"
           />
         </Link>

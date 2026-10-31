@@ -38,7 +38,6 @@ export default async function HomePage() {
       
 
       <main>
-
         <h1 className="sr-only">
             VELORA | Modern ve Zamansız Deri Çanta ve Cüzdan Modelleri
         </h1>
@@ -52,7 +51,7 @@ export default async function HomePage() {
         <section className="relative w-full min-h-[85vh] sm:min-h-screen overflow-hidden bg-[#F4F1EA] py-12 flex items-center justify-center">
           <img
             src={`${backendURL}/uploads/ana-banner-1.webp`}
-            alt="Kampanya Görseli"
+            alt="Beyaz kıyafetli modelin elinde taşıdığı koyu kahverengi deri kadın el çantası, deniz manzarası eşliğinde"
             className="w-full h-full object-cover absolute inset-0"
           />
 
