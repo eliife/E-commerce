@@ -14,7 +14,7 @@ export default function ProductInfo({
   const productId = product?._id || product?.id;
 
   return (
-    <div className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col space-y-6">
+    <section className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col space-y-6">
       <div className="space-y-3 border-b border-stone-200/80 pb-6">
         <div className="flex items-center justify-between">
           <span className="text-[11px] uppercase tracking-[0.25em] text-stone-500 font-medium">
@@ -96,6 +96,6 @@ export default function ProductInfo({
           Sepete Ekle
         </button>
       </div>
-    </div>
+    </section>
   );
 }

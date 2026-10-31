@@ -133,7 +133,9 @@ export default function CartClient() {
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
               <div className="lg:col-span-2 space-y-4">
-                <div className="divide-y divide-stone-200 border-t border-b border-stone-200">
+                <section
+                 aria-label="Sepetinizdeki ürünler"
+                 className="divide-y divide-stone-200 border-t border-b border-stone-200">
                   {cartItems.map((item) => {
                     const itemId = item.id || item._id;
                     const backendURL = 'http://localhost:5000';
@@ -146,7 +148,7 @@ export default function CartClient() {
                       : null;
 
                     return (
-                      <div
+                      <article
                         key={itemId}
                         className="py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                       >
@@ -230,10 +232,10 @@ export default function CartClient() {
                             </svg>
                           </button>
                         </div>
-                      </div>
+                      </article>
                     );
                   })}
-                </div>
+                </section>
 
                 <div className="flex justify-between items-center pt-2">
                   <button
@@ -253,7 +255,7 @@ export default function CartClient() {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-sm border border-stone-200 space-y-6 shadow-sm">
+              <aside className="bg-white p-6 rounded-sm border border-stone-200 space-y-6 shadow-sm">
                 <h2 className="text-xs font-medium text-stone-900 uppercase tracking-widest border-b border-stone-200 pb-3">
                   Sipariş Özeti
                 </h2>
@@ -282,7 +284,7 @@ export default function CartClient() {
                 <button className="w-full rounded-sm bg-stone-900 py-3 text-xs font-medium tracking-widest uppercase text-white hover:bg-stone-800 transition shadow-sm cursor-pointer">
                   Alışverişi Tamamla
                 </button>
-              </div>
+              </aside>
             </div>
           )}
         </main>

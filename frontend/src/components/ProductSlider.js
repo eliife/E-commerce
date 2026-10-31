@@ -11,7 +11,7 @@ export default function ProductSlider({ initialWallets = [], initialProducts = [
     : (initialProducts && initialProducts.length > 0 ? initialProducts : []);
 
   return (
-    <section className="mx-auto max-w-[1536px] px-4 sm:px-8 py-6">
+    <section  aria-label="Öne Çıkan Ürünler"className="mx-auto max-w-[1536px] px-4 sm:px-8 py-6">
       {/* Eğer centered={true} verildiyse flex-wrap ve justify-center ile ortalar, verilmediyse normal grid kalır */}
       <div className={`flex gap-4 overflow-x-auto pb-4 scrollbar-none snap-x snap-mandatory sm:pb-0 ${
         centered 

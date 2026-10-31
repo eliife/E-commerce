@@ -218,8 +218,12 @@ export default function ProductCatalogTemplate({
                 Ürün bulunamadı.
               </div>
             )}
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12">
+            <h2 className="sr-only">
+                {pageTitle} Koleksiyonu
+            </h2>
+            <section
+             aria-label="Ürün listesi"
+             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12">
               {products.map((product) => {
                 const productId = product.id || product._id;
                 const isFavorited = wishlistIds.includes(String(productId));
@@ -232,7 +236,7 @@ export default function ProductCatalogTemplate({
                   : null;
 
                 return (
-                  <div
+                  <article
                     key={productId}
                     className="group relative flex flex-col bg-transparent"
                   >
@@ -307,10 +311,10 @@ export default function ProductCatalogTemplate({
                         </p>
                       </Link>
                     </div>
-                  </div>
+                  </article>
                 );
               })}
-            </div>
+            </section>
           </div>
         </main>
       </div>

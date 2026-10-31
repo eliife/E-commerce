@@ -19,18 +19,18 @@ export default function ContactPage() {
         <Header />
         
         <main className="mx-auto max-w-2xl px-6 sm:px-12 py-24 lg:py-32">
-          {/* Başlık Alanı */}
-          <div className="mb-16 text-center space-y-4">
+          
+          <header className="mb-16 text-center space-y-4">
             <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-stone-900 uppercase">
               İletişim
             </h1>
             <p className="text-xs text-stone-400 tracking-[0.25em] uppercase font-light">
               Sorularınız, önerileriniz ve özel siparişleriniz için bizimle iletişime geçin.
             </p>
-          </div>
+          </header>
 
           {/* Merkezileştirilmiş Şık Bilgi Kartı / Alanı */}
-          <div className="bg-[#F7F4EE]/50 border border-stone-200/60 p-10 sm:p-14 rounded-sm space-y-12 text-center">
+          <section className="bg-[#F7F4EE]/50 border border-stone-200/60 p-10 sm:p-14 rounded-sm space-y-12 text-center">
             
             <div className="space-y-4 max-w-lg mx-auto">
               <h2 className="text-2xl font-serif text-stone-900">Velora</h2>
@@ -56,7 +56,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-          </div>
+          </section>
         </main>
       </div>
 

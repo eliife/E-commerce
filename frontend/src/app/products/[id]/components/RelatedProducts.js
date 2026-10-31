@@ -33,7 +33,7 @@ export default function RelatedProducts({
           const isRelFavorited = wishlistIds.includes(String(relId));
 
           return (
-            <div
+            <article
               key={relId}
               className="group relative flex flex-col"
             >
@@ -108,7 +108,7 @@ export default function RelatedProducts({
                   {item.price} ₺
                 </p>
               </Link>
-            </div>
+            </article>
           );
         })}
       </div>

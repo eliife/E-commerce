@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <div className="w-full bg-[#FDFBF7]">
       {/* 1. Ana bannerlar */}
-      <section className="grid w-full grid-cols-2 gap-0 bg-[#FDFBF7] p-0">
+      <section aria-label="Öne çıkan koleksiyonlar" className="grid w-full grid-cols-2 gap-0 bg-[#FDFBF7] p-0">
         <Link
           href="/bestsellers"
           aria-label="Çantalar koleksiyonunu keşfet"
@@ -36,23 +36,27 @@ export default function Hero() {
       </section>
 
       {/* 2. Kategori yönlendirmeleri */}
-      <section className="mx-auto max-w-7xl space-y-16 px-6 py-32 text-center sm:space-y-24 sm:px-12 sm:py-48">
+      <section aria-label="Ürün kategorileri" className="mx-auto max-w-7xl space-y-16 px-6 py-32 text-center sm:space-y-24 sm:px-12 sm:py-48">
         <div>
-          <Link
-            href="/bags"
-            className="inline-block font-serif text-5xl font-light uppercase tracking-wider text-stone-900 transition-all duration-300 hover:-translate-x-3 sm:text-7xl md:text-8xl lg:text-9xl"
-          >
-            Çantalar
-          </Link>
+          <h2>
+            <Link
+              href="/bags"
+              className="inline-block font-serif text-5xl font-light uppercase tracking-wider text-stone-900 transition-all duration-300 hover:-translate-x-3 sm:text-7xl md:text-8xl lg:text-9xl"
+            >
+              Çantalar
+            </Link>
+          </h2>
         </div>
 
         <div>
+          <h2>
           <Link
-            href="/wallets"
-            className="inline-block font-serif text-4xl font-light uppercase tracking-wider text-stone-900 transition-all duration-300 hover:-translate-x-3 sm:text-6xl md:text-7xl"
-          >
-            Cüzdanlar
-          </Link>
+              href="/wallets"
+              className="inline-block font-serif text-4xl font-light uppercase tracking-wider text-stone-900 transition-all duration-300 hover:-translate-x-3 sm:text-6xl md:text-7xl"
+            >
+              Cüzdanlar
+            </Link>
+          </h2>
         </div>
       </section>
     </div>

@@ -58,9 +58,12 @@ export default function ProductAccordion({ product }) {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto border-t border-stone-200/80 pt-10 mb-16">
+    <section
+    aria-label="Ürün açıklaması ve özellikleri"
+     className="w-full max-w-3xl mx-auto border-t border-stone-200/80 pt-10 mb-16">
       <div className="divide-y divide-stone-200/80 border-y border-stone-200/80">
         <div>
+         <h2>
           <button
             type="button"
             onClick={() => toggleAccordion('description')}
@@ -72,7 +75,7 @@ export default function ProductAccordion({ product }) {
               {openAccordion === 'description' ? '−' : '+'}
             </span>
           </button>
-
+         </h2>
           {openAccordion === 'description' && (
             <div className="pb-6 text-xs text-stone-600 leading-relaxed font-light space-y-5">
               <p>
@@ -80,9 +83,9 @@ export default function ProductAccordion({ product }) {
               </p>
 
               <div className="pt-4 border-t border-stone-200/60">
-                <h2 className="text-[11px] uppercase tracking-[0.15em] font-semibold text-stone-900 mb-3">
+                <h3 className="text-[11px] uppercase tracking-[0.15em] font-semibold text-stone-900 mb-3">
                   Nasıl Kombinlenir
-                </h2>
+                </h3>
 
                 {renderFormattedCombination(product.combination)}
               </div>
@@ -91,6 +94,7 @@ export default function ProductAccordion({ product }) {
         </div>
 
         <div>
+         <h2>
           <button
             type="button"
             onClick={() => toggleAccordion('materials')}
@@ -102,7 +106,7 @@ export default function ProductAccordion({ product }) {
               {openAccordion === 'materials' ? '−' : '+'}
             </span>
           </button>
-
+         </h2>
           {openAccordion === 'materials' && (
             <div className="pb-6 text-xs text-stone-600 leading-relaxed font-light space-y-3">
               {renderFormattedMaterials(
@@ -112,6 +116,6 @@ export default function ProductAccordion({ product }) {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

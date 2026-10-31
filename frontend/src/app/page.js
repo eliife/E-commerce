@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
@@ -22,9 +23,9 @@ export default async function HomePage() {
     const res = await fetch(`${backendURL}/api/products`, { cache: 'no-store' });
     const json = await res.json();
     const data = Array.isArray(json) ? json : (json.products || json.data || []);
-    
+
     wallets = data.filter((product) => product && product.category === 'Wallets').slice(0, 3);
-    
+
     bags = data.filter((product) => product && product.category === 'Bags').slice(0, 4);
   } catch (err) {
     console.error('Ürünler sunucudan çekilemedi:', err);
@@ -32,11 +33,18 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
-      <div>
-        <Header />
+      <Header />
+
+      
+
+      <main>
+
+        <h1 className="sr-only">
+            VELORA | Modern ve Zamansız Deri Çanta ve Cüzdan Modelleri
+        </h1>
         <Hero />
 
-        <ProductSlider 
+        <ProductSlider
           initialWallets={bags}
           backendURL={backendURL}
         />
@@ -60,13 +68,13 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <ProductSlider 
+        <ProductSlider
           initialWallets={wallets}
           backendURL={backendURL}
-          centered={true} 
+          centered={true}
         />
 
-        <main className="mx-auto max-w-4xl px-6 sm:px-12 py-16 lg:py-20 text-center space-y-8 flex flex-col items-center justify-center">
+        <section className="mx-auto max-w-4xl px-6 sm:px-12 py-16 lg:py-20 text-center space-y-8 flex flex-col items-center justify-center">
           <span className="text-[10px] uppercase tracking-[0.3em] text-stone-400 font-light">
             Velora
           </span>
@@ -94,8 +102,8 @@ export default async function HomePage() {
               Blog
             </Link>
           </div>
-        </main>
-      </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

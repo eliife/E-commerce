@@ -85,8 +85,10 @@ export default function ProductDetailClient({
         <Header />
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
-          <div>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
+         
+            <section
+              aria-label='Ürün detayları'
+              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
               <ProductGallery
                 imagesList={imagesList}
                 selectedImageIndex={selectedImageIndex}
@@ -101,17 +103,21 @@ export default function ProductDetailClient({
                 isFavorite={isFavorite}
                 handleToggleWishlist={handleToggleWishlist}
               />
-            </div>
+            </section>
+             
+            <section aria-label="Ürün açıklaması ve özellikleri">
+              <ProductAccordion product={product} />
+            </section>
 
-            <ProductAccordion product={product} />
-
-            <RelatedProducts
+           <section aria-label="Benzer ürünler">
+             <RelatedProducts
               products={relatedProducts}
               backendURL={backendURL}
               wishlistIds={wishlistIds}
               handleToggleWishlist={handleToggleWishlist}
             />
-          </div>
+           </section>
+          
         </main>
       </div>
 

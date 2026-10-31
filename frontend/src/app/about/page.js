@@ -31,14 +31,14 @@ export default function AboutPage() {
           {/* Ana İçerik - Dergi Tarzı Akış */}
           <div className="space-y-16 text-stone-600 font-light leading-relaxed">
             {/* Bölüm 1: Giriş / Felsefe */}
-            <div className="space-y-6 text-base sm:text-lg">
+            <section className="space-y-6 text-base sm:text-lg">
               <p className="first-letter:text-5xl first-letter:font-serif first-letter:mr-3 first-letter:float-left first-letter:text-stone-900">
                 Velora; modern şehir yaşamının karmaşasından arınmış, sadeliğin en saf halini estetikle buluşturan bir tasarım stüdyosudur. Yolculuğumuz, geçici trendlerin ötesine geçen, yıllar geçtikçe karakter kazanan zamansız parçalar üretme tutkusuyla başladı.
               </p>
               <p>
                 Bizim için her bir deri çanta veya aksesuar, yalnızca günlük bir eşya değil; kullanıcısının hikayesine eşlik eden sessiz ama güçlü bir imdadır.
               </p>
-            </div>
+            </section>
 
             {/* İleride Birden Fazla Fotoğraf Eklenebilecek Galeri Alanı (2'li / 3'lü Grid) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 my-16">
@@ -69,7 +69,7 @@ export default function AboutPage() {
             </div>
 
             {/* Bölüm 2: Zanaat ve Malzeme */}
-            <div className="space-y-6 text-sm sm:text-base">
+            <section className="space-y-6 text-sm sm:text-base">
               <h2 className="text-xl font-serif text-stone-900 pt-4">
                 El İşçiliğinin ve Doğanın Buluşması
               </h2>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               <p>
                 Toprak tonlarının sakinliği, minimalist çizgilerin zarafeti ve fonksiyonelliğin getirdiği konfor; her koleksiyonumuzun temel yapı taşını oluşturur.
               </p>
-            </div>
+            </section>
 
             {/* Üçüncü Fotoğraf Alanı (Opsiyonel Tam Genişlik Atmosfer Karesi) */}
             <div className="w-full h-72 sm:h-96 bg-[#F7F4EE] border border-stone-200/60 overflow-hidden rounded-sm my-12 relative">
@@ -91,14 +91,14 @@ export default function AboutPage() {
             </div>
 
             {/* Bölüm 3: Sürdürülebilirlik ve Gelecek */}
-            <div className="space-y-6 text-sm sm:text-base">
+            <section className="space-y-6 text-sm sm:text-base">
               <h2 className="text-xl font-serif text-stone-900 pt-4">
                 Sürdürülebilir Zarafet
               </h2>
               <p>
                 Bugün ve gelecekte, çevreye duyarlı üretim ilkelerinden ödün vermeden yol alıyoruz. Hızlı tüketim döngüsüne karşı durarak, "az ama öz" felsefesiyle uzun ömürlü ürünler tasarlıyor; doğaya ve insana saygılı bir stüdyo kültürünü yaşatmaya devam ediyoruz.
               </p>
-            </div>
+            </section>
           </div>
         </main>
       </div>
