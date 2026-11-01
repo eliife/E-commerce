@@ -27,8 +27,9 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function Page({ params }) {
+export default async function Page({ params , searchParams }) {
   const { id } = await params;
+  const { from } = await searchParams;
 
   let product = null;
   let relatedProducts = [];
@@ -52,6 +53,7 @@ export default async function Page({ params }) {
       initialProduct={product} 
       initialRelatedProducts={relatedProducts} 
       backendURL={backendURL} 
+      sourcePage={from || ''}
     />
   );
 }

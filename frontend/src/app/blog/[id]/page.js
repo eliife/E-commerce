@@ -92,15 +92,6 @@ export default async function BlogDetailPage({ params }) {
 
         <main className="mx-auto max-w-3xl px-6 sm:px-12 py-20 lg:py-32">
 
-          <nav aria-label="Blog gezinme" className="mb-12">
-            <Link
-              href="/blog"
-              className="text-[11px] uppercase tracking-[0.2em] text-stone-400 hover:text-stone-900 transition font-light"
-            >
-              ← Tüm Yazılara Dön
-            </Link>
-          </nav>
-
           <header className="space-y-6 mb-16">
             <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-stone-400 font-light">
               <span>{post.category}</span>

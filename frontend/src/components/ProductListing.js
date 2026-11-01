@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import useWishlist from '@/components/useWishlist';
+import Breadcrumb from '@/components/Breadcrumb';
 
 export default function ProductCatalogTemplate({
   pageTitle = 'Ürünler',
@@ -172,6 +173,11 @@ export default function ProductCatalogTemplate({
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 flex flex-col justify-between selection:bg-stone-900 selection:text-white">
       <div>
         <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Breadcrumb
+          items={[
+            { label: pageTitle }
+          ]}
+        />
 
         <main className="mx-auto max-w-[1536px] px-4 sm:px-8 py-8 sm:py-12">
           <div className="flex items-end justify-between border-b border-stone-200 pb-6 mb-8">
@@ -242,8 +248,11 @@ export default function ProductCatalogTemplate({
                   >
                     <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#F4F1EA] flex items-center justify-center">
                       <Link
-                        href={`/products/${productId}`}
-                        className="w-full h-full flex items-center justify-center"
+                        href={`/products/${productId}?from=${encodeURIComponent(
+                          searchTerm
+                            ? 'Arama Sonuçları'
+                            : pageTitle
+                        )}`}
                       >
                         {imageUrl ? (
                           <img

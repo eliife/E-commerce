@@ -4,16 +4,17 @@ import { useState } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import useWishlist from '@/components/useWishlist';
-
 import ProductGallery from './components/ProductGallery';
 import ProductInfo from './components/ProductInfo';
 import ProductAccordion from './components/ProductAccordion';
 import RelatedProducts from './components/RelatedProducts';
+import Breadcrumb from '@/components/Breadcrumb';
 
 export default function ProductDetailClient({
   initialProduct,
   initialRelatedProducts,
   backendURL,
+  sourcePage,
 }) {
   const [product] = useState(initialProduct);
   const [relatedProducts] = useState(initialRelatedProducts);
@@ -83,6 +84,14 @@ export default function ProductDetailClient({
     <div className="min-h-screen bg-[#FAFAF9] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
       <div>
         <Header />
+        <Breadcrumb
+          items={[
+            ...(sourcePage
+              ? [{ label: sourcePage, href: '/products' }]
+              : []),
+            { label: product.name },
+          ]}
+        />
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
          
