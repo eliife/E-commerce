@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,7 +14,9 @@ export default function ProductCatalogTemplate({
   pageTitle = 'Ürünler',
   subtitlePrefix = '',
   defaultSort = 'default',
-  defaultCategory = 'Tümü', // <-- Yeni eklenen prop: Başlangıç kategorisi
+  defaultCategory = 'Tümü',
+  categoryDescription = '',
+  categoryBottomDescription = '',
 }) {
   const searchParams = useSearchParams();
   const keywordParam = searchParams.get('keyword') || '';
@@ -25,7 +28,7 @@ export default function ProductCatalogTemplate({
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState(keywordParam);
-  const [selectedCategory, setSelectedCategory] = useState(defaultCategory); // <-- Prop burada kullanıldı
+  const [selectedCategory, setSelectedCategory] = useState(defaultCategory);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedColor, setSelectedColor] = useState('Tümü');
   const [sortBy, setSortBy] = useState(defaultSort);
@@ -76,6 +79,7 @@ export default function ProductCatalogTemplate({
         }
       } catch (err) {
         console.error('Ürün yükleme hatası:', err);
+
         if (!cancelled) {
           setError('Ürünler yüklenirken bir sorun oluştu.');
         }
@@ -105,11 +109,13 @@ export default function ProductCatalogTemplate({
     // Arama filtresi
     if (searchTerm && searchTerm.trim() !== '') {
       const query = searchTerm.trim().toLocaleLowerCase('tr-TR');
+
       result = result.filter((product) => {
         const fullText = Object.values(product)
           .filter((value) => typeof value === 'string')
           .join(' ')
           .toLocaleLowerCase('tr-TR');
+
         return fullText.includes(query);
       });
     }
@@ -173,6 +179,7 @@ export default function ProductCatalogTemplate({
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 flex flex-col justify-between selection:bg-stone-900 selection:text-white">
       <div>
         <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
         <Breadcrumb
           items={[
             { label: pageTitle }
@@ -180,22 +187,30 @@ export default function ProductCatalogTemplate({
         />
 
         <main className="mx-auto max-w-[1536px] px-4 sm:px-8 py-8 sm:py-12">
-          <div className="flex items-end justify-between border-b border-stone-200 pb-6 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-stone-200 pb-6 mb-8 gap-5">
             <div>
               <h1 className="text-2xl sm:text-4xl font-serif tracking-tight text-stone-900">
                 {searchTerm ? `"${searchTerm}" Arama Sonuçları` : pageTitle}
               </h1>
+
               <p className="text-xs text-stone-400 tracking-wider uppercase mt-1.5">
                 {subtitlePrefix} {products.length} ÜRÜN
               </p>
+
+              {categoryDescription && !searchTerm && (
+                <p className="text-sm text-stone-500 mt-3 max-w-2xl leading-relaxed">
+                  {categoryDescription}
+                </p>
+              )}
             </div>
 
             <button
               type="button"
               onClick={() => setIsFilterDrawerOpen(true)}
-              className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-stone-900 hover:opacity-70 transition cursor-pointer border-b border-stone-900 pb-1"
+              className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-stone-900 hover:opacity-70 transition cursor-pointer border-b border-stone-900 pb-1 self-start sm:self-auto"
             >
               <span>FİLTRELER</span>
+
               <span className="text-stone-400">
                 (
                 {(selectedCategory !== 'Tümü' ? 1 : 0) +
@@ -224,17 +239,21 @@ export default function ProductCatalogTemplate({
                 Ürün bulunamadı.
               </div>
             )}
+
             <h2 className="sr-only">
-                {pageTitle} Koleksiyonu
+              {pageTitle} Koleksiyonu
             </h2>
+
             <section
-             aria-label="Ürün listesi"
-             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12">
+              aria-label="Ürün listesi"
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12"
+            >
               {products.map((product) => {
                 const productId = product.id || product._id;
                 const isFavorited = wishlistIds.includes(String(productId));
                 const backendURL = 'http://localhost:5000';
                 const rawImg = product.image || product.images?.[0];
+
                 const imageUrl = rawImg
                   ? rawImg.startsWith('http')
                     ? rawImg
@@ -249,10 +268,9 @@ export default function ProductCatalogTemplate({
                     <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#F4F1EA] flex items-center justify-center">
                       <Link
                         href={`/products/${productId}?from=${encodeURIComponent(
-                          searchTerm
-                            ? 'Arama Sonuçları'
-                            : pageTitle
+                          searchTerm ? 'Arama Sonuçları' : pageTitle
                         )}`}
+                        className="block w-full h-full"
                       >
                         {imageUrl ? (
                           <img
@@ -324,6 +342,18 @@ export default function ProductCatalogTemplate({
                 );
               })}
             </section>
+
+            {categoryBottomDescription && !searchTerm && (
+              <div className="mt-16 max-w-3xl">
+                <h2 className="text-xl font-serif text-stone-900 mb-4">
+                  {pageTitle} Koleksiyonunu Keşfedin
+                </h2>
+
+                <p className="text-sm text-stone-600 leading-7">
+                  {categoryBottomDescription}
+                </p>
+              </div>
+            )}
           </div>
         </main>
       </div>
@@ -339,6 +369,7 @@ export default function ProductCatalogTemplate({
           <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col justify-between z-10">
             <div className="flex items-center justify-between p-6 border-b border-stone-200">
               <h2 className="text-lg font-serif text-stone-900">Filtreler</h2>
+
               <button
                 type="button"
                 onClick={() => setIsFilterDrawerOpen(false)}
@@ -355,6 +386,7 @@ export default function ProductCatalogTemplate({
                 <h3 className="text-xs font-serif text-stone-900 mb-4 text-base">
                   Sırala
                 </h3>
+
                 <div className="space-y-3">
                   {[
                     { id: 'default', label: 'VARSAYILAN' },
@@ -374,6 +406,7 @@ export default function ProductCatalogTemplate({
                         onChange={() => setSortBy(option.id)}
                         className="accent-stone-900"
                       />
+
                       <span>{option.label}</span>
                     </label>
                   ))}
@@ -388,6 +421,7 @@ export default function ProductCatalogTemplate({
                   className="w-full flex justify-between items-center text-xs font-semibold tracking-wider text-stone-900 uppercase py-1 cursor-pointer"
                 >
                   <span>Kategoriler</span>
+
                   <span className="text-stone-400 font-light text-base">
                     {openSections.category ? '−' : '+'}
                   </span>
@@ -403,6 +437,7 @@ export default function ProductCatalogTemplate({
                         onChange={() => setSelectedCategory('Tümü')}
                         className="accent-stone-900"
                       />
+
                       <span>Tümü</span>
                     </label>
 
@@ -418,6 +453,7 @@ export default function ProductCatalogTemplate({
                           onChange={() => setSelectedCategory(category)}
                           className="accent-stone-900"
                         />
+
                         <span>{category}</span>
                       </label>
                     ))}
@@ -434,6 +470,7 @@ export default function ProductCatalogTemplate({
               >
                 TEMİZLE
               </button>
+
               <button
                 type="button"
                 onClick={() => setIsFilterDrawerOpen(false)}

@@ -2,9 +2,9 @@
   {
     "id": "bordo-deri-omuz-cantasi",
     "name": "Bordo Deri Omuz Çantası",
-    "description": "VELORA bordo hakiki deriden üretilmiş, zarif büzgülü tasarımıyla öne çıkan lüks omuz ve portföy çantası.",
-    "description2": "VELORA Bordo Deri Omuz Çantası, birinci sınıf hakiki derinin kusursuz işçiliğiyle tasarlanmıştır. Derin bordo tonu, zamansız büzgülü formu ve zarif silüetiyle hem günlük ofis stilinize hem de akşam davetlerinize sofistike bir imza atar. Geniş iç haznesi ve yumuşak dokusu sayesinde telefon, cüzdan, anahtarlık gibi günlük temel eşyalarınızı konforla taşımanızı sağlarken; portföy çanta olarak elde de kullanılabilen çok yönlü tasarımıyla gardırobunuzun vazgeçilmez parçası olur.",
-    "combination": "Bu iddialı bordo çantayı gardırobunuzdaki farklı tarzlarla kolayca eşleştirebilirsiniz:\n- **Ofis ve Şehir Stili:** Bej veya taş rengi oversize bir trençkot, siyah balıkçı yaka triko, düz kesim siyah kumaş pantolon ve bordo deri kısa botlarla tamamlayarak sokak modasında güçlü bir uyum yakalayabilirsiniz.\n- **Günlük Casual:** İndigo mavi boy-friend kot pantolon, beyaz basic tişört ve üzerinize alacağınız salaş ekru bir hırkayla günlük tarzınıza hareket katabilirsiniz.\n- **Akşam / Özel Davet:** Saten siyah midi bir elbise, zarif ince bantlı stiletto'lar ve altın sarısı minimal takılarla kombinleyerek bordo tonunun asaletiyle tüm dikkatleri üzerinize çekebilirsiniz.",
+    "description": "VELORA bordo deri omuz çantası, büzgülü tasarımı ve derin renk tonuyla günlük kullanıma ve özel davetlere uyum sağlar. Elde portföy çanta olarak da taşınabilir.",
+    "description2": "VELORA Bordo Deri Omuz Çantası, derin bordo rengi ve büzgülü tasarımıyla klasik çanta modellerine farklı bir yorum getirir. Dikkat çekici renk tonu, sade kıyafetlere hareket katarken özenle hazırlanmış silüeti günlük kullanımdan özel davetlere kadar farklı ortamlara uyum sağlar. İç hacmi, gün içerisinde ihtiyaç duyabileceğiniz kişisel eşyalarınızı yanınızda taşımanıza yardımcı olur. Omuz çantası olarak kullanılabilmesinin yanı sıra elde portföy çanta görünümünde de taşınabilen tasarımıyla farklı kullanım alternatifleri sunar. Bordo tonunu siyah, ekru, bej ve kahverengi gibi renklerle bir araya getirerek hem günlük hem de daha klasik kombinler oluşturabilirsiniz. Zamansız aksesuarları tercih edenler için güçlü bir stil tamamlayıcısıdır.",
+    "combination": "Bordo deri omuz çantasını farklı renk ve stillerle tamamlayabilirsiniz:\n**Ofis ve şehir stili:** Bej trençkot, siyah triko ve düz kesim kumaş pantolonla sade bir görünüm oluşturabilirsiniz.\n**Günlük kullanım:** Mavi denim pantolon, beyaz basic tişört ve ekru hırkayla bordo rengini öne çıkarabilirsiniz.\n**Akşam daveti:** Siyah midi elbise ve sade takılarla çantanın bordo tonunu kombinin odak noktası hâline getirebilirsiniz.",
     "price": 2890,
     "stock": 15,
     "category": "Bags",
@@ -13,14 +13,15 @@
     "image": "/uploads/velaro-bordo.webp",
     "altText": "VELORA Bordo Deri Omuz Çantası ve Portföy Tasarımı",
     "salesCount": 42,
-    "createdAt": "2026-10-08T10:00:00.000Z"
+    "createdAt": "2026-10-08T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir. (İç Astar: %100 Pamuklu Kumaş) - Nemli yumuşak bir bez ile siliniz, doğrudan güneş ışığında kurutmayınız ve deri koruyucu krem uygulayınız."
   },
   {
     "id": "siyah-deri-tote-canta",
     "name": "Siyah Deri Tote Çanta",
-    "description": "VELORA siyah deri tote çanta. Geniş iç hacmi, dayanıklı yapısı ve minimalist silüeti ile yoğun iş temposuna uygundur.",
-    "description2": "VELORA Siyah Deri Tote Çanta, modern iş kadınının ve şehirli profesyonellerin yoğun temposu düşünülerek tasarlanmıştır. Geniş iç hacmi; laptop, ajanda, dosya ve günlük kişisel eşyalarınızı düzenli bir şekilde saklamanıza olanak tanır. Minimalist ve asil siyah tasarımı, her renk kıyafetle ve her kombinle kusursuz bir uyum yakalar.",
-    "combination": "Çok yönlü ve fonksiyonel yapısıyla günün her anına uyum sağlayan kombin önerileri:\n- **Kurumsal İş Hayatı:** Gri veya antrasit takım elbise (pantolon-ceket), klasik beyaz gömlek ve siyah deri loafer ayakkabılarla kombinleyerek otoriter ve profesyonel bir duruş sergileyebilirsiniz.\n- **Hafta Sonu / Seyahat:** Rahat kesim siyah eşofman üstü veya gri sweatshirt, rahat denim pantolonlar ve beyaz tabanlı deri sneaker'larla hem konforlu hem de şık bir seyahat kombini oluşturabilirsiniz.\n- **Smart-Casual Akşam Üstü:** Balıkçı yaka siyah kazak, kahverengi kumaş pantolon ve uzun palto eşliğinde hem işten çıkış buluşmalarına hem de sosyal etkinliklere adapte edebilirsiniz.",
+    "description": "VELORA siyah deri tote çanta, geniş iç hacmi ve minimalist tasarımıyla iş, okul ve günlük kullanım için işlevsel bir taşıma alanı sunar.",
+    "description2": "VELORA Siyah Deri Tote Çanta, geniş iç hacmi ve minimalist tasarımıyla günün farklı ihtiyaçlarına eşlik etmek üzere tasarlanmıştır. Sade siyah rengi, zamansız görünümü sayesinde sezonluk trendlerden bağımsız olarak farklı kıyafetlerle kolayca uyum sağlar. Geniş taşıma alanı; ajanda, dosya, kişisel eşyalar ve günlük ihtiyaçlarınızı bir arada bulundurmanıza yardımcı olur. İş hayatında, okulda veya şehir yaşamında kullanılabilecek çok yönlü bir tasarıma sahiptir. Klasik kumaş pantolonlardan günlük denim kombinlerine kadar farklı stillerle tamamlanabilir. Özellikle iş temposunda hem işlevsel hem de sade bir çanta arayanlar için kullanışlı bir seçenektir. Minimal çizgileriyle profesyonel ve günlük görünümlere uyum sağlar.",
+    "combination": "Siyah deri tote çantayı iş günlerinden hafta sonu planlarına kadar farklı kombinlerde kullanabilirsiniz:\n**İş stili:** Gri veya antrasit takım, beyaz gömlek ve siyah loafer ile dengeli bir ofis kombini oluşturabilirsiniz.\n**Hafta sonu:** Sweatshirt, denim pantolon ve sneaker ile rahat bir görünüm elde edebilirsiniz.\n**Smart casual:** Siyah balıkçı yaka kazak, kahverengi kumaş pantolon ve uzun paltoyla sade bir şehir stili yaratabilirsiniz.",
     "price": 3490,
     "stock": 12,
     "category": "Bags",
@@ -29,14 +30,15 @@
     "image": "/uploads/velaro-siyah.webp",
     "altText": "VELORA Siyah Deri Tote Çanta ve Geniş İç Hacim",
     "salesCount": 47,
-    "createdAt": "2026-10-16T10:00:00.000Z"
+    "createdAt": "2026-10-16T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir.  (İç Astar: %100 Pamuklu Kumaş) - Nemli yumuşak bir bez ile siliniz, doğrudan güneş ışığında kurutmayınız ve deri koruyucu krem uygulayınız."
   },
   {
     "id": "kahverengi-capraz-askili-canta",
     "name": "Kahverengi Çapraz Askılı Çanta",
-    "description": "VELORA espresso kahve tonlarında, büzgülü detaylara sahip deri çapraz askılı (crossbody) çanta.",
-    "description2": "VELORA Espresso Kahve Deri Çapraz Askılı Çanta, dinamik ve hareketli günlerde ellerinizi serbest bırakan konforlu crossbody yapısıyla öne çıkar. Sıcak espresso kahve tonu, sonbahar-kış kombinlerinin ve toprak tonlarındaki stillerin en güçlü tamamlayıcısıdır.",
-    "combination": "Toprak ve sonbahar paletlerini ön plana çıkaran ilham verici kombin alternatifleri:\n- **Hafta Sonu Gezileri:** Bej rengi kalın örgü kazak, yüksek bel açık mavi mom-jean kot pantolon ve taba rengi süet botlarla eşleştirerek doğayla iç içe ve samimi bir stil elde edebilirsiniz.\n- **Şehir İçi Koşturmacası:** Kahverengi deri ceket, ekru renkli crop top ve siyah dar paça pantolon üçlüsüyle modern sokak stilinin dinamizmini yakalayabilirsiniz.\n- **Sonbahar / Kış Katmanları:** Kiremit veya taba tonlarında uzun bir kaban, boğazlı triko elbise ve kalın tabanlı bağcıklı botlarla ton sur ton (monokromatik kahve tonları) uyumu yaratabilirsiniz.",
+    "description": "VELORA espresso kahverengi deri çapraz askılı çanta, büzgülü detayları ve ellerinizi serbest bırakan kullanım şekliyle günlük şehir yaşamına eşlik eder.",
+    "description2": "VELORA Espresso Kahverengi Deri Çapraz Askılı Çanta, sıcak kahverengi tonu ve büzgülü tasarım detaylarıyla günlük stilinize doğal bir dokunuş katar. Çapraz askılı kullanım şekli, gün içerisinde hareket özgürlüğü sağlamak isteyenler için pratik bir alternatif sunar. Espresso rengi; bej, krem, ekru ve toprak tonlarıyla uyumlu bir görünüm oluşturur. Sade tasarımı sayesinde farklı kıyafetlerle birlikte kullanılabilir ve günlük kombinlerin tamamlayıcı parçalarından biri hâline gelir. Şehir gezilerinde, hafta sonu buluşmalarında veya günlük işlerinizi hallederken tercih edebilirsiniz. Hem rahatlığı hem de klasik renk tercihlerini bir arada arayanlar için tasarlanmış bu model, farklı mevsimlerde kullanılabilecek bir aksesuar seçeneğidir.",
+    "combination": "Espresso kahverengi çapraz askılı çantayı toprak tonları ve günlük parçalarla tamamlayabilirsiniz:\n**Hafta sonu:** Bej örgü kazak, açık mavi denim ve taba tonlarında botlarla sıcak tonlu bir kombin oluşturabilirsiniz.\n**Şehir stili:** Kahverengi ceket, ekru üst ve siyah pantolonla renk uyumunu koruyabilirsiniz.\n**Sonbahar ve kış:** Kiremit veya taba kaban, triko elbise ve bağcıklı botlarla katmanlı bir görünüm elde edebilirsiniz.",
     "price": 2490,
     "stock": 18,
     "category": "Bags",
@@ -45,14 +47,15 @@
     "image": "/uploads/velaro-kahve.webp",
     "altText": "VELORA Espresso Kahve Deri Çapraz Askılı Çanta",
     "salesCount": 28,
-    "createdAt": "2026-10-12T10:00:00.000Z"
+    "createdAt": "2026-10-12T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir. (Ayarlanabilir Deri Askı) - Nemli bezle siliniz, suya karşı koruyucu spreyler kullanabilirsiniz."
   },
   {
     "id": "zeytin-yesili-deri-el-cantasi",
     "name": "Zeytin Yeşili Deri El Çantası",
-    "description": "VELORA zeytin yeşili deri el çantası. Dikdörtgen formu, zarif üst sap detayı ve özgün renk tonuyla dikkat çeker.",
-    "description2": "VELORA Zeytin Yeşili Deri El Çantası, sıradanlıktan uzaklaşmak ve özgün bir stil yaratmak isteyenler için özel olarak üretilmiştir. Doğa esintili zeytin yeşili rengi ve mimari dikdörtgen formuyla estetik bir duruş sergiler. Üst sap detayı elde taşımalara zarif bir hava katar.",
-    "combination": "Özgün tonuyla dikkat çeken bu çantayı kombinlemenin yolları:\n- **Modern Ofis Stili:** Antrasit gri veya bej tonlarındaki blazer ceket-pantolon takımlarınızla eşleştirerek sıradan ofis kombinlerine canlı ve entelektüel bir dokunuş katabilirsiniz.\n- **Günlük Şıklık:** Haki veya krem rengi keten gömlekler, toprak tonu kumaş pantolonlar ve rahat düz sandalet veya loafer'larla doğadan ilham alan bir kombin oluşturabilirsiniz.\n- **Sonbahar Kombinleri:** Hardal sarısı veya kiremit tonlarındaki trikolar ve koyu yeşil tonlarında kabanlarla tonların uyumunu yakalayarak göz alıcı bir stil elde edebilirsiniz.",
+    "description": "VELORA zeytin yeşili deri el çantası, dikdörtgen formu ve üst sap detayıyla sade tasarımlı, dikkat çekici bir aksesuar arayanlara hitap eder.",
+    "description2": "VELORA Zeytin Yeşili Deri El Çantası, doğal yeşil tonu ve belirgin dikdörtgen formuyla sade tasarımlardan ayrılan bir görünüm sunar. Üst sap detayı, çantanın elde taşınmasını sağlayarak tasarımın klasik karakterini tamamlar. Zeytin yeşili rengi, özellikle bej, krem, kahverengi ve siyah gibi nötr tonlarla bir araya geldiğinde dengeli bir renk uyumu oluşturur. Günlük şehir stilinde veya daha özenli kombinlerde tercih edilebilecek tasarımı, farklı kullanım alanlarına uyum sağlar. Kıyafetlerinde doğal renkleri ve dikkat çekici aksesuarları bir arada kullanmayı sevenler için alternatif bir modeldir. Sade silüeti sayesinde kombinin genel görünümünü tamamlar ve stilinize farklı bir renk dokunuşu ekler.",
+    "combination": "Zeytin yeşili el çantasını nötr ve doğal renklerle eşleştirebilirsiniz:\n**Ofis stili:** Bej veya antrasit takım parçalarıyla çantanın yeşil tonunu öne çıkarabilirsiniz.\n**Günlük kullanım:** Krem keten gömlek ve toprak tonlarında pantolonla doğal bir renk uyumu yakalayabilirsiniz.\n**Sonbahar:** Kiremit tonlarında triko ve koyu renk kabanla mevsime uygun bir kombin oluşturabilirsiniz.",
     "price": 3190,
     "stock": 10,
     "category": "Bags",
@@ -61,14 +64,15 @@
     "image": "/uploads/velaro-yesil.webp",
     "altText": "VELORA Zeytin Yeşili Deri El Çantası ve Zarif Tasarım",
     "salesCount": 21,
-    "createdAt": "2026-10-10T10:00:00.000Z"
+    "createdAt": "2026-10-10T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir.  (Metal Aksesuarlar) - Sadece nemli yumuşak bir bez ile silerek temizleyiniz, kimyasal temizleyiciler kullanmayınız."
   },
   {
     "id": "kum-beji-mini-canta",
     "name": "Kum Beji Mini Çanta",
-    "description": "VELORA kum beji mini çanta. Kompakt boyutu, ön kapak detayı ve yalın tasarımıyla stilin tamamlayıcısıdır.",
-    "description2": "VELORA Kum Beji Mini Çanta, minimalizm akımının en zarif temsilcilerinden biridir. Nötr kum beji renk paleti sayesinde yaz kış demeden her tonda kıyafetle kusursuz bir uyum yakalar. Ön kapak detayındaki temiz işçilik, ürüne modern bir lüks hissi kazandırır.",
-    "combination": "Nötr tonların zarafetini yansıtan kombin önerileri:\n- **Yaz / Bahar Ferahlığı:** Baştan ayağa beyaz veya ekru keten pantolonlar, oversize keten gömlekler ve deri babetlerle aydınlık, tertemiz bir yaz stili yaratabilirsiniz.\n- **Şık Akşam Buluşmaları:** Siyah slip dress (askılı saten elbise), zarif ince topuklu ayakkabılar ve kum beji çantanızın oluşturacağı siyah-beyaz / bej kontrastıyla göz kamaştırabilirsiniz.\n- **Günlük Smart-Casual:** Bej tonlarında kumaş şortlar veya etekler, çizgili fransız tarzı trikolar ve rahat sneaker'larla zahmetsiz bir hafta sonu şıklığı elde edebilirsiniz.",
+    "description": "VELORA kum beji mini çanta, kompakt boyutu ve ön kapak detayıyla günlük kombinlere sade ve zarif bir tamamlayıcı ekler.",
+    "description2": "VELORA Kum Beji Mini Çanta, kompakt boyutu ve ön kapak detayıyla minimal aksesuarları tercih edenler için tasarlanmıştır. Kum bejinin yumuşak ve nötr tonu, farklı renk paletleriyle kolayca uyum sağlayarak çantayı birçok kombinde kullanılabilir hâle getirir. Küçük formu, telefon, kartlık ve benzeri temel kişisel eşyalarınızı yanınızda taşımak istediğiniz buluşmalarda ve günlük planlarda pratik bir seçenek sunar. Özellikle açık renkli kıyafetlerle bir araya geldiğinde sade ve bütünlüklü bir görünüm oluşturur. Siyah veya kahverengi parçalarla kullanıldığında ise renk kontrastı sağlayabilir. Günlük stilini fazla detaydan uzak, zarif aksesuarlarla tamamlamak isteyenler için ideal bir tamamlayıcıdır.",
+    "combination": "Kum beji mini çantayı açık ve nötr tonlarla tamamlayabilirsiniz:\n**İlkbahar ve yaz:** Ekru keten pantolon, beyaz gömlek ve deri babetlerle ferah bir görünüm oluşturabilirsiniz.\n**Akşam buluşması:** Siyah elbise ve sade topuklu ayakkabılarla bej-siyah kontrastından yararlanabilirsiniz.\n**Günlük smart-casual:** Bej alt parçalar, çizgili triko ve sneaker ile rahat bir hafta sonu kombini hazırlayabilirsiniz.",
     "price": 1990,
     "stock": 20,
     "category": "Bags",
@@ -77,14 +81,15 @@
     "image": "/uploads/velaro-krem.webp",
     "altText": "VELORA Kum Beji Mini Çanta ve Yalın Tasarım",
     "salesCount": 16,
-    "createdAt": "2026-10-15T10:00:00.000Z"
+    "createdAt": "2026-10-15T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir. - Açık renkli hassas yüzey olduğundan, lekelenmelere karşı deri koruyucu sprey ile kullanılması önerilir; nemli bezle siliniz."
   },
   {
     "id": "kahverengi-klasik-deri-cuzdan",
     "name": "Kahverengi Klasik Deri Cüzdan",
-    "description": "VELORA espresso kahve klasik deri cüzdan. Üzerindeki zarif dikiş detayları ve işlevsel iç bölmeleriyle öne çıkar.",
-    "description2": "VELORA Espresso Kahve Klasik Deri Cüzdan, işlevselliği ve estetiği bir araya getiren usta işi bir aksesuardır. Yüzeyindeki zarif dikiş hatları markanın detaylardaki özenini yansıtır. İç kısmında yer alan çoklu kart gözleri, kağıt para bölmesi ve fermuarlı bozuk para gözü ile maksimum düzen sağlar.",
-    "combination": "Aksesuar uyumu ve çanta içi entegrasyon önerileri:\n- **Set Uyumu:** Velora'nın espresso kahve tonlarındaki büyük çantalardan (tote veya evrak çantaları) birini seçtiğinizde, cüzdanınızı çantanızdan çıkardığınız anda muazzam bir lüks set bütünlüğü yakalarsınız.\n- **Klasik Tamamlayıcı:** Kahverengi deri kemerler ve klasik saat kayışlarıyla birebir ton uyumu sağlayarak detaylardaki özeninizi vurgulayabilirsiniz.",
+    "description": "VELORA espresso kahverengi klasik deri cüzdan, dikiş detayları ve kart, banknot ve bozuk para bölmeleriyle günlük eşyalarınızı düzenlemeye yardımcı olur.",
+    "description2": "VELORA Espresso Kahverengi Klasik Deri Cüzdan, günlük kullanımda ihtiyaç duyduğunuz kart ve nakit parayı düzenli şekilde taşımanıza yardımcı olan işlevsel bir tasarıma sahiptir. Kart gözleri, banknot bölmesi ve fermuarlı bozuk para alanı sayesinde farklı ödeme araçlarınızı tek bir yerde bulundurabilirsiniz. Espresso kahverengi tonu, klasik aksesuar görünümünü desteklerken dikiş detayları tasarıma hareket kazandırır. Kompakt yapısıyla çanta içerisinde kolayca taşınabilir ve günlük yaşamın farklı anlarında kullanılabilir. Kahverengi deri çantalar, kemerler ve diğer aksesuarlarla birlikte tercih edildiğinde bütünlüklü bir görünüm oluşturur. Sade tasarımı ve kullanışlı iç düzeniyle hem kendiniz hem de hediye alternatifi olarak değerlendirebileceğiniz bir modeldir.",
+    "combination": "Espresso kahverengi cüzdanı diğer deri aksesuarlarınızla birlikte kullanabilirsiniz:\n**Takım görünümü:** Espresso veya kahverengi tonlarında bir çantayla eşleştirerek aksesuarlar arasında renk bütünlüğü sağlayabilirsiniz.\n**Günlük aksesuarlar:** Kahverengi deri kemer ve klasik saat kayışıyla benzer tonları bir araya getirebilirsiniz.",
     "price": 1190,
     "stock": 25,
     "category": "Wallets",
@@ -93,14 +98,15 @@
     "image": "/uploads/velaro-cüzdan-kahve.webp",
     "altText": "VELORA Espresso Kahve Klasik Deri Cüzdan",
     "salesCount": 45,
-    "createdAt": "2026-10-05T10:00:00.000Z"
+    "createdAt": "2026-10-05T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir. (İç Kart Bölmeleri: Deri ve Kumaş Kombinasyonu) - Kuru veya hafif nemli bezle siliniz, suya daldırmayınız."
   },
   {
     "id": "krem-el-askili-deri-cuzdan",
     "name": "Krem El Askılı Deri Cüzdan",
-    "description": "VELORA krem tonlarında el askılı zarif deri cüzdan / portföy çanta.",
-    "description2": "VELORA Krem El Askılı Deri Cüzdan, cüzdan ile mini portföy çanta konseptini kusursuz bir şekilde harmanlar. Pratik el askısı sayesinde kısa süreli dışarı çıkışlarınızda yanınıza alabileceğiniz en şık alternatiftir. Krem renginin asil duruşu, üzerindeki zarif dikiş motifleriyle zenginleştirilmiştir.",
-    "combination": "Pratik ve şık dışarı çıkışlar için kombin fikirleri:\n- **Hafif Sokak Stili:** Krem rengi oversize sweatshirt, tayt ve konforlu yürüyüş ayakkabılarıyla spor ama özenli bir görünüm elde edebilirsiniz.\n- **Kahve Molası Şıklığı:** Bej trençkot, ince dokulu boğazlı kazak ve kot pantolonla gerçekleştireceğiniz kısa buluşmalarda cüzdanınızı el askısıyla taşıyarak pratik bir stil yaratabilirsiniz.\n- **Çanta İçi Düzen:** Velora kum beji veya krem renkli büyük çantalarınızın içinde harika bir düzenleyici olarak yer alırken, ihtiyaç anında tek başına portföye dönüşür.",
+    "description": "VELORA krem deri el askılı cüzdan, pratik taşıma askısı ve portföy olarak da kullanılabilen formuyla günlük kullanımda çok yönlülük sunar.",
+    "description2": "VELORA Krem El Askılı Deri Cüzdan, klasik cüzdan kullanımını elde taşınabilen pratik bir tasarımla bir araya getirir. El askısı sayesinde kısa süreli dışarı çıkışlarda büyük bir çanta taşımadan yanınızda bulundurabilirsiniz. Krem rengi, sade ve aydınlık görünümüyle özellikle bej, ekru, kahverengi ve siyah tonlarındaki kombinlerle uyum sağlar. Kompakt formu, temel kişisel eşyalarınızı bir arada tutmak için günlük kullanımda alternatif sunar. Daha büyük çantaların içerisinde küçük eşyalarınızı düzenlemek amacıyla da tercih edilebilir. Hem tek başına taşınabilen hem de çanta içerisinde kullanılabilen çok yönlü tasarımı, günlük aksesuarlarında sadeliği ve pratikliği bir arada arayanlara hitap eder.",
+    "combination": "Krem el askılı cüzdanı açık tonlar ve günlük parçalarla tamamlayabilirsiniz:\n**Rahat günlük stil:** Krem sweatshirt, tayt ve rahat yürüyüş ayakkabılarıyla sade bir görünüm oluşturabilirsiniz.\n**Şehirde kısa buluşmalar:** Bej trençkot, ince triko ve denim pantolonla cüzdanı tek başına taşıyabilirsiniz.\n**Çanta içi düzen:** Krem veya kum beji tonlarındaki büyük çantalarınızda küçük eşyalarınızı bir arada tutmak için kullanabilirsiniz.",
     "price": 990,
     "stock": 25,
     "category": "Wallets",
@@ -109,14 +115,15 @@
     "image": "/uploads/velaro-cüzdan-krem.webp",
     "altText": "VELORA Krem El Askılı Deri Cüzdan ve Portföy",
     "salesCount": 8,
-    "createdAt": "2026-10-13T10:00:00.000Z"
+    "createdAt": "2026-10-13T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir.  (Çıkartılabilir Deri El Askısı) - Nemli yumuşak bir bez ile siliniz, açık renkli yüzeyi korumak için doğrudan sıvıyla temas ettirmeyiniz."
   },
   {
     "id": "vizon-deri-omuz-cantasi",
     "name": "Vizon Deri Omuz Çantası",
-    "description": "VELORA vizon rengi deri omuz çantası. Kemer tokası detayları, yatay formu ve modern silüetiyle dikkat çeker.",
-    "description2": "VELORA Vizon Deri Omuz Çantası, modern sokak modası ile klasik lüksü buluşturan yatay silüetiyle trendleri belirler. Vizon tonunun sofistike uyumu, yan kısımlardaki kemer ve toka detaylarıyla hareketlendirilmiştir. Omuzda son derece rahat ve dengeli duran askı yapısı gün boyu konfor sunar.",
-    "combination": "Modern ve trend odaklı kombin önerileri:\n- **Sokak Modası:** Bol paça açık renk denim pantolon, crop triko kazak ve vizon tonlarına göz kırpan süet sneaker veya botlarla modern bir şehirli stili oluşturabilirsiniz.\n- **Monokrom Nötr Stil:** Taş rengi kumaş pantolon, ekru gömlek ve vizon rengi trençkotla baştan aşağı zengin bir ton sur ton uyumu yakalayabilirsiniz.\n- **Ofis Casual:** Kahverengi ekose desenli blazer ceketler ve bej kumaş pantolonlarla retro ama modern bir iş stili yaratabilirsiniz.",
+    "description": "VELORA vizon deri omuz çantası, yatay formu ve kemer toka detaylarıyla nötr tonlarda modern bir günlük çanta seçeneğidir.",
+    "description2": "VELORA Vizon Deri Omuz Çantası, yatay formu ve yan kısımlarındaki kemer toka detaylarıyla klasik omuz çantası tasarımına modern bir görünüm kazandırır. Vizon renginin nötr karakteri, farklı renk ve dokularla kolayca bir araya gelmesini sağlar. Bej, ekru, siyah ve kahverengi tonlarındaki kıyafetlerle kullanıldığında dengeli ve sade kombinler oluşturabilirsiniz. Omuzda taşınabilen tasarımı, günlük şehir yaşamından ofis stiline kadar farklı ortamlara uyum sağlar. Gösterişten uzak ama tasarım detaylarıyla öne çıkan aksesuarları tercih edenler için alternatif bir modeldir. Mevsim geçişlerinde trençkot ve triko gibi parçalarla, daha sıcak havalarda ise gömlek ve pantolon kombinleriyle birlikte kullanılabilir.",
+    "combination": "Vizon deri omuz çantasını nötr renklerle ve farklı dokularla eşleştirebilirsiniz:\n**Günlük şehir stili:** Açık renk denim, triko kazak ve vizon tonlarında botlarla rahat bir kombin oluşturabilirsiniz.\n**Monokrom görünüm:** Taş rengi pantolon, ekru gömlek ve vizon trençkotla ton sür ton bir stil deneyebilirsiniz.\n**Ofis stili:** Ekose blazer ve bej kumaş pantolonla klasik ve modern parçaları bir araya getirebilirsiniz.",
     "price": 2790,
     "stock": 14,
     "category": "Bags",
@@ -125,14 +132,15 @@
     "image": "/uploads/velaro-vizon.jpg",
     "altText": "VELORA Vizon Deri Omuz Çantası ve Modern Tasarım",
     "salesCount": 32,
-    "createdAt": "2026-10-09T10:00:00.000Z"
+    "createdAt": "2026-10-09T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir.  (Metal Toka Detayları) - Hafif nemli bezle siliniz, kuru bezle kurulayınız, direkt güneş ışığından koruyunuz."
   },
   {
     "id": "zeytin-yesili-deri-omuz-cantasi",
     "name": "Zeytin Yeşili Deri Omuz Çantası",
-    "description": "VELORA zeytin yeşili deri omuz çantası. Uzun askı detayı, yumuşak yapısı ve geniş iç hacmiyle öne çıkar.",
-    "description2": "VELORA Zeytin Yeşili Deri Omuz Çantası, doğanın sakinleştirici tonlarını şehir hayatının dinamizmiyle buluşturur. Yumuşak deri dokusu vücudunuza zarifçe oturmasını sağlar. Geniş iç hacmi günlük tüm eşyalarınızı zahmetsizce alırken, düğümlü askı detayları özgün bir tasarım çizgisi kazandırır.",
-    "combination": "Doğal renk paletlerini sevenler için geniş kombin seçenekleri:\n- **Sonbahar / Kış Kombinleri:** Kiremit rengi kabanlar, krem rengi boğazlı trikolar ve koyu kahve çizmelerle zeytin yeşilinin zenginliğini ortaya çıkarabilirsiniz.\n- **Günlük Jean Stili:** Koyu indigo mavi kot pantolon, haki tonlarında saha montu (parka) ve düz botlarla hafta sonu yürüyüşleri veya şehir turları için ideal bir konfor yakalayabilirsiniz.\n- **Ofis / Akademik Stil:** Bej kadife pantolonlar, ekru gömlekler ve deri ceket kombinleriyle hem rahat hem de entelektüel bir duruş sergileyebilirsiniz.",
+    "description": "VELORA zeytin yeşili deri omuz çantası, uzun askısı, yumuşak yapısı ve geniş iç hacmiyle günlük kullanım için tasarlanmıştır.",
+    "description2": "VELORA Zeytin Yeşili Deri Omuz Çantası, doğal renk tonu, yumuşak formu ve uzun askısıyla günlük kullanıma yönelik tasarlanmıştır. Zeytin yeşili rengin karakteristik görünümü, özellikle nötr ve toprak tonlarındaki kıyafetlerle uyum sağlayarak kombinlere farklı bir dokunuş ekler. Geniş iç hacmi, gün içerisinde yanınızda bulundurmak istediğiniz kişisel eşyalar için alan sunar. Askı ve düğümlü tasarım detayları, çantanın sade görünümüne hareket kazandırır. Günlük şehir yaşamında, alışverişte veya arkadaş buluşmalarında tercih edilebilir. Bej pantolonlar, ekru trikolar, denim parçalar ve kahverengi dış giyim ürünleriyle bir araya getirildiğinde doğal renk bütünlüğü oluşturan çok yönlü bir aksesuardır.",
+    "combination": "Zeytin yeşili deri omuz çantasını doğal ve toprak tonlarıyla tamamlayabilirsiniz:\n**Sonbahar ve kış:** Kiremit kaban, krem triko ve koyu kahverengi çizmelerle renk uyumu oluşturabilirsiniz.\n**Günlük denim:** Koyu mavi jean, haki ceket ve düz botlarla rahat bir şehir kombini hazırlayabilirsiniz.\n**Ofis stili:** Bej pantolon, ekru gömlek ve sade bir ceketle dengeli bir görünüm elde edebilirsiniz.",
     "price": 3290,
     "stock": 11,
     "category": "Bags",
@@ -141,14 +149,15 @@
     "image": "/uploads/velaro-zeytin-yeşili.jpg",
     "altText": "VELORA Zeytin Yeşili Deri Omuz Çantası",
     "salesCount": 24,
-    "createdAt": "2026-10-17T10:00:00.000Z"
+    "createdAt": "2026-10-17T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir.  - Nemli bez ile siliniz, deri esnekliğini koruması için belirli aralıklarla uygun deri bakım ürünleri kullanınız."
   },
   {
     "id": "aci-kahve-deri-omuz-cantasi",
     "name": "Acı Kahve Deri Omuz Çantası",
-    "description": "VELORA acı kahve deri omuz ve el çantası. Zamansız çizgileri, kavisli formu ve kullanışlı askı yapısıyla tasarlanmıştır.",
-    "description2": "VELORA Acı Kahve Deri Omuz ve El Çantası, asil duruşu ve kavisli sedefimsi formuyla klasik lüksün tanımıdır. Yoğun acı kahve rengi, hakiki derinin kalitesiyle birleşerek parıltılı ve tok bir görünüm sunar. Hem omuzda hem elde taşınabilen dengeli yapısıyla günün her anına uyum sağlar.",
-    "combination": "Asil ve zamansız lüks stili yansıtan kombin önerileri:\n- **Klasik İş Kadını Stili:** Siyah kalem etek, ipek ekru gömlek ve acı kahve tonlarında deri topuklu ayakkabılarla güçlü, otoriter ve son derece şık bir ofis kombini oluşturabilirsiniz.\n- **Akşam Daveti / Restoran:** Bordo veya zümrüt yeşili midi elbiseler, ince topuklu ayakkabılar ve acı kahvenin ağırbaşlı dokusunu buluşturarak zarif bir kontrast yaratabilirsiniz.\n- **Hafta Sonu Şıklığı:** Bej triko etek-kazak takımları, uzun palto ve deri çizmelerle lüks casual tarzın tadını çıkarabilirsiniz.",
+    "description": "VELORA acı kahve deri omuz çantası, kavisli formu ve kullanışlı askı yapısıyla hem omuzda hem elde taşınabilen zamansız bir tasarımdır.",
+    "description2": "VELORA Acı Kahve Deri Omuz Çantası, koyu kahverengi tonu ve kavisli formuyla klasik tasarım anlayışını günlük stile taşır. Sade silüeti, farklı kıyafetlerle kolayca uyum sağlarken askı yapısı çantanın hem omuzda hem de elde taşınmasına imkân verir. Acı kahve rengi; bej, krem, siyah, bordo ve ekru gibi tonlarla bir araya geldiğinde dengeli bir görünüm oluşturur. Günlük şehir yaşamında, ofiste veya akşam buluşmalarında tercih edilebilecek tasarımı farklı kullanım alanlarına hitap eder. Zamansız renkleri ve sade aksesuarları sevenler için kombinlerin tamamlayıcı parçalarından biridir. Triko, kumaş pantolon, elbise ve dış giyim ürünleriyle birlikte kullanılarak farklı stillere uyarlanabilir.",
+    "combination": "Acı kahve deri omuz çantasını klasik ve nötr parçalarla eşleştirebilirsiniz:\n**Ofis stili:** Siyah etek veya kumaş pantolon, ekru gömlek ve kahverengi ayakkabılarla dengeli bir görünüm oluşturabilirsiniz.\n**Akşam daveti:** Bordo veya zümrüt yeşili elbiseyle koyu kahverengi tonunu kontrast olarak kullanabilirsiniz.\n**Hafta sonu:** Bej triko takım, uzun palto ve deri çizmelerle rahat bir şehir stili hazırlayabilirsiniz.",
     "price": 2990,
     "stock": 9,
     "category": "Bags",
@@ -157,14 +166,15 @@
     "image": "/uploads/velaro-acı-kahve.jpg",
     "altText": "VELORA Acı Kahve Deri Omuz ve El Çantası",
     "salesCount": 19,
-    "createdAt": "2026-10-06T10:00:00.000Z"
+    "createdAt": "2026-10-06T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir.  - Nemli yumuşak bez ile siliniz, doğrudan ısı kaynaklarından uzak tutunuz."
   },
   {
     "id": "aci-kahve-deri-laptop-cantasi",
     "name": "Acı Kahve Deri Laptop Çantası",
-    "description": "VELORA acı kahve deri laptop çantası. Minimalist ve profesyonel tasarımıyla işlevsellik sunar.",
-    "description2": "VELORA Acı Kahve Deri Laptop Çantası; kariyer sahibi profesyonellerin, akademisyenlerin ve öğrencilerin şıklığından ödün vermeden teknolojilerini taşıması için geliştirilmiştir. Özel dolgulu iç bölmesi bilgisayarınızı darbelere karşı korurken; şarj aleti, evraklar ve ajanda için kusursuz düzen sağlar.",
-    "combination": "Profesyonel kariyer stilinizi güçlendirecek kombin alternatifleri:\n- **Kurumsal Toplantı:** Siyah veya lacivert kumaş pantolon, şık bir blazer ceket, beyaz gömlek ve oxford tarzı deri ayakkabılarla kusursuz bir kurumsal uyum yakalayabilirsiniz.\n- **Akademik / Kreatif Ofis:** Gri kumaş pantolon, boğazlı ince triko ve ekose desenli ceket kombinleyerek modern profesyonel görünüm elde edebilirsiniz.\n- **İş Seyahati Kombini:** Rahat kesim kumaş pantolon, kaliteli triko kazak, trençkot ve konforlu deri loafer'larla hem seyahat konforunu korur hem de profesyonelliğinizden ödün vermezsiniz.",
+    "description": "VELORA acı kahve deri laptop çantası, sade ve profesyonel tasarımıyla bilgisayarınızı ve günlük iş eşyalarınızı taşımak için tasarlanmıştır.",
+    "description2": "VELORA Acı Kahve Deri Laptop Çantası, bilgisayarını ve günlük çalışma eşyalarını yanında taşımak isteyenler için profesyonel bir tasarım sunar. Acı kahve rengi ve minimalist görünümü, iş hayatında tercih edilen klasik kıyafetlerle uyum sağlar. Laptop bölmesi, bilgisayarınızı diğer eşyalarınızdan ayrı taşımaya yardımcı olur; ürünün dolgulu iç bölme özelliği de cihazın taşınması sırasında ek destek sunar. Şarj aleti, ajanda ve evrak gibi çalışma ihtiyaçlarınızı bir arada bulundurabileceğiniz kullanışlı bir alternatiftir. Ofis günlerinde, toplantılarda, eğitim hayatında veya iş seyahatlerinde tercih edilebilir. Sade tasarımı sayesinde blazer ceket, kumaş pantolon ve günlük smart-casual kombinlerle birlikte kullanılabilir.",
+    "combination": "Acı kahve deri laptop çantasını iş ve eğitim yaşamına uygun parçalarla tamamlayabilirsiniz:\n**Kurumsal toplantı:** Lacivert veya siyah kumaş pantolon, blazer ceket ve beyaz gömlekle profesyonel bir görünüm oluşturabilirsiniz.\n**Akademik ve günlük çalışma:** Gri pantolon, ince triko ve rahat ayakkabılarla sade bir kombin hazırlayabilirsiniz.\n**İş seyahati:** Rahat kesim pantolon, triko ve trençkotla konforlu bir seyahat stili oluşturabilirsiniz.",
     "price": 3890,
     "stock": 8,
     "category": "Laptop Bags",
@@ -173,14 +183,15 @@
     "image": "/uploads/velaro-laptop-acı-kahve.jpg",
     "altText": "VELORA Acı Kahve Deri Laptop Çantası",
     "salesCount": 15,
-    "createdAt": "2026-10-17T12:00:00.000Z"
+    "createdAt": "2026-10-17T12:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir. (Dolgulu Koruyucu İç Bölme ve Tekstil Astar) - Hafif nemli pamuklu bezle siliniz, makinede yıkanmaz."
   },
   {
     "id": "aci-kahve-deri-cuzdan",
     "name": "Acı Kahve Deri Cüzdan",
-    "description": "VELORA acı kahve deri katlanabilir cüzdan. Kompakt yapısı ve kaliteli deri dokusuyla günlük pratik çözümdür.",
-    "description2": "VELORA Acı Kahve Deri Katlanabilir Cüzdan, minimal boyutlarda maksimum depolama alanı sunan akıllı bir tasarımdır. Birinci sınıf acı kahve derisinin yumuşak tuşesi elinizde harika bir his bırakır. Güvenli çıtçıtlı ve fermuarlı bölme kombinasyonu sayesinde kartlarınız ve paralarınız güvendedir.",
-    "combination": "Aksesuar ve çanta kombinasyonu için öneriler:\n- **Koleksiyon Bütünlüğü:** Velora acı kahve laptop çantası veya acı kahve omuz çantasıyla birlikte kullanıldığında çantadan cüzdan çıkarma anında mükemmel bir set uyumu sunar.\n- **Günlük Aksesuar:** Kahverengi tonlarındaki deri kemerleriniz ve anahtarlıklarınızla eşleştirerek günlük aksesuar disiplininizi tamamlayabilirsiniz.",
+    "description": "VELORA acı kahve deri katlanabilir cüzdan, kompakt tasarımı ve çıtçıtlı, fermuarlı bölmeleriyle kart ve nakit paranızı düzenli taşımaya yardımcı olur.",
+    "description2": "VELORA Acı Kahve Deri Katlanabilir Cüzdan, kompakt tasarımı ve işlevsel bölme yapısıyla günlük kullanım ihtiyaçlarına cevap verir. Çıtçıtlı ve fermuarlı bölmeleri, kartlarınızı ve nakit paranızı bir arada düzenlemenize yardımcı olur. Katlanabilir formu sayesinde çanta içerisinde fazla yer kaplamadan taşınabilir ve gün içerisinde kolayca kullanılabilir. Acı kahve renginingi klasik görünümü, farklı çanta ve deri aksesuarlarla uyumlu bir bütünlük oluşturur. Özellikle kahverengi ve toprak tonlarını tercih edenler için günlük aksesuar koleksiyonunun tamamlayıcı parçalarından biridir. Sade tasarım anlayışı, hem günlük kullanımda hem de daha klasik kombinlerde tercih edilebilecek zamansız bir görünüm sunar.",
+    "combination": "Acı kahve deri cüzdanı benzer tonlardaki aksesuarlarla birlikte kullanabilirsiniz:\n**Koleksiyon uyumu:** Acı kahve laptop çantası veya omuz çantasıyla eşleştirerek aksesuarlarınızda renk bütünlüğü sağlayabilirsiniz.\n**Günlük kullanım:** Kahverengi deri kemer ve anahtarlık gibi aksesuarlarla benzer tonları bir araya getirebilirsiniz.",
     "price": 1290,
     "stock": 22,
     "category": "Wallets",
@@ -189,6 +200,7 @@
     "image": "/uploads/velaro-cüzdan-acı-kahve.webp",
     "altText": "VELORA Acı Kahve Deri Katlanabilir Cüzdan",
     "salesCount": 38,
-    "createdAt": "2026-10-07T10:00:00.000Z"
+    "createdAt": "2026-10-07T10:00:00.000Z",
+    "materials": "Hakiki Deriden Üretilmiştir. (Metal Çıtçıt ve Fermuar Donanımı) - Kuru ya da hafif nemli bez ile temizleyiniz."
   }
 ]
