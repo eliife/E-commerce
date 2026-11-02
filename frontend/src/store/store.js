@@ -6,6 +6,5 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     cart: cartReducer,
-    // İleride buraya cart: cartReducer, wishlist: wishlistReducer ekleyeceğiz
   },
 });

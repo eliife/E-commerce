@@ -20,7 +20,7 @@ const getLocalToken = () => {
   return localStorage.getItem('token');
 };
 
-// Giriş işlemi
+
 export const loginUser = createAsyncThunk(
   'auth/login',
   async (userData, thunkAPI) => {
@@ -34,7 +34,6 @@ export const loginUser = createAsyncThunk(
         );
       }
 
-      // Önce yeni hesabın oturum bilgilerini kaydet.
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
 
