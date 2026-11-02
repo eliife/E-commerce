@@ -31,9 +31,36 @@ export default async function HomePage() {
     console.error('Ürünler sunucudan çekilemedi:', err);
   }
 
+  const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'VELORA',
+  description: 'Tasarım deri çanta ve aksesuar markası.',
+  };
+
+  const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'VELORA',
+  description: 'Tasarım deri çanta ve aksesuar markası.',
+};
+
   return (
+    
     <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
 
       
 

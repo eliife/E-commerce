@@ -79,6 +79,7 @@ export default function ProductDetailClient({
   };
 
   const colorInfo = getProductColorInfo(product);
+  
 
   return (
     <div className="min-h-screen bg-[#FAFAF9] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">

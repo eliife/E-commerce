@@ -85,52 +85,119 @@ export default async function BlogDetailPage({ params }) {
     content: 'Aradığınız blog yazısı bulunamadı veya kaldırılmış olabilir.',
   };
 
+  const blogUrl = `http://localhost:3000/blog/${id}`;
+
+  // BlogPosting yapılandırılmış verisi
+  const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt || post.content.substring(0, 150),
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Velora',
+    },
+    articleSection: post.category,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': blogUrl,
+    },
+  };
+
+  // BreadcrumbList yapılandırılmış verisi
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Ana Sayfa',
+        item: 'http://localhost:3000',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: 'http://localhost:3000/blog',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: blogUrl,
+      },
+    ],
+  };
+
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
-      <div>
-        <Header />
+    <>
+      {/* BlogPosting Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostingSchema).replace(/</g, '\\u003c'),
+        }}
+      />
 
-        <main className="mx-auto max-w-3xl px-6 sm:px-12 py-20 lg:py-32">
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, '\\u003c'),
+        }}
+      />
 
-          <header className="space-y-6 mb-16">
-            <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-stone-400 font-light">
-              <span>{post.category}</span>
-              <span>{post.readTime}</span>
-            </div>
+      <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
+        <div>
+          <Header />
 
-            <h1 className="text-3xl sm:text-4xl font-serif tracking-tight text-stone-900 leading-tight">
-              {post.title}
-            </h1>
+          <main className="mx-auto max-w-3xl px-6 sm:px-12 py-20 lg:py-32">
 
-            <div className="flex items-center justify-between text-xs text-stone-400 font-light tracking-wide pt-4 border-t border-stone-200/60">
-              <span>
-                Yazar:{' '}
-                <span className="text-stone-800 font-medium">
-                  {post.author}
+            <header className="space-y-6 mb-16">
+              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-stone-400 font-light">
+                <span>{post.category}</span>
+                <span>{post.readTime}</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl font-serif tracking-tight text-stone-900 leading-tight">
+                {post.title}
+              </h1>
+
+              <div className="flex items-center justify-between text-xs text-stone-400 font-light tracking-wide pt-4 border-t border-stone-200/60">
+                <span>
+                  Yazar:{' '}
+                  <span className="text-stone-800 font-medium">
+                    {post.author}
+                  </span>
                 </span>
-              </span>
 
-              <span>{post.date}</span>
+                <span>{post.date}</span>
+              </div>
+            </header>
+
+            <article className="text-base sm:text-lg text-stone-600 font-light leading-relaxed">
+              <BlogContent content={post.content} />
+            </article>
+
+            <div className="mt-20 pt-8 border-t border-stone-200/60">
+              <Link
+                href="/blog"
+                className="text-[11px] font-medium tracking-[0.2em] uppercase text-stone-900 hover:opacity-60 transition cursor-pointer"
+              >
+                ← Blog listesine geri dön
+              </Link>
             </div>
-          </header>
 
-          <article className="text-base sm:text-lg text-stone-600 font-light leading-relaxed">
-            <BlogContent content={post.content} />
-          </article>
+          </main>
+        </div>
 
-          <div className="mt-20 pt-8 border-t border-stone-200/60">
-            <Link
-              href="/blog"
-              className="text-[11px] font-medium tracking-[0.2em] uppercase text-stone-900 hover:opacity-60 transition cursor-pointer"
-            >
-              ← Blog listesine geri dön
-            </Link>
-          </div>
-
-        </main>
+        <Footer />
       </div>
-
-      <Footer />
-    </div>
+    </>
   );
 }

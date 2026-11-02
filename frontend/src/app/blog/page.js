@@ -5,78 +5,136 @@ import Footer from '@/components/footer';
 import { blogPosts } from './blogPosts';
 
 export const metadata = {
-  title: 'Blog | Velora ',
+  title: 'Blog | Velora',
   description: 'Velora dünyasından hikâyeler, zanaat ilhamları ve deri bakımına dair rehberler.',
-
-    alternates: {
+  alternates: {
     canonical: '/blog',
   },
 };
 
 export default function BlogListPage() {
+  const blogUrl = 'http://localhost:3000/blog';
 
+
+  const blogListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Velora Blog',
+    description: 'Velora dünyasından hikâyeler, zanaat ilhamları ve deri bakımına dair rehberler.',
+    url: blogUrl,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: blogPosts.map((post, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'BlogPosting',
+          headline: post.title,
+          url: `${blogUrl}/${post.id}`,
+        },
+      })),
+    },
+  };
+
+  
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Ana Sayfa',
+        item: 'http://localhost:3000',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: blogUrl,
+      },
+    ],
+  };
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
-      <div>
-        <Header />
-        
-        <main className="mx-auto max-w-6xl px-6 sm:px-12 py-24 lg:py-32">
-          {/* Ferah Başlık */}
-          <header className="mb-24 text-center max-w-xl mx-auto space-y-4">
-            <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-stone-900 uppercase">
-              BLOG
-            </h1>
-            <p className="text-xs text-stone-400 tracking-[0.25em] uppercase font-light">
-              Hikâyeler, ilhamlar ve deri üzerine notlar.
-            </p>
-          </header>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogListSchema).replace(/</g, '\\u003c'),
+        }}
+      />
 
-          {/* Kart Grid Yapısı */}
-          <section 
-           aria-label="Blog yazıları"
-           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
-            {blogPosts.map((post) => (
-              <article 
-                key={post.id} 
-                className="group flex flex-col justify-between bg-[#F7F4EE]/50 border border-stone-200/40 p-8 sm:p-10 rounded-sm hover:bg-white hover:shadow-xl hover:shadow-stone-200/30 transition-all duration-500"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-stone-400 font-light">
-                    <span>{post.category}</span>
-                    <span>{post.readTime}</span>
+  
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, '\\u003c'),
+        }}
+      />
+
+      <div className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
+        <div>
+          <Header />
+
+          <main className="mx-auto max-w-6xl px-6 sm:px-12 py-24 lg:py-32">
+            
+            <header className="mb-24 text-center max-w-xl mx-auto space-y-4">
+              <h1 className="text-3xl sm:text-5xl font-serif tracking-tight text-stone-900 uppercase">
+                BLOG
+              </h1>
+              <p className="text-xs text-stone-400 tracking-[0.25em] uppercase font-light">
+                Hikâyeler, ilhamlar ve deri üzerine notlar.
+              </p>
+            </header>
+
+            
+            <section
+              aria-label="Blog yazıları"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12"
+            >
+              {blogPosts.map((post) => (
+                <article
+                  key={post.id}
+                  className="group flex flex-col justify-between bg-[#F7F4EE]/50 border border-stone-200/40 p-8 sm:p-10 rounded-sm hover:bg-white hover:shadow-xl hover:shadow-stone-200/30 transition-all duration-500"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-stone-400 font-light">
+                      <span>{post.category}</span>
+                      <span>{post.readTime}</span>
+                    </div>
+
+                    <Link href={`/blog/${post.id}`}>
+                      <h2 className="text-lg sm:text-xl font-serif font-normal text-stone-900 group-hover:text-stone-600 transition leading-snug cursor-pointer">
+                        {post.title}
+                      </h2>
+                    </Link>
+
+                    <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed line-clamp-3">
+                      {post.excerpt}
+                    </p>
                   </div>
 
-                  <Link href={`/blog/${post.id}`}>
-                    <h2 className="text-lg sm:text-xl font-serif font-normal text-stone-900 group-hover:text-stone-600 transition leading-snug cursor-pointer">
-                      {post.title}
-                    </h2>
-                  </Link>
+                  <div className="pt-8 mt-6 flex items-center justify-between border-t border-stone-200/30">
+                    <span className="text-[11px] text-stone-400 font-light tracking-wider">
+                      {post.date}
+                    </span>
 
-                  <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                </div>
+                    <Link
+                      href={`/blog/${post.id}`}
+                      className="text-[11px] font-medium tracking-[0.2em] uppercase text-stone-900 hover:opacity-60 transition cursor-pointer"
+                    >
+                      Oku →
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </section>
+          </main>
+        </div>
 
-                <div className="pt-8 mt-6 flex items-center justify-between border-t border-stone-200/30">
-                  <span className="text-[11px] text-stone-400 font-light tracking-wider">
-                    {post.date}
-                  </span>
-                  
-                  <Link 
-                    href={`/blog/${post.id}`}
-                    className="text-[11px] font-medium tracking-[0.2em] uppercase text-stone-900 hover:opacity-60 transition cursor-pointer"
-                  >
-                    Oku →
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </section>
-        </main>
+        <Footer />
       </div>
-
-      <Footer />
-    </div>
+    </>
   );
 }
