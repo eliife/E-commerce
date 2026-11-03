@@ -1,3 +1,4 @@
+
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
@@ -11,17 +12,19 @@ export const metadata = {
 };
 
 export default function AboutPage() {
+  const baseUrl = 'http://localhost:3000';
+
   const aboutPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: 'Hakkımızda | Velora',
     description:
       'Velora’nın el işçiliği deri çanta ve aksesuar koleksiyonlarını, sürdürülebilir lüks anlayışımızı ve hikayemizi keşfedin.',
-    url: 'https://velora.com/about', // Canlı ortamda gerçek domain kullanılmalı
+    url: `${baseUrl}/about`,
     isPartOf: {
       '@type': 'WebSite',
       name: 'Velora',
-      url: 'https://velora.com',
+      url: baseUrl,
     },
   };
 
@@ -33,26 +36,26 @@ export default function AboutPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Ana Sayfa',
-        item: 'https://velora.com',
+        item: baseUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Hakkımızda',
-        item: 'https://velora.com/about',
+        item: `${baseUrl}/about`,
       },
     ],
   };
 
   return (
     <>
-      <p>ABOUT TEST</p>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(aboutPageSchema),
         }}
       />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
