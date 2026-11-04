@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import useWishlist from '@/components/useWishlist';
@@ -14,14 +15,28 @@ export default function ProductDetailClient({
   initialProduct,
   initialRelatedProducts,
   backendURL,
-  sourcePage,
 }) {
   const [product] = useState(initialProduct);
   const [relatedProducts] = useState(initialRelatedProducts);
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [sourcePage, setSourcePage] = useState(null);
 
   const { wishlistIds, handleToggleWishlist } = useWishlist();
+
+  useEffect(() => {
+    const savedSource = sessionStorage.getItem('veloraProductSource');
+
+    if (savedSource) {
+      try {
+        setSourcePage(JSON.parse(savedSource));
+      } catch {
+        sessionStorage.removeItem('veloraProductSource');
+      }
+
+      sessionStorage.removeItem('veloraProductSource');
+    }
+  }, []);
 
   if (!product) {
     return (
@@ -79,55 +94,68 @@ export default function ProductDetailClient({
   };
 
   const colorInfo = getProductColorInfo(product);
-  
+
+  const categoryInfo = {
+    Bags: {
+      name: 'Çantalar',
+      href: '/bags',
+    },
+    Wallets: {
+      name: 'Cüzdanlar',
+      href: '/wallets',
+    },
+  };
+
+  const category = categoryInfo[product.category];
 
   return (
     <div className="min-h-screen bg-[#FAFAF9] text-stone-900 selection:bg-stone-900 selection:text-white flex flex-col justify-between">
       <div>
         <Header />
+
         <Breadcrumb
           items={[
-            ...(sourcePage
-              ? [{ label: sourcePage, href: '/products' }]
-              : []),
+            {
+              label: sourcePage?.label || category?.name || 'Ürünler',
+              href: sourcePage?.href || category?.href || '/products',
+            },
             { label: product.name },
           ]}
         />
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
-         
-            <section
-              aria-label='Ürün detayları'
-              className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
-              <ProductGallery
-                imagesList={imagesList}
-                selectedImageIndex={selectedImageIndex}
-                setSelectedImageIndex={setSelectedImageIndex}
-                backendURL={backendURL}
-                productName={product.name}
-              />
+          <section
+            aria-label="Ürün detayları"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16"
+          >
+            <ProductGallery
+              imagesList={imagesList}
+              selectedImageIndex={selectedImageIndex}
+              setSelectedImageIndex={setSelectedImageIndex}
+              backendURL={backendURL}
+              productName={product.name}
+            />
 
-              <ProductInfo
-                product={product}
-                colorInfo={colorInfo}
-                isFavorite={isFavorite}
-                handleToggleWishlist={handleToggleWishlist}
-              />
-            </section>
-             
-            <section aria-label="Ürün açıklaması ve özellikleri">
-              <ProductAccordion product={product} />
-            </section>
+            <ProductInfo
+              product={product}
+              colorInfo={colorInfo}
+              isFavorite={isFavorite}
+              handleToggleWishlist={handleToggleWishlist}
+            />
+          </section>
 
-           <section aria-label="Benzer ürünler">
-             <RelatedProducts
+          <section aria-label="Ürün açıklaması ve özellikleri">
+            <ProductAccordion product={product} />
+          </section>
+
+          <section aria-label="Benzer ürünler">
+            <RelatedProducts
               products={relatedProducts}
               backendURL={backendURL}
               wishlistIds={wishlistIds}
               handleToggleWishlist={handleToggleWishlist}
             />
-           </section>
-          
+          </section>
         </main>
       </div>
 

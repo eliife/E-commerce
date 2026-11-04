@@ -8,7 +8,10 @@ export async function generateMetadata({ params }) {
   const { id } = await params;
 
   try {
-    const res = await fetch(`${backendURL}/api/products/${id}`, { cache: 'no-store' });
+    const res = await fetch(`${backendURL}/api/products/${id}`, {
+      cache: 'no-store',
+    });
+
     const data = await res.json();
     const product = data.product || data;
 
@@ -27,9 +30,8 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function Page({ params, searchParams }) {
+export default async function Page({ params }) {
   const { id } = await params;
-  const { from } = await searchParams;
 
   let product = null;
   let relatedProducts = [];
@@ -37,7 +39,10 @@ export default async function Page({ params, searchParams }) {
   let breadcrumbJsonLd = null;
 
   try {
-    const prodRes = await fetch(`${backendURL}/api/products/${id}`, { cache: 'no-store' });
+    const prodRes = await fetch(`${backendURL}/api/products/${id}`, {
+      cache: 'no-store',
+    });
+
     const prodJson = await prodRes.json();
     product = prodJson.product || prodJson;
 
@@ -108,7 +113,11 @@ export default async function Page({ params, searchParams }) {
       itemListElement: breadcrumbItems,
     };
 
-    const allRes = await fetch(`${backendURL}/api/products`, { cache: 'no-store' });
+    // Related Products
+    const allRes = await fetch(`${backendURL}/api/products`, {
+      cache: 'no-store',
+    });
+
     const allJson = await allRes.json();
     const list = allJson.products || allJson.data || allJson || [];
 
@@ -144,7 +153,6 @@ export default async function Page({ params, searchParams }) {
         initialProduct={product}
         initialRelatedProducts={relatedProducts}
         backendURL={backendURL}
-        sourcePage={from || ''}
       />
     </>
   );

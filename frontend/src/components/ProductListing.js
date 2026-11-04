@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams,usePathname } from 'next/navigation';
 import API from '@/services/api';
 import Link from 'next/link';
 import Header from '@/components/header';
@@ -20,6 +20,17 @@ export default function ProductCatalogTemplate({
 }) {
   const searchParams = useSearchParams();
   const keywordParam = searchParams.get('keyword') || '';
+  const pathname = usePathname();
+
+const handleProductNavigation = () => {
+  sessionStorage.setItem(
+    'veloraProductSource',
+    JSON.stringify({
+      label: searchTerm ? 'Arama Sonuçları' : pageTitle,
+      href: pathname,
+    })
+  );
+};
 
   const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
@@ -267,9 +278,8 @@ export default function ProductCatalogTemplate({
                   >
                     <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#F4F1EA] flex items-center justify-center">
                       <Link
-                        href={`/products/${productId}?from=${encodeURIComponent(
-                          searchTerm ? 'Arama Sonuçları' : pageTitle
-                        )}`}
+                        href={`/products/${productId}`}
+                        onClick={handleProductNavigation}
                         className="block w-full h-full"
                       >
                         {imageUrl ? (
@@ -321,6 +331,7 @@ export default function ProductCatalogTemplate({
                     <div className="mt-3 flex flex-col space-y-1">
                       <Link
                         href={`/products/${productId}`}
+                        onClick={handleProductNavigation}
                         className="group-hover:opacity-80 transition"
                       >
                         <h3 className="text-xs font-semibold text-stone-900 tracking-wider uppercase line-clamp-1">

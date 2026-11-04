@@ -1,54 +1,44 @@
 
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { blogPosts } from '../blogPosts';
 
-// Markdown içeriğini HTML elementlerine dönüştürür.
-function BlogContent({ content }) {
-  const lines = content.trim().split('\n');
 
+function BlogContent({ content }) {
   return (
     <div className="space-y-6">
-      {lines.map((line, index) => {
-        const trimmedLine = line.trim();
-
-        // Boş satırları atla.
-        if (!trimmedLine) {
-          return null;
-        }
-
-        // H2 başlıkları: ##
-        if (trimmedLine.startsWith('## ')) {
-          return (
-            <h2
-              key={index}
-              className="text-xl sm:text-2xl font-serif text-stone-900 mt-10 mb-4"
-            >
-              {trimmedLine.replace(/^##\s+/, '')}
+      <ReactMarkdown
+        components={{
+          h2: ({ children }) => (
+            <h2 className="text-xl sm:text-2xl font-serif text-stone-900 mt-10 mb-4">
+              {children}
             </h2>
-          );
-        }
+          ),
 
-        // H3 başlıkları: ###
-        if (trimmedLine.startsWith('### ')) {
-          return (
-            <h3
-              key={index}
-              className="text-lg sm:text-xl font-serif text-stone-900 mt-8 mb-3"
-            >
-              {trimmedLine.replace(/^###\s+/, '')}
+          h3: ({ children }) => (
+            <h3 className="text-lg sm:text-xl font-serif text-stone-900 mt-8 mb-3">
+              {children}
             </h3>
-          );
-        }
+          ),
 
-        // Normal metinleri paragraf olarak göster.
-        return (
-          <p key={index} className="mb-6">
-            {trimmedLine}
-          </p>
-        );
-      })}
+          p: ({ children }) => (
+            <p className="mb-6">{children}</p>
+          ),
+
+          a: ({ href, children }) => (
+            <Link
+              href={href || '/'}
+              className="text-stone-900 underline underline-offset-4 hover:opacity-60 transition"
+            >
+              {children}
+            </Link>
+          ),
+        }}
+      >
+        {content}
+      </ReactMarkdown>
     </div>
   );
 }
@@ -108,7 +98,7 @@ export default async function BlogDetailPage({ params }) {
     },
   };
 
-  // BreadcrumbList yapılandırılmış verisi
+  
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -136,7 +126,7 @@ export default async function BlogDetailPage({ params }) {
 
   return (
     <>
-      {/* BlogPosting Schema */}
+     
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -144,7 +134,7 @@ export default async function BlogDetailPage({ params }) {
         }}
       />
 
-      {/* BreadcrumbList Schema */}
+      
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
