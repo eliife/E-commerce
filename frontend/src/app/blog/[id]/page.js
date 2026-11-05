@@ -54,11 +54,32 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const description =
+    post.excerpt || post.content.substring(0, 150);
+
   return {
     title: `${post.title} | Velora`,
-    description: post.excerpt || post.content.substring(0, 150),
+    description,
+
     alternates: {
       canonical: `/blog/${id}`,
+    },
+
+    openGraph: {
+      title: `${post.title} | Velora`,
+      description,
+      url: `/blog/${id}`,
+      siteName: 'VELORA',
+      locale: 'tr_TR',
+      type: 'article',
+      images: [
+        {
+          url: '/images/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
   };
 }
@@ -77,7 +98,7 @@ export default async function BlogDetailPage({ params }) {
 
   const blogUrl = `http://localhost:3000/blog/${id}`;
 
-  // BlogPosting yapılandırılmış verisi
+
   const blogPostingSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',

@@ -7,9 +7,32 @@ import ProductSlider from '@/components/ProductSlider';
 
 export const metadata = {
   title: "Velora | Tasarım Deri Çanta Modelleri",
-  description: "El işçiliği zarif detaylara sahip deri çanta ve aksesuar koleksiyonumuzu keşfedin. Ücretsiz kargo ve 14 gün içinde kolay iade avantajıyla hemen sipariş verin!",
+  description: "VELORA'nın zamansız tasarım anlayışıyla hazırlanan deri çanta ve cüzdan koleksiyonunu keşfedin.. Ücretsiz kargo ve 14 gün içinde kolay iade avantajıyla hemen sipariş verin!",
   alternates: {
     canonical: '/',
+  },
+  openGraph: {
+    title: "VELORA | Zamansız Tasarım Deri Çantalar",
+    description:
+      "VELORA'nın zamansız tasarım anlayışıyla hazırlanan deri çanta ve cüzdan koleksiyonunu keşfedin.",
+    url: "/",
+    type: "website",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "VELORA deri çanta ve aksesuar koleksiyonu",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "VELORA | Zamansız Tasarım Deri Çantalar",
+    description:
+      "VELORA'nın zamansız tasarım anlayışıyla hazırlanan deri çanta ve cüzdan koleksiyonunu keşfedin.",
+    images: ["/images/og-image.jpg"],
   },
 };
 

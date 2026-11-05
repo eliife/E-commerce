@@ -4,6 +4,7 @@ import ProductDetailClient from './ProductDetailClient';
 const backendURL = 'http://localhost:5000';
 const frontendURL = 'http://localhost:3000';
 
+
 export async function generateMetadata({ params }) {
   const { id } = await params;
 
@@ -18,8 +19,31 @@ export async function generateMetadata({ params }) {
     return {
       title: `${product.name} | Velora`,
       description: product.description || 'Velora lüks deri koleksiyonu.',
+
       alternates: {
         canonical: `/products/${id}`,
+      },
+
+      openGraph: {
+        title: `${product.name} | Velora`,
+        description: product.description || 'Velora lüks deri koleksiyonu.',
+        url: `/products/${id}`,
+        siteName: 'VELORA',
+        locale: 'tr_TR',
+        type: 'website',
+        images: [
+          {
+            url: `${backendURL}${product.image}`,
+            alt: product.name,
+          },
+        ],
+      },
+
+      twitter: {
+        card: 'summary_large_image',
+        title: `${product.name} | Velora`,
+        description: product.description || 'Velora lüks deri koleksiyonu.',
+        images: [`${backendURL}${product.image}`],
       },
     };
   } catch (error) {
@@ -29,6 +53,7 @@ export async function generateMetadata({ params }) {
     };
   }
 }
+
 
 export default async function Page({ params }) {
   const { id } = await params;
