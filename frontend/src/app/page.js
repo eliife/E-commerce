@@ -36,14 +36,14 @@ export const metadata = {
   },
 };
 
-const backendURL = 'http://localhost:5000';
+const backendURL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export default async function HomePage() {
   let wallets = [];
   let bags = [];
 
   try {
-    const res = await fetch(`${backendURL}/api/products`, { cache: 'no-store' });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`, { cache: 'no-store' });
     const json = await res.json();
     const data = Array.isArray(json) ? json : (json.products || json.data || []);
 

@@ -2,6 +2,7 @@
 import { ReduxProvider } from '@/store/ReduxProvider';
 import "./globals.css";
 
+
 export const metadata = {
   metadataBase: new URL('http://localhost:3000'),
 

@@ -4,7 +4,7 @@
 import Link from 'next/link';
 
 export default function Hero() {
-  const backendURL = 'http://localhost:5000';
+  const backendURL = process.env.NEXT_PUBLIC_SERVER_URL;
 
   return (
     <div className="w-full bg-[#FDFBF7]">

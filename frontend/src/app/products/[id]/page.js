@@ -1,7 +1,7 @@
 
 import ProductDetailClient from './ProductDetailClient';
 
-const backendURL = 'http://localhost:5000';
+const backendURL = process.env.NEXT_PUBLIC_SERVER_URL;
 const frontendURL = 'http://localhost:3000';
 
 

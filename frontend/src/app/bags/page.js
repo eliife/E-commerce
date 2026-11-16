@@ -14,7 +14,7 @@ export default async function BagsPage() {
   let bagProducts = [];
 
   try {
-    const response = await fetch('http://localhost:5000/api/products', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`, {
       cache: 'no-store',
     });
 

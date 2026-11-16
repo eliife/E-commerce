@@ -103,7 +103,7 @@ export default function FavoritesClient() {
               {filteredFavorites.map((product) => {
                 const productId = product._id || product.id;
 
-                const backendURL = 'http://localhost:5000';
+                const backendURL = process.env.NEXT_PUBLIC_SERVER_URL;
                 const rawImg = product.images?.[0] || product.image;
                 const imageUrl = rawImg 
                   ? (rawImg.startsWith('http') ? rawImg : `${backendURL}${rawImg}`)

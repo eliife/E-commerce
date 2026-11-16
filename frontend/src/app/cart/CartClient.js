@@ -138,7 +138,7 @@ export default function CartClient() {
                  className="divide-y divide-stone-200 border-t border-b border-stone-200">
                   {cartItems.map((item) => {
                     const itemId = item.id || item._id;
-                    const backendURL = 'http://localhost:5000';
+                    const backendURL = process.env.NEXT_PUBLIC_SERVER_URL;
                     const rawImg = item.images?.[0] || item.image;
 
                     const imageUrl = rawImg

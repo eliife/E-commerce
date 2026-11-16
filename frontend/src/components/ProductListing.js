@@ -262,7 +262,7 @@ const handleProductNavigation = () => {
               {products.map((product) => {
                 const productId = product.id || product._id;
                 const isFavorited = wishlistIds.includes(String(productId));
-                const backendURL = 'http://localhost:5000';
+                const backendURL = process.env.NEXT_PUBLIC_SERVER_URL;
                 const rawImg = product.image || product.images?.[0];
 
                 const imageUrl = rawImg
