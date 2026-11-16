@@ -1,31 +1,48 @@
+
 'use client';
 
 import Link from 'next/link';
 import useWishlist from '@/components/useWishlist';
 
-export default function ProductSlider({ initialWallets = [], initialProducts = [], backendURL, centered = false }) {
+export default function ProductSlider({
+  initialWallets = [],
+  initialProducts = [],
+  backendURL,
+  centered = false
+}) {
   const { wishlistIds = [], handleToggleWishlist } = useWishlist();
 
-  const products = (initialWallets && initialWallets.length > 0) 
-    ? initialWallets 
-    : (initialProducts && initialProducts.length > 0 ? initialProducts : []);
+  const products = (initialWallets && initialWallets.length > 0)
+    ? initialWallets
+    : (initialProducts && initialProducts.length > 0
+      ? initialProducts
+      : []);
 
   return (
-    <section  aria-label="Öne Çıkan Ürünler"className="mx-auto max-w-[1536px] px-4 sm:px-8 py-6">
-      {/* Eğer centered={true} verildiyse flex-wrap ve justify-center ile ortalar, verilmediyse normal grid kalır */}
-      <div className={`flex gap-4 overflow-x-auto pb-4 scrollbar-none snap-x snap-mandatory sm:pb-0 ${
-        centered 
-          ? 'sm:flex sm:flex-wrap sm:justify-center sm:gap-6 sm:overflow-visible' 
-          : 'sm:grid sm:grid-cols-3 lg:grid-cols-4 sm:gap-x-6 sm:gap-y-12 sm:overflow-visible'
-      }`}>
+    <section
+      aria-label="Öne Çıkan Ürünler"
+      className="mx-auto max-w-[1536px] px-4 sm:px-8 py-6"
+    >
+      <div
+        className={`flex gap-4 overflow-x-auto pb-4 scrollbar-none snap-x snap-mandatory sm:pb-4 ${
+          centered
+            ? 'min-[1200px]:flex min-[1200px]:flex-wrap min-[1200px]:justify-center min-[1200px]:gap-6 min-[1200px]:overflow-visible min-[1200px]:pb-0'
+            : 'min-[1200px]:grid min-[1200px]:grid-cols-3 min-[1280px]:grid-cols-4 min-[1200px]:gap-x-6 min-[1200px]:gap-y-12 min-[1200px]:overflow-visible min-[1200px]:pb-0'
+        }`}
+      >
         {Array.isArray(products) && products.map((product) => {
           if (!product) return null;
 
           const productId = product.id || product._id;
-          const safeWishlistIds = Array.isArray(wishlistIds) ? wishlistIds : [];
+
+          const safeWishlistIds = Array.isArray(wishlistIds)
+            ? wishlistIds
+            : [];
+
           const isFavorited = safeWishlistIds.includes(String(productId));
-          
+
           const rawImg = product.image || product.images?.[0];
+
           const imageUrl = rawImg
             ? rawImg.startsWith('http')
               ? rawImg
@@ -35,9 +52,10 @@ export default function ProductSlider({ initialWallets = [], initialProducts = [
           return (
             <div
               key={productId}
-              className="group relative flex flex-col min-w-[170px] max-w-[190px] sm:min-w-0 sm:max-w-none sm:w-[280px] lg:w-[320px] snap-start flex-shrink-0 bg-transparent"
+              className="group relative flex flex-col min-w-[170px] max-w-[190px] sm:min-w-0 sm:max-w-none sm:w-[280px] min-[1200px]:w-[320px] snap-start flex-shrink-0 bg-transparent"
             >
               <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#F4F1EA] flex items-center justify-center">
+
                 <Link
                   href={`/products/${productId}`}
                   className="flex h-full w-full items-center justify-center"
@@ -59,12 +77,18 @@ export default function ProductSlider({ initialWallets = [], initialProducts = [
                 <button
                   type="button"
                   onClick={() => handleToggleWishlist(productId)}
-                  aria-label={isFavorited ? 'Favorilerden çıkar' : 'Favorilere ekle'}
+                  aria-label={
+                    isFavorited
+                      ? 'Favorilerden çıkar'
+                      : 'Favorilere ekle'
+                  }
                   className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center shadow-sm transition-all duration-200 hover:scale-110 hover:bg-white z-10 cursor-pointer"
                 >
                   <svg
                     className={`w-4 h-4 transition-colors duration-200 ${
-                      isFavorited ? 'text-gray-900 fill-gray-900' : 'text-stone-400 hover:text-gray-900'
+                      isFavorited
+                        ? 'text-gray-900 fill-gray-900'
+                        : 'text-stone-400 hover:text-gray-900'
                     }`}
                     fill={isFavorited ? 'currentColor' : 'none'}
                     stroke="currentColor"
@@ -81,15 +105,20 @@ export default function ProductSlider({ initialWallets = [], initialProducts = [
               </div>
 
               <div className="mt-3 flex flex-col space-y-1">
-                <Link href={`/products/${productId}`} className="group-hover:opacity-80 transition">
+                <Link
+                  href={`/products/${productId}`}
+                  className="group-hover:opacity-80 transition"
+                >
                   <h3 className="text-xs font-semibold text-stone-900 tracking-wider uppercase line-clamp-1">
                     {product.name}
                   </h3>
+
                   {product.brand && (
                     <p className="text-[11px] font-medium text-stone-400 tracking-wider uppercase line-clamp-1">
                       {product.brand}
                     </p>
                   )}
+
                   <p className="text-xs font-medium text-stone-900 tracking-wider uppercase pt-1">
                     {product.price} ₺
                   </p>
